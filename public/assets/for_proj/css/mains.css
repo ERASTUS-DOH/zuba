@@ -1,0 +1,62 @@
+.table-btn {
+    height: 35px !important;
+    /* width: 0px !important; */
+    padding: 2px 10px 0px 10px !important;
+}
+.success{
+    color: #5fb57c;
+}
+.error{
+    color: #f44336;
+}
+.shell{
+    border: 1px solid black;
+    height: 100%;
+}
+
+.theme:hover{
+    background-color: #00bcd4 !important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4) !important;
+}
+
+.login-button{
+
+}
+
+/* Bin start */
+.card-trans{
+    background-color: rgba(128, 128, 128, 0.068) !important;
+}
+.bin-shell{
+
+/* -webkit-clip-path: polygon(11% 0, 89% 0, 91% 3%, 91% 6%, 90% 9%, 90% 11%, 78% 93%, 77% 96%, 76% 97%, 74% 99%, 71% 100%, 30% 100%, 27% 99%, 25% 97%, 24% 95%, 23% 92%, 6% 9%, 6% 6%, 7% 3%, 10% 0); */
+clip-path: polygon(
+10% 0%,
+    89% 0,
+    91% 3%,
+    91% 6%,
+    90% 9%,
+    90% 11%,
+78% 93%,
+77% 96%,
+76% 97%,
+74% 99%,
+71% 100%,
+    30% 100%,
+    27% 99%,
+    25% 97%,
+    24% 95%,
+    23% 92%,
+6% 9%,
+6% 5%,
+8% 1%,
+10% 0%);
+
+    margin: auto;
+    /* border: 5px solid #a9afbb !important; */
+    width: 280px !important;
+    height: 280px !important;
+    border-radius: 25px !important;
+}
+
+/* Bin end */
