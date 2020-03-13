@@ -112,11 +112,11 @@
                     </div>
                 </div>
             </form>
-            <a href="{{route('register')}}" class="btn btn-primary btn-link btn-wd btn-lg text-center">
-                <button class="btn btn-primary text-center" type="submit"><i class="fas fa-arrow-right "></i>
-                    {{ __('Register') }}
-                </button>
-            </a>
+{{--            <a href="{{route('register')}}" class="btn btn-primary btn-link btn-wd btn-lg text-center">--}}
+{{--                <button class="btn btn-primary text-center" type="submit"><i class="fas fa-arrow-right "></i>--}}
+{{--                    {{ __('Register') }}--}}
+{{--                </button>--}}
+{{--            </a>--}}
 
         </div>
     </div>

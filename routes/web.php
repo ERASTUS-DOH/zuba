@@ -11,20 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/zuba', function () {
-    return view('zuba.index');
-});
-
-//Route::post('/logout','Auth/LoginController@logout');
-Route::get('/logout', function(){
-    Auth::logout();
-    return Redirect::to('/login');
-});
 
 Auth::routes();
+
+//Accessing the home page redirects to the login page
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');

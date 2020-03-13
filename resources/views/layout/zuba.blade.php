@@ -76,10 +76,6 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-{{--                    <a class="nav-link" href="for_proj\pg\config.html">--}}
-{{--                        <i class="fas fa-arrow-right"></i>--}}
-{{--                        <p>Log-Out</p>--}}
-{{--                    </a>--}}
                 </li>
 
                 <li class="nav-item active-pro ">
