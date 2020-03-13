@@ -24,3 +24,5 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/bins','BinsController@index')->name('bins');
+Route::get('/bins/{id}','BinsController@sample');

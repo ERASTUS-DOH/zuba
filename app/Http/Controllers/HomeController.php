@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('zuba.index');
     }
+
+    public function bins(){
+
+    }
 }

@@ -28,7 +28,7 @@
      Tip 2: you can also add an image using data-image tag
  -->
         <div class="logo">
-            <a href="{{url('/zuba')}}" class="simple-text logo-normal">
+            <a href="{{url('/home')}}" class="simple-text logo-normal">
                 Zuba-Solutions
             </a>
         </div>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="for_proj\pg\bins.html">
+                    <a class="nav-link" href="{{url('/bins')}}">
                         <i class="fas fa-dumpster"></i>
                         <p>Bins</p>
                     </a>
