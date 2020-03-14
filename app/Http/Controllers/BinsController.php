@@ -64,7 +64,7 @@ class BinsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('zuba.Bins.edit');
     }
 
     /**

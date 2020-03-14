@@ -59,4 +59,8 @@ clip-path: polygon(
     border-radius: 25px !important;
 }
 
+.topCaption{
+    padding-left: 10px;
+}
+
 /* Bin end */
