@@ -27,4 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/bins','BinsController@index')->name('bins');
 Route::get('/bins/{id}','BinsController@sample');
 Route::get('/bins/{id}/edit','BinsController@edit');
+
+Route::get('/tricycles','TricyclesController@index')->name('tricycles');
+Route::get('/binOwners','BinOwnersController@index')->name('binOwners');
 //Route::get()

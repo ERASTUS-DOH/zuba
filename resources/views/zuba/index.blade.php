@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="for_proj\pg\bins.html"> Show all bins</a>
+                            <a href="{{url('/bins')}}"> Show all bins</a>
                         </div>
                     </div>
                 </div>
@@ -27,12 +27,12 @@
                         <div class="card-icon">
                             <i class="fas fa-truck"></i>
                         </div>
-                        <p class="card-category"> Trucks</p>
+                        <p class="card-category"> Tricycles</p>
                         <h3 class="card-title">9</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="javascript:;">Follow trucks</a>
+                            <a href="{{url('/tricycles')}}">Show All Tricycles</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fas fa-cloud"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <p class="card-category">Something</p>
                         <h3 class="card-title">17</h3>

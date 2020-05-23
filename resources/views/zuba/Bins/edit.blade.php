@@ -8,8 +8,8 @@
                 <div class="card card-plain">
                     <div class="card-header card-header-info">
                         <div class="row topCaption">
-                            <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>
-                            <p class="topCaption ">  Owned-By : Mr Erastus</p>
+                            <h4 class="card-title mt-0"> Update Page</h4>
+                            <p class="topCaption ">  Dust Bins</p>
                         </div>
                         {{--                            <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>--}}
                         <p class="card-category"> Location: Kotokoraba, Cape Coast</p>
@@ -77,22 +77,22 @@
 {{--            </div>--}}
         </div>
 
-{{--        <div class="row">--}}
-{{--            <div class="col-md-3">--}}
-{{--                <a href="/bins/{{15}}/edit" class="btn btn-primary btn-link btn-wd btn-lg text-center">--}}
-{{--                    <button class="btn  text-center" type="submit"><i class="fas fa-pen-square "></i>--}}
-{{--                        {{ __('edit') }}--}}
-{{--                    </button>--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-3">--}}
-{{--                <a href="{{route('bins')}}" class="btn btn- btn-link btn-wd btn-lg text-center">--}}
-{{--                    <button class="btn  text-center" type="submit"><i class="fas fa-arrow-right "></i>--}}
-{{--                        {{ __('delete') }}--}}
-{{--                    </button>--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="row">
+            <div class="">
+                <a href="/bins/{{15}}/edit" class="btn btn-primary btn-link btn-wd btn-lg text-center">
+                    <button class="btn  text-center" type="submit"><i class="fas fa-pen-square "></i>
+                        {{ __('update') }}
+                    </button>
+                </a>
+            </div>
+            <div class="">
+                <a href="{{route('bins')}}" class="btn btn-danger btn-link btn-wd btn-lg text-center">
+                    <button class="btn  text-center" type="submit"><i class="fas fa-times"></i>
+                        {{ __('cancel') }}
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

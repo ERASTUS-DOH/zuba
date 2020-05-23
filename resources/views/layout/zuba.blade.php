@@ -34,26 +34,33 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                <li class="nav-item @if(route::is('home')){{'active'}}@endif">
+                    <a class="nav-link" href="{{url('/home')}}">
                         <i class="fas fa-warehouse"></i>
                         <p>Dashboard</p>
+{{--                        {{url()->current()}}--}}
+{{--                        @php($location = url()->current();--}}
+{{--                            $details = explode($location,'/');--}}
+{{--                            echo $details;--}}
+
+{{--            )--}}
+{{--                        @endphp--}}
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(route::is('bins')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/bins')}}">
                         <i class="fas fa-dumpster"></i>
                         <p>Bins</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="for_proj\pg\trucks.html">
+                <li class="nav-item @if(route::is('tricycles')){{'active'}}@endif">
+                    <a class="nav-link" href="{{url('/tricycles')}}">
                         <i class="fas fa-truck"></i>
                         <p>Tricycles</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="for_proj\pg\config.html">
+                <li class="nav-item @if(route::is('binOwners')){{'active'}}@endif">
+                    <a class="nav-link" href="{{url('/binOwners')}}">
                         <i class="fas fa-users"></i>
                         <p>Users</p>
                     </a>
