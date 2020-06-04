@@ -15,6 +15,11 @@ class CreateTricycleRidersTable extends Migration
     {
         Schema::create('tricycle_riders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('email')->nullable();
+            $table->string('telephone');
+            $table->string('residential_address')->nullable();
             $table->timestamps();
         });
     }

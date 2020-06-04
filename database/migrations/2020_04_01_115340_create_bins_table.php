@@ -15,6 +15,11 @@ class CreateBinsTable extends Migration
     {
         Schema::create('bins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('serialNumber');
+            $table->integer('ownerId');
+            $table->string('locationID');
+            $table->string('Level_of_waste');
+            $table->string('maxWeight');
             $table->timestamps();
         });
     }

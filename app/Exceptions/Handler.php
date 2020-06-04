@@ -2,11 +2,15 @@
 
 namespace App\Exceptions;
 
+
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Traits\ApiBaseController;
 
 class Handler extends ExceptionHandler
 {
+    use ApiBaseController;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -34,6 +38,21 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        //check if is api call, if true, render json response, else render html view error page
+        if ($this->isApiCall()) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->sendErrorResponse($exception->getMessage(), 404);
+            } elseif ($exception instanceof MethodNotAllowedHttpException) {
+                return $this->sendErrorResponse($exception->getMessage(), $exception->getStatusCode());
+            } elseif ($exception instanceof AuthenticationException) {
+                return $this->sendErrorResponse($exception->getMessage(), 401);
+            } elseif ($exception instanceof AuthorizationException) {
+                return $this->sendErrorResponse($exception->getMessage(), 403);
+            } else {
+                return $this->sendErrorResponse($exception->getMessage(), 500);
+            }
+        }
+
         parent::report($exception);
     }
 
@@ -47,5 +66,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Checks the current url to check if it contains 'api'
+     * @return boolean
+     */
+    private function isApiCall()
+    {
+        return preg_match('/api/', url()->current());
     }
 }

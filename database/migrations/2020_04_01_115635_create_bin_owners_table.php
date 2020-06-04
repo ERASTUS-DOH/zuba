@@ -15,6 +15,11 @@ class CreateBinOwnersTable extends Migration
     {
         Schema::create('bin_owners', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('email')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('binId');
             $table->timestamps();
         });
     }

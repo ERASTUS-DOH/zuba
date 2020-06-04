@@ -15,6 +15,10 @@ class CreateTricyclesTable extends Migration
     {
         Schema::create('tricycles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('regNumber');
+            $table->string('colour');
+            $table->string('brand');
+            $table->string('max_capacity');
             $table->timestamps();
         });
     }

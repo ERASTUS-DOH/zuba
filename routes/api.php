@@ -16,3 +16,25 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//fallback route
+Route::fallback(function () {
+    return response()->json(
+        [
+            'error' => [
+                'code' => 404,
+                'message' => "API route does not exist."
+            ]
+        ],
+        404
+    );
+});
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
+    /**
+     * Authentication routes for user
+     */
+    Route::post('user/login', 'AuthenticationController@loginUser');
+    Route::post('user/register', 'AuthenticationController@registerUser');
+});
