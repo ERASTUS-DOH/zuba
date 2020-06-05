@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "e7910ff6-c3c2-4815-9988-76fda0cf4a0d",
+        "_postman_id": "2f7aac4d-c127-4b9f-9c52-e4fab031d588",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,9 +33,37 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"est\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"neque\"\n}"
                         },
                         "description": "Authenticates a user.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a User",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/user\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"minima\",\n    \"password_confirmation\": \"atque\"\n}"
+                        },
+                        "description": "Registers a user as an entrepreneur or investor.",
                         "response": []
                     }
                 }

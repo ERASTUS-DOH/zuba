@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"est"}'
+    -d '{"email":"mail@mail.com","password":"neque"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "est"
+    "password": "neque"
 }
 
 fetch(url, {
@@ -104,6 +104,82 @@ Parameter | Type | Status | Description
         `password` | string |  required  | The password of the user.
     
 <!-- END_7a184547882598fc164c10be7745584b -->
+
+<!-- START_7fef01e7235c89049ebe3685de4bff17 -->
+## Register a User
+
+Registers a user as an entrepreneur or investor.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/user/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"minima","password_confirmation":"atque"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/user/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "mail@mail.com",
+    "password": "minima",
+    "password_confirmation": "atque"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/user/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `first_name` | string |  required  | The first name of the user.
+        `last_name` | string |  required  | The last name of the user.
+        `email` | string |  required  | The email of the user.
+        `password` | string |  required  | The password of the user.
+        `password_confirmation` | string |  required  | The password confirmation for the password.
+    
+<!-- END_7fef01e7235c89049ebe3685de4bff17 -->
 
 #general
 

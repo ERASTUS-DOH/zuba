@@ -102,6 +102,7 @@ class AuthenticationController extends Controller
         $data['id'] = $user->id;
         $data['name'] = $user->fname . " " .$user->lname;
         $data['email'] = $user->email;
+        $data['password'] = $user->password;
         $data['token'] = $user->createToken(env('APP_NAME'))->accessToken;
         return $data;
     }
@@ -142,7 +143,7 @@ class AuthenticationController extends Controller
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|confirmed'
+                'password' => 'required'
             ]);
 
             //send validation error response if any
@@ -157,7 +158,7 @@ class AuthenticationController extends Controller
                 'fname' =>$request->input('first_name'),
                 'lname' =>$request->input('last_name'),
                 'email' =>$request->input('email'),
-                'password' =>Hash::make($request->input('password'))
+                'password' =>$request->input('password')
             ]);
 
 
