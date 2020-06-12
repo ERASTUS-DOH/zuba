@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Owners;
 use App\User;
 use App\Riders;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\ApiBaseController;
-//use phpseclib\Crypt\Hash;
 
 /**
  * @group Authentication Management
@@ -20,12 +20,9 @@ use App\Traits\ApiBaseController;
  * Class AuthenticationController
  * @package App\Http\Controllers\Api
  */
-
 class AuthenticationController extends Controller
 {
     use ApiBaseController;
-
-
 
 
     /**
@@ -89,24 +86,6 @@ class AuthenticationController extends Controller
         return $this->sendErrorResponse("Invalid credentials.");
     }
 
-    /**
-     * @param User $user
-     * @return array
-     *
-     */
-    public function generateUserData(User $user)
-    {
-        $data = array();
-        $data['id'] = $user->id;
-        $data['fname'] = $user->fname;
-        $data['lname'] = $user->lname;
-        $data['other_name'] = $user->other_name;
-        $data['email'] = $user->email;
-//        $data['password'] = $user->password;
-        $data['token'] = $user->createToken(env('APP_NAME'))->accessToken;
-        return $data;
-    }
-
 
     /**
      * Register a User
@@ -136,39 +115,38 @@ class AuthenticationController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-        public function registerUser(Request $request)
-        {
-            //validate credentials
-            $validator = Validator::make($request->all(), [
-                'first_name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'other_name' => 'string|max:255',
-                'telephone' =>  'numeric',
-                'email' => 'required|email|max:255|unique:users',
-                'password' => 'required'
-            ]);
+    public function registerUser(Request $request)
+    {
+        //validate credentials
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'other_name' => 'string|max:255',
+            'telephone' => 'numeric',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8'
+        ]);
 
-            //send validation error response if any
-            if ($validator->fails()) {
-                return $this->sendErrorResponse($validator->errors()->first());
-            }
-
-
-
-            //create the user
-            $user = User::query()->create([
-                'fname' =>$request->input('first_name'),
-                'lname' =>$request->input('last_name'),
-                'other_name' =>$request->input('other_name'),
-                'telephone' =>$request->input('telephone'),
-                'email' =>$request->input('email'),
-                'password' =>Hash::make($request->input('password'))
-            ]);
-
-
-            //data to be sent back
-            return $this->sendSuccessResponse($this->generateUserData($user));
+        //send validation error response if any
+        if ($validator->fails()) {
+            return $this->sendErrorResponse($validator->errors()->first());
         }
+
+
+        //create the user
+        $user = User::query()->create([
+            'fname' => $request->input('first_name'),
+            'lname' => $request->input('last_name'),
+            'other_name' => $request->input('other_name'),
+            'telephone' => $request->input('telephone'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+
+        //data to be sent back
+        return $this->sendSuccessResponse($this->generateUserData($user));
+    }
 
 
     /**
@@ -201,36 +179,32 @@ class AuthenticationController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
+    public function loginOwner(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-
-
-        //function to loginOwner through the api.
-        public function loginOwner(Request $request){
-            $validator = Validator::make($request->all(), [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
-
-            //send validation error response if any
-            if ($validator->fails()) {
-                return $this->sendErrorResponse($validator->errors()->first());
-            }
-
-            //extract the login credentials
-            $credentials = $request->only(['email', 'password']);
-
-
-            if (Auth::guard('owner')->attempt($credentials)) {
-                $owner = Auth::guard('owner')->owner();
-                //data to be sent back
-                $data = $this->generateOwnerData($owner);
-                return $this->sendSuccessResponse($data);
-            }
-
-            //if authentication fails, send error response
-            return $this->sendErrorResponse("Invalid credentials.");
+        //send validation error response if any
+        if ($validator->fails()) {
+            return $this->sendErrorResponse($validator->errors()->first());
         }
 
+        //extract the login credentials
+        $credentials = $request->only(['email', 'password']);
+
+
+        if (Auth::guard('owner')->attempt($credentials)) {
+            $owner = Auth::guard('owner')->user();
+            //data to be sent back
+            $data = $this->generateOwnerData($owner);
+            return $this->sendSuccessResponse($data);
+        }
+
+        //if authentication fails, send error response
+        return $this->sendErrorResponse("Invalid credentials.");
+    }
 
 
     /**
@@ -271,7 +245,7 @@ class AuthenticationController extends Controller
             'telephone' => 'numeric|max:255',
             'address' => 'string',
             'email' => 'required|email|max:255|unique:owners',
-            'password' => 'required'|'min:8'
+            'password' => 'required|min:8'
         ]);
 
         //send validation error response if any
@@ -280,46 +254,20 @@ class AuthenticationController extends Controller
         }
 
 
-
         //create the user
         $owner = Owners::query()->create([
-            'fname' =>$request->input('first_name'),
-            'lname' =>$request->input('last_name'),
-            'other_name' =>$request->input('other_name'),
-            'telephone' =>$request->input('telephone'),
-            'address' =>$request->input('address'),
-            'email' =>$request->input('email'),
-            'password' =>Hash::make($request->input('password'))
+            'fname' => $request->input('first_name'),
+            'lname' => $request->input('last_name'),
+            'other_name' => $request->input('other_name'),
+            'telephone' => $request->input('telephone'),
+            'address' => $request->input('address'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
         ]);
 
-
         //data to be sent back
-        return $this->sendSuccessResponse($this->generateUserData($owner));
+        return $this->sendSuccessResponse($this->generateOwnerData($owner));
     }
-
-
-    /**
-     * @param Owners $owner
-     * @return array
-     *
-     */
-    public function generateOwnerData(Owners $owner)
-    {
-        $data = array();
-        $data['id'] = $owner->id;
-        $data['fname'] = $owner->fname;
-        $data['lname'] = $owner->lname;
-        $data['other_names'] = $owner->other_name;
-        $data['address'] = $owner->address;
-        $data['email'] = $owner->email;
-        //
-        $data['token'] = $owner->createToken(env('APP_NAME'))->accessToken;
-        return $data;
-    }
-
-
-
-
 
 
     /**
@@ -352,9 +300,8 @@ class AuthenticationController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-
-    //function to loginRider through the api.
-    public function loginRider(Request $request){
+    public function loginRider(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required'
@@ -368,39 +315,15 @@ class AuthenticationController extends Controller
         //extract the login credentials
         $credentials = $request->only(['email', 'password']);
         if (Auth::guard('rider')->attempt($credentials)) {
-            $owner = Auth::guard('rider')->rider();
+            $owner = Auth::guard('rider')->user();
             //data to be sent back
             $data = $this->generateRiderData($owner);
             return $this->sendSuccessResponse($data);
         }
 
-
-
         //if authentication fails, send error response
         return $this->sendErrorResponse("Invalid credentials.");
-        }
-
-
-
-    /**
-     * @param Riders $rider
-     * @return array
-     *
-     */
-    public function generateRiderData(Riders $rider)
-    {
-        $data = array();
-        $data['id'] = $rider->id;
-        $data['fname'] = $rider->fname;
-        $data['lname'] = $rider->lname;
-        $data['other_names'] = $rider->other_name;
-        $data['address'] = $rider->address;
-        $data['email'] = $rider->email;
-        $data['token'] = $rider->createToken(env('APP_NAME'))->accessToken;
-        return $data;
     }
-
-
 
 
     /**
@@ -435,13 +358,13 @@ class AuthenticationController extends Controller
     {
         //validate credentials
         $validator = Validator::make($request->all(), [
-             'first_name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'other_name' => 'string|max:255',
             'telephone' => 'numeric|max:255',
             'address' => 'string',
             'email' => 'required|email|max:255|unique:riders',
-            'password' => 'required'|'min:8'
+            'password' => 'required|min:8'
         ]);
 
         //send validation error response if any
@@ -450,22 +373,19 @@ class AuthenticationController extends Controller
         }
 
 
-
         //create the user
         $user = Riders::query()->create([
-            'fname' =>$request->input('first_name'),
-            'lname' =>$request->input('last_name'),
-            'other_name' =>$request->input('other_name'),
-            'telephone' =>$request->input('telephone'),
+            'fname' => $request->input('first_name'),
+            'lname' => $request->input('last_name'),
+            'other_name' => $request->input('other_name'),
+            'telephone' => $request->input('telephone'),
             'address' => $request->input('address'),
-            'email' =>$request->input('email'),
-//                'usertype' => 2,
-            'password' =>Hash::make($request->input('password'))
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
         ]);
 
-
         //data to be sent back
-        return $this->sendSuccessResponse($this->generateUserData($user));
+        return $this->sendSuccessResponse($this->generateRiderData($user));
     }
 
-    }
+}

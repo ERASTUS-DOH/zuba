@@ -4,8 +4,12 @@ namespace App\Exceptions;
 
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Traits\ApiBaseController;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -33,10 +37,23 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
-     * @return void
+     * @param \Exception $exception
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws Exception
      */
     public function report(Exception $exception)
+    {
+        parent::report($exception);
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
+    public function render($request, Exception $exception)
     {
         //check if is api call, if true, render json response, else render html view error page
         if ($this->isApiCall()) {
@@ -53,18 +70,6 @@ class Handler extends ExceptionHandler
             }
         }
 
-        parent::report($exception);
-    }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Exception $exception)
-    {
         return parent::render($request, $exception);
     }
 
