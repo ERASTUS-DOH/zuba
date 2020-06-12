@@ -39,36 +39,38 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'hash' => false
         ],
 
         'owner' => [
             'driver' => 'session',
             'provider' => 'owner',
-
+            'hash' => false
         ],
 
         'rider' => [
             'driver' => 'session',
             'provider' => 'rider',
+            'hash' => false
         ],
 
 
 
         'user-api' => [
             'driver' => 'passport',
-            'provider' => 'users',
+            'provider' => 'user',
             'hash' => false,
         ],
 
         'owner-api' => [
             'driver' => 'passport',
-            'provider' => 'owners',
+            'provider' => 'owner',
             'hash' => false,
         ],
 
         'rider-api' => [
             'driver' => 'passport',
-            'provider' => 'riders',
+            'provider' => 'rider',
             'hash' => false,
         ],
     ],
@@ -133,6 +135,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
 
     ],
 
