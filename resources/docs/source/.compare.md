@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"neque"}'
+    -d '{"email":"mail@mail.com","password":"tempora"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "neque"
+    "password": "tempora"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"minima","password_confirmation":"atque"}'
+    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"labore","password_confirmation":"cupiditate"}'
 
 ```
 
@@ -135,8 +135,8 @@ let body = {
     "first_name": "Jane",
     "last_name": "Doe",
     "email": "mail@mail.com",
-    "password": "minima",
-    "password_confirmation": "atque"
+    "password": "labore",
+    "password_confirmation": "cupiditate"
 }
 
 fetch(url, {
@@ -180,6 +180,316 @@ Parameter | Type | Status | Description
         `password_confirmation` | string |  required  | The password confirmation for the password.
     
 <!-- END_7fef01e7235c89049ebe3685de4bff17 -->
+
+<!-- START_4071205fadd9472d0d55124a1f7aa9c3 -->
+## Login a Owner
+
+Authenticates the BinOwner.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/owner/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"est"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/owner/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "est"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/owner/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | The email of the binOwner.
+        `password` | string |  required  | The password of the binOwner.
+    
+<!-- END_4071205fadd9472d0d55124a1f7aa9c3 -->
+
+<!-- START_688925598239fc4cecb45a39564f5a4b -->
+## Register a User
+
+Registers a user as an entrepreneur or investor.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/owner/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"ad","password_confirmation":"tempore"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/owner/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "mail@mail.com",
+    "password": "ad",
+    "password_confirmation": "tempore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/owner/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `first_name` | string |  required  | The first name of the user.
+        `last_name` | string |  required  | The last name of the user.
+        `email` | string |  required  | The email of the user.
+        `password` | string |  required  | The password of the user.
+        `password_confirmation` | string |  required  | The password confirmation for the password.
+    
+<!-- END_688925598239fc4cecb45a39564f5a4b -->
+
+<!-- START_68bcfbfe3201c132ab2bbb26ddec1230 -->
+## Login a Tricycle Rider
+
+Authenticates a Tricycle Rider.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/rider/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"sit"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/rider/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "sit"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/rider/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | The email of the Tricycle Rider.
+        `password` | string |  required  | The password of the Tricycle Rider.
+    
+<!-- END_68bcfbfe3201c132ab2bbb26ddec1230 -->
+
+<!-- START_05460b3b3ba25b151f80f2caf71b8714 -->
+## Register a User
+
+Registers a user as an entrepreneur or investor.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/rider/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"consequatur","password_confirmation":"eos"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/rider/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "mail@mail.com",
+    "password": "consequatur",
+    "password_confirmation": "eos"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/rider/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `first_name` | string |  required  | The first name of the user.
+        `last_name` | string |  required  | The last name of the user.
+        `email` | string |  required  | The email of the user.
+        `password` | string |  required  | The password of the user.
+        `password_confirmation` | string |  required  | The password confirmation for the password.
+    
+<!-- END_05460b3b3ba25b151f80f2caf71b8714 -->
 
 #general
 
@@ -1241,7 +1551,8 @@ null
 <!-- END_67ef764403159da016f8318858d1f94b -->
 
 <!-- START_5d49cb3471c6b1b7fc7c946500ca3bfc -->
-## bins/{id}
+## Display the specified resource.
+
 > Example request:
 
 ```bash
@@ -1270,10 +1581,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request

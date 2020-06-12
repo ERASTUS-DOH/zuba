@@ -18,7 +18,7 @@ class CreateBinsTable extends Migration
             $table->string('serialNumber');
             $table->integer('ownerId');
             $table->string('locationID');
-            $table->string('Level_of_waste');
+            $table->string('maxLevel');
             $table->string('maxWeight');
             $table->timestamps();
         });

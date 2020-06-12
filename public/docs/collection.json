@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "2f7aac4d-c127-4b9f-9c52-e4fab031d588",
+        "_postman_id": "3d646bc2-57bb-4f03-8c20-157104049392",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"neque\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"tempora\"\n}"
                         },
                         "description": "Authenticates a user.",
                         "response": []
@@ -61,7 +61,119 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"minima\",\n    \"password_confirmation\": \"atque\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"labore\",\n    \"password_confirmation\": \"cupiditate\"\n}"
+                        },
+                        "description": "Registers a user as an entrepreneur or investor.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login a Owner",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/owner\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"est\"\n}"
+                        },
+                        "description": "Authenticates the BinOwner.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a User",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/owner\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ad\",\n    \"password_confirmation\": \"tempore\"\n}"
+                        },
+                        "description": "Registers a user as an entrepreneur or investor.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login a Tricycle Rider",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/rider\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"sit\"\n}"
+                        },
+                        "description": "Authenticates a Tricycle Rider.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a User",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/rider\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"consequatur\",\n    \"password_confirmation\": \"eos\"\n}"
                         },
                         "description": "Registers a user as an entrepreneur or investor.",
                         "response": []
@@ -802,7 +914,7 @@
                     }
                 },
                 {
-                    "name": "bins\/{id}",
+                    "name": "Display the specified resource.",
                     "request": {
                         "url": {
                             "protocol": "http",

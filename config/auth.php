@@ -41,9 +41,34 @@ return [
             'provider' => 'users',
         ],
 
+        'owner' => [
+            'driver' => 'session',
+            'provider' => 'owner',
+
+        ],
+
+        'rider' => [
+            'driver' => 'session',
+            'provider' => 'rider',
+        ],
+
+
+
         'user-api' => [
             'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'owner-api' => [
+            'driver' => 'passport',
+            'provider' => 'owners',
+            'hash' => false,
+        ],
+
+        'rider-api' => [
+            'driver' => 'passport',
+            'provider' => 'riders',
             'hash' => false,
         ],
     ],
@@ -70,6 +95,16 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'owner' => [
+            'driver' => 'eloquent',
+            'model' => App\Owners::class,
+        ],
+
+        'rider' => [
+            'driver' => 'eloquent',
+            'model' => App\Riders::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -98,6 +133,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
     ],
 
 ];

@@ -1,6 +1,9 @@
 <?php
 
 namespace App;
+use App\Bins;
+use App\User;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,14 +11,11 @@ class BinOwners extends Model
 {
     //
     protected $fillable = [
-        'name',
-        'location',
-        'email',
-        'telephone',
+        'owner_ID',
         'binId'
     ];
 
-    public function bins(){
-        return $this->hasMany('App\Bins');
-    }
+
+
+
 }

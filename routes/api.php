@@ -37,4 +37,19 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
      */
     Route::post('user/login', 'AuthenticationController@loginUser');
     Route::post('user/register', 'AuthenticationController@registerUser');
+
+    /**
+     * Authentication routes for the owner.
+     */
+    Route::post('owner/login','AuthenticationController@loginOwner');
+    Route::post('owner/register','AuthenticationController@registerOwner');
+
+
+    /**
+     * Athentication routes for the rider.
+     */
+    Route::post('rider/login','AuthenticationController@loginRider');
+    Route::post('rider/register','AuthenticationController@registerRider');
+
 });
+
