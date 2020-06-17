@@ -10,7 +10,7 @@
                             <i class="fas fa-dumpster"></i>
                         </div>
                         <p class="card-category">Bins Deployed</p>
-                        <h3 class="card-title">{{ $details['bins']->count() }}
+                        <h3 class="card-title">20
                         </h3>
                     </div>
                     <div class="card-footer">
@@ -28,7 +28,7 @@
                             <i class="fas fa-truck"></i>
                         </div>
                         <p class="card-category"> Tricycles</p>
-                        <h3 class="card-title">{{$details['tricycles']->count()}}</h3>
+                        <h3 class="card-title">9</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -44,8 +44,8 @@
                         <div class="card-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <p class="card-category">Bin Owners</p>
-                        <h3 class="card-title">{{$details['binOwners']->count()}}</h3>
+                        <p class="card-category">Something</p>
+                        <h3 class="card-title">17</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -60,7 +60,7 @@
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header card-header-info theme">
-                        <h4 class="card-title mt-0"> List of Request sent by Bins Deployed</h4>
+                        <h4 class="card-title mt-0"> List of bins deployed</h4>
                         <p class="card-category"> Pick a bin to view more information</p>
                     </div>
                     <div class="card-body">

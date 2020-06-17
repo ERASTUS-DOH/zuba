@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Bins;
+
 use Illuminate\Http\Request;
 
 class BinsController extends Controller
@@ -14,13 +14,12 @@ class BinsController extends Controller
     public function index()
     {
        //function to return all the bins available.
-        $bins =  Bins::all();
-        return view('zuba.Bins.index',['bins' => $bins]);
+        return view('zuba.Bins.index');
     }
 
     //function for showing the details of the bin.
     public function sample($id){
-
+        return view('zuba.Bins.show');
     }
 
 
@@ -54,9 +53,7 @@ class BinsController extends Controller
      */
     public function show($id)
     {
-        $bin = Bins::find($id);
-
-        return view('zuba.Bins.show', ['bin'=>$bin]);
+        //
     }
 
     /**

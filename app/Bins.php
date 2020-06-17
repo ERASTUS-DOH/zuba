@@ -1,8 +1,7 @@
 <?php
 
 namespace App;
-use App\BinOwners;
-use App\BinRequest;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Bins extends Model
@@ -10,16 +9,16 @@ class Bins extends Model
     //
     protected $fillable = [
         'id',
-        'nickname',
         'serialNumber',
-        'max_level',
+        'Level_of_waste',
+        'ownerId',
         'maxWeight',
-        'locationID',
-        'smoke_noti'
+        'location'
         ];
 
-
-
+    public function binOwners(){
+        return $this->hasOne('App\BinOwners');
+    }
 
 }
 

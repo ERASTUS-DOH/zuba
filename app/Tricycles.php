@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-use App\TricycleRiders;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Tricycles extends Model
@@ -16,8 +16,4 @@ class Tricycles extends Model
 
 
     //defining the relationships that are related
-
-    public function tricycleRiders(){
-        return $this->belongsTo('App\TricycleRiders');
-    }
 }

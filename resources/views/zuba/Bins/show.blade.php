@@ -1,7 +1,7 @@
 @extends('layout.zuba')
 @section('content')
-    <a href="{{route('bins')}}" class="btn  btn-link btn-wd text-center">
-        <button class="btn btn-success  text-center" type="submit"><i class="fas fa-arrow-left "></i>
+    <a href="{{route('bins')}}" class="btn btn-success btn-link btn-wd btn-lg text-center">
+        <button class="btn  text-center" type="submit"><i class="fas fa-arrow-left "></i>
             {{ __('Back') }}
         </button>
     </a>
@@ -12,9 +12,9 @@
                 <div class="col-md-6">
                     <div class="card card-plain">
                         <div class="card-header card-header-info">
-                            <div class="topCaption">
-                                <h4 class="card-title mt-0"> Serial Number: {{$bin->serialNumber}}</h4>
-                                <p class="topCaption ">  Owned-By : {{$bin->binOwner}}</p>
+                            <div class="row topCaption">
+                                <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>
+                                <p class="topCaption ">  Owned-By : Mr Erastus</p>
                             </div>
 {{--                            <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>--}}
                             <p class="card-category"> Location: Kotokoraba, Cape Coast</p>
