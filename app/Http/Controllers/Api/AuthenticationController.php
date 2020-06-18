@@ -29,12 +29,12 @@ class AuthenticationController extends Controller
 
 
     /**
-     * Login a User
+     * Login a admin user
      *
-     * Authenticates a user.
+     * Authenticates the admin user.
      *
-     * @bodyParam email string required The email of the user. Example: mail@mail.com
-     * @bodyParam password string required The password of the user.
+     * @bodyParam email string required The email of the admin user. Example: mail@mail.com
+     * @bodyParam password string required The password of the admin user.
      *
      * @response 200 {
      * "success": {
@@ -59,7 +59,7 @@ class AuthenticationController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-    //function for the authentication of the user credentials via the api.
+    //function for the authentication of the admin user credentials via the api.
     public function loginUser(Request $request)
     {
         //validate credentials
@@ -89,32 +89,17 @@ class AuthenticationController extends Controller
         return $this->sendErrorResponse("Invalid credentials.");
     }
 
-    /**
-     * @param User $user
-     * @return array
-     *
-     */
-    public function generateUserData(User $user)
-    {
-        $data = array();
-        $data['id'] = $user->id;
-        $data['fname'] = $user->fname;
-        $data['lname'] = $user->lname;
-        $data['other_name'] = $user->other_name;
-        $data['email'] = $user->email;
-//        $data['password'] = $user->password;
-        $data['token'] = $user->createToken(env('APP_NAME'))->accessToken;
-        return $data;
-    }
 
 
     /**
-     * Register a User
+     * Register an admin user
      *
-     * Registers a user as an entrepreneur or investor.
+     * Registers an admin user of the platform.
      *
-     * @bodyParam first_name string required The first name of the user. Example: Jane
-     * @bodyParam last_name string required The last name of the user. Example: Doe
+     * @bodyParam first_name string required The first name of the admin user. Example: Jane
+     * @bodyParam last_name string required The last name of the admin user. Example: Doe
+     * @bodyParam other_name string required The other name of the admin user. Example: Elinam
+     * @bodyParam telephone numeric required The telephone number of the admin user. Example: 0241406244
      * @bodyParam email string required The email of the user. Example: mail@mail.com
      * @bodyParam password string required The password of the user.
      * @bodyParam password_confirmation string required The password confirmation for the password.
@@ -128,6 +113,8 @@ class AuthenticationController extends Controller
      * "id": 1,
      * "first_name": "Jane",
      * "last_name": "Doe",
+     * "other_name": "Elinam",
+     * "telephone": "0241406244",
      * "email": "jane@doe.com",
      * "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
      *    }
@@ -156,7 +143,7 @@ class AuthenticationController extends Controller
 
 
 
-            //create the user
+            //create the admin user
             $user = User::query()->create([
                 'fname' =>$request->input('first_name'),
                 'lname' =>$request->input('last_name'),
@@ -174,9 +161,9 @@ class AuthenticationController extends Controller
 
 
     /**
-     * Login a Owner
+     * Login a Bin Owner
      *
-     * Authenticates the BinOwner.
+     * Authenticates the Bin Owner.
      *
      * @bodyParam email string required The email of the binOwner. Example: mail@mail.com
      * @bodyParam password string required The password of the binOwner.
@@ -223,7 +210,7 @@ class AuthenticationController extends Controller
 
 
             if (Auth::guard('owner')->attempt($credentials)) {
-                $owner = Auth::guard('owner')->owner();
+                $owner = Auth::guard('owner')->user();
                 //data to be sent back
                 $data = $this->generateOwnerData($owner);
                 return $this->sendSuccessResponse($data);
@@ -236,12 +223,15 @@ class AuthenticationController extends Controller
 
 
     /**
-     * Register a User
+     * Register a Bin Owner
      *
-     * Registers a user as an entrepreneur or investor.
+     * Registers a Bin Owner of Whom each bin is supposed to have one.
      *
-     * @bodyParam first_name string required The first name of the user. Example: Jane
-     * @bodyParam last_name string required The last name of the user. Example: Doe
+     * @bodyParam first_name string required The first name of the bin owner. Example: Jane
+     * @bodyParam last_name string required The last name of the bin owner. Example: Doe
+     * @bodyParam other_name string required The other name of the bin owner. Example: Doe
+     * @bodyParam telephone numeric required The telephone number of the bin owner. Example: 0241406244
+     * @bodyParam address string required The address of the bin owner. Example: Plt adjacent max-gee hotel.
      * @bodyParam email string required The email of the user. Example: mail@mail.com
      * @bodyParam password string required The password of the user.
      * @bodyParam password_confirmation string required The password confirmation for the password.
@@ -255,7 +245,10 @@ class AuthenticationController extends Controller
      * "id": 1,
      * "first_name": "Jane",
      * "last_name": "Doe",
+     * "other_name": "Elinam",
+     * "telephone": "0241406244",
      * "email": "jane@doe.com",
+     * "address": "plt. adjacent max gee hotel",
      * "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
      *    }
      * }
@@ -270,7 +263,7 @@ class AuthenticationController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'other_name' => 'string|max:255',
-            'telephone' => 'numeric|max:255',
+            'telephone' => 'numeric',
             'address' => 'string',
             'email' => 'required|email|max:255|unique:owners',
             'password' => 'required'|'min:8'
@@ -300,24 +293,7 @@ class AuthenticationController extends Controller
     }
 
 
-    /**
-     * @param Owners $owner
-     * @return array
-     *
-     */
-    public function generateOwnerData(Owners $owner)
-    {
-        $data = array();
-        $data['id'] = $owner->id;
-        $data['fname'] = $owner->fname;
-        $data['lname'] = $owner->lname;
-        $data['other_names'] = $owner->other_name;
-        $data['address'] = $owner->address;
-        $data['email'] = $owner->email;
-        //
-        $data['token'] = $owner->createToken(env('APP_NAME'))->accessToken;
-        return $data;
-    }
+
 
 
 
@@ -370,7 +346,7 @@ class AuthenticationController extends Controller
         //extract the login credentials
         $credentials = $request->only(['email', 'password']);
         if (Auth::guard('rider')->attempt($credentials)) {
-            $owner = Auth::guard('rider')->rider();
+            $owner = Auth::guard('rider')->user();
             //data to be sent back
             $data = $this->generateRiderData($owner);
             return $this->sendSuccessResponse($data);
@@ -384,36 +360,23 @@ class AuthenticationController extends Controller
 
 
 
-    /**
-     * @param Riders $rider
-     * @return array
-     *
-     */
-    public function generateRiderData(Riders $rider)
-    {
-        $data = array();
-        $data['id'] = $rider->id;
-        $data['fname'] = $rider->fname;
-        $data['lname'] = $rider->lname;
-        $data['other_names'] = $rider->other_name;
-        $data['address'] = $rider->address;
-        $data['email'] = $rider->email;
-        $data['token'] = $rider->createToken(env('APP_NAME'))->accessToken;
-        return $data;
-    }
+
 
 
 
 
     /**
-     * Register a User
+     * Register a Rider
      *
-     * Registers a user as an entrepreneur or investor.
+     * Registers a Rider as the one responsible for the waste collection.
      *
-     * @bodyParam first_name string required The first name of the user. Example: Jane
-     * @bodyParam last_name string required The last name of the user. Example: Doe
-     * @bodyParam email string required The email of the user. Example: mail@mail.com
-     * @bodyParam password string required The password of the user.
+     * @bodyParam first_name string required The first name of the Rider. Example: Jane
+     * @bodyParam last_name string required The last name of the Rider. Example: Doe
+     * @bodyParam other_name string required The last name of the Rider. Example: Doe
+     * @bodyParam telephone string required The telephone number of the Rider. Example:0244444444
+     * @bodyParam email string required The email of the Rider. Example: mail@mail.com
+     * @bodyParam address numeric required The address of the Rider. Example: plt. adjacent max-gee hotel.
+     * @bodyParam password string required The password of the Rider.
      * @bodyParam password_confirmation string required The password confirmation for the password.
      *
      * @response 200 {
@@ -425,6 +388,9 @@ class AuthenticationController extends Controller
      * "id": 1,
      * "first_name": "Jane",
      * "last_name": "Doe",
+     * "other_name": "Elinam",
+     * "telephone": "0241406244",
+     * "address": "plt. adjacent max-gee hotel",
      * "email": "jane@doe.com",
      * "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
      *    }

@@ -42,4 +42,65 @@ trait ApiBaseController
                     200
                 );
             }
+
+
+
+    /**
+     * @param User $user
+     * @return array
+     *
+     */
+    public function generateUserData(User $user)
+    {
+        $data = array();
+        $data['id'] = $user->id;
+        $data['fname'] = $user->fname;
+        $data['lname'] = $user->lname;
+        $data['other_name'] = $user->other_name;
+        $data['email'] = $user->email;
+//        $data['password'] = $user->password;
+        $data['token'] = $user->createToken(env('APP_NAME'))->accessToken;
+        return $data;
+    }
+
+
+    /**
+     * @param Owners $owner
+     * @return array
+     *
+     */
+    public function generateOwnerData(Owners $owner)
+    {
+        $data = array();
+        $data['id'] = $owner->id;
+        $data['fname'] = $owner->fname;
+        $data['lname'] = $owner->lname;
+        $data['other_names'] = $owner->other_name;
+        $data['address'] = $owner->address;
+        $data['telephone'] = $owner->telephone;
+        $data['email'] = $owner->email;
+        $data['token'] = $owner->createToken(env('APP_NAME'))->accessToken;
+        return $data;
+    }
+
+
+
+    /**
+     * @param Riders $rider
+     * @return array
+     *
+     */
+    public function generateRiderData(Riders $rider)
+    {
+        $data = array();
+        $data['id'] = $rider->id;
+        $data['fname'] = $rider->fname;
+        $data['lname'] = $rider->lname;
+        $data['other_names'] = $rider->other_name;
+        $data['telephone'] = $rider->telephone;
+        $data['address'] = $rider->address;
+        $data['email'] = $rider->email;
+        $data['token'] = $rider->createToken(env('APP_NAME'))->accessToken;
+        return $data;
+    }
 }
