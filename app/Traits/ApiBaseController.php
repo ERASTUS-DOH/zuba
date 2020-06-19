@@ -2,6 +2,9 @@
 
 
 namespace App\Traits;
+use App\Owners;
+use App\Riders;
+use App\User;
 
 
 trait ApiBaseController

@@ -264,7 +264,7 @@ class AuthenticationController extends Controller
             'telephone' => 'numeric',
             'address' => 'string',
             'email' => 'required|email|max:255|unique:owners',
-            'password' => 'required'|'min:8'
+            'password' => 'required|min:8'
         ]);
 
         //send validation error response if any
@@ -287,7 +287,7 @@ class AuthenticationController extends Controller
 
 
         //data to be sent back
-        return $this->sendSuccessResponse($this->generateUserData($owner));
+        return $this->sendSuccessResponse($this->generateOwnerData($owner));
     }
 
 
@@ -404,10 +404,10 @@ class AuthenticationController extends Controller
              'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'other_name' => 'string|max:255',
-            'telephone' => 'numeric|max:255',
+            'telephone' => 'numeric',
             'address' => 'string',
             'email' => 'required|email|max:255|unique:riders',
-            'password' => 'required'|'min:8'
+            'password' => 'required|min:8'
         ]);
 
         //send validation error response if any
@@ -430,7 +430,7 @@ class AuthenticationController extends Controller
 
 
         //data to be sent back
-        return $this->sendSuccessResponse($this->generateUserData($rider));
+        return $this->sendSuccessResponse($this->generateRiderData($rider));
       }
 
     }
