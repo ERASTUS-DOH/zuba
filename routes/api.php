@@ -18,6 +18,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
+    /**
+     * Authentication routes for user
+     */
+    Route::post('user/login', 'AuthenticationController@loginUser');
+    Route::post('user/register', 'AuthenticationController@registerUser');
+
+    /**
+     * Authentication routes for the Owner
+     */
+    Route::post('owner/login','AuthenticationController@loginOwner');
+    Route::post('owner/register','AuthenticationController@registerOwner');
+
+    /**
+     * Authentication routes for the Rider
+     */
+    Route::post('rider/login','AuthenticationController@loginRider');
+    Route::post('rider/register','AuthenticationController@registerRider');
+});
+
 //fallback route
 Route::fallback(function () {
     return response()->json(
@@ -29,12 +51,4 @@ Route::fallback(function () {
         ],
         404
     );
-});
-
-Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
-    /**
-     * Authentication routes for user
-     */
-    Route::post('user/login', 'AuthenticationController@loginUser');
-    Route::post('user/register', 'AuthenticationController@registerUser');
 });

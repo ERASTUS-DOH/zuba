@@ -9,11 +9,12 @@ class Bins extends Model
     //
     protected $fillable = [
         'id',
+        'nickname',
         'serialNumber',
-        'Level_of_waste',
-        'ownerId',
+        'max_level',
         'maxWeight',
-        'location'
+        'locationID',
+        'smoke_noti'
         ];
 
     public function binOwners(){

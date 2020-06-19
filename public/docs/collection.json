@@ -2,17 +2,17 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "2f7aac4d-c127-4b9f-9c52-e4fab031d588",
+        "_postman_id": "7518784d-edd7-4332-93bf-a46fafcba25e",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
     "item": [
         {
             "name": "Authentication Management",
-            "description": "\nUser authentication and account settings.\n\nClass AuthenticationController",
+            "description": "\nUser, Bin Owner and Rider authentication and account settings.\n\nClass AuthenticationController",
             "item": [
                 {
-                    "name": "Login a User",
+                    "name": "Login a admin user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -33,14 +33,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"neque\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"impedit\"\n}"
                         },
-                        "description": "Authenticates a user.",
+                        "description": "Authenticates the admin user.",
                         "response": []
                     }
                 },
                 {
-                    "name": "Register a User",
+                    "name": "Register an admin user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -61,9 +61,121 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"minima\",\n    \"password_confirmation\": \"atque\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"deserunt\",\n    \"password_confirmation\": \"velit\"\n}"
                         },
-                        "description": "Registers a user as an entrepreneur or investor.",
+                        "description": "Registers an admin user of the platform.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login a Bin Owner",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/owner\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"dolore\"\n}"
+                        },
+                        "description": "Authenticates the Bin Owner.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a Bin Owner",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/owner\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"quod\",\n    \"password_confirmation\": \"aut\"\n}"
+                        },
+                        "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login a Tricycle Rider",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/rider\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"inventore\"\n}"
+                        },
+                        "description": "Authenticates a Tricycle Rider.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a Rider",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/rider\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"cupiditate\",\n    \"password_confirmation\": \"fugit\"\n}"
+                        },
+                        "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
                     }
                 }

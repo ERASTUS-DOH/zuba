@@ -49,11 +49,11 @@
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>Authentication Management</h1>
-<p>User authentication and account settings.</p>
+<p>User, Bin Owner and Rider authentication and account settings.</p>
 <p>Class AuthenticationController</p>
 <!-- START_7a184547882598fc164c10be7745584b -->
-<h2>Login a User</h2>
-<p>Authenticates a user.</p>
+<h2>Login a admin user</h2>
+<p>Authenticates the admin user.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -61,7 +61,7 @@
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"neque"}'
+    -d '{"email":"mail@mail.com","password":"impedit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/login"
@@ -74,7 +74,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "neque"
+    "password": "impedit"
 }
 
 fetch(url, {
@@ -125,20 +125,20 @@ fetch(url, {
 <td><code>email</code></td>
 <td>string</td>
 <td>required</td>
-<td>The email of the user.</td>
+<td>The email of the admin user.</td>
 </tr>
 <tr>
 <td><code>password</code></td>
 <td>string</td>
 <td>required</td>
-<td>The password of the user.</td>
+<td>The password of the admin user.</td>
 </tr>
 </tbody>
 </table>
 <!-- END_7a184547882598fc164c10be7745584b -->
 <!-- START_7fef01e7235c89049ebe3685de4bff17 -->
-<h2>Register a User</h2>
-<p>Registers a user as an entrepreneur or investor.</p>
+<h2>Register an admin user</h2>
+<p>Registers an admin user of the platform.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -146,7 +146,7 @@ fetch(url, {
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"minima","password_confirmation":"atque"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"deserunt","password_confirmation":"velit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/register"
@@ -160,9 +160,11 @@ let headers = {
 let body = {
     "first_name": "Jane",
     "last_name": "Doe",
+    "other_name": "Elinam",
+    "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "minima",
-    "password_confirmation": "atque"
+    "password": "deserunt",
+    "password_confirmation": "velit"
 }
 
 fetch(url, {
@@ -184,6 +186,8 @@ fetch(url, {
         "id": 1,
         "first_name": "Jane",
         "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
         "email": "jane@doe.com",
         "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
     }
@@ -205,13 +209,25 @@ fetch(url, {
 <td><code>first_name</code></td>
 <td>string</td>
 <td>required</td>
-<td>The first name of the user.</td>
+<td>The first name of the admin user.</td>
 </tr>
 <tr>
 <td><code>last_name</code></td>
 <td>string</td>
 <td>required</td>
-<td>The last name of the user.</td>
+<td>The last name of the admin user.</td>
+</tr>
+<tr>
+<td><code>other_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The other name of the admin user.</td>
+</tr>
+<tr>
+<td><code>telephone</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>The telephone number of the admin user.</td>
 </tr>
 <tr>
 <td><code>email</code></td>
@@ -234,6 +250,420 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_7fef01e7235c89049ebe3685de4bff17 -->
+<!-- START_4071205fadd9472d0d55124a1f7aa9c3 -->
+<h2>Login a Bin Owner</h2>
+<p>Authenticates the Bin Owner.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/owner/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"dolore"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/owner/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "dolore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/owner/login</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+<td>The email of the binOwner.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password of the binOwner.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4071205fadd9472d0d55124a1f7aa9c3 -->
+<!-- START_688925598239fc4cecb45a39564f5a4b -->
+<h2>Register a Bin Owner</h2>
+<p>Registers a Bin Owner of Whom each bin is supposed to have one.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/owner/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quod","password_confirmation":"aut"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/owner/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "other_name": "Doe",
+    "telephone": "0241406244",
+    "address": "Plt adjacent max-gee hotel.",
+    "email": "mail@mail.com",
+    "password": "quod",
+    "password_confirmation": "aut"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
+        "email": "jane@doe.com",
+        "address": "plt. adjacent max gee hotel",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/owner/register</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The first name of the bin owner.</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The last name of the bin owner.</td>
+</tr>
+<tr>
+<td><code>other_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The other name of the bin owner.</td>
+</tr>
+<tr>
+<td><code>telephone</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>The telephone number of the bin owner.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>string</td>
+<td>required</td>
+<td>The address of the bin owner.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+<td>The email of the user.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password of the user.</td>
+</tr>
+<tr>
+<td><code>password_confirmation</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password confirmation for the password.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_688925598239fc4cecb45a39564f5a4b -->
+<!-- START_68bcfbfe3201c132ab2bbb26ddec1230 -->
+<h2>Login a Tricycle Rider</h2>
+<p>Authenticates a Tricycle Rider.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/rider/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"inventore"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/rider/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "inventore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/rider/login</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+<td>The email of the Tricycle Rider.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password of the Tricycle Rider.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_68bcfbfe3201c132ab2bbb26ddec1230 -->
+<!-- START_05460b3b3ba25b151f80f2caf71b8714 -->
+<h2>Register a Rider</h2>
+<p>Registers a Rider as the one responsible for the waste collection.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/rider/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"cupiditate","password_confirmation":"fugit"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/rider/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "other_name": "Doe",
+    "telephone": "0244444444",
+    "email": "mail@mail.com",
+    "address": "plt. adjacent max-gee hotel.",
+    "password": "cupiditate",
+    "password_confirmation": "fugit"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
+        "address": "plt. adjacent max-gee hotel",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/rider/register</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The first name of the Rider.</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The last name of the Rider.</td>
+</tr>
+<tr>
+<td><code>other_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>The last name of the Rider.</td>
+</tr>
+<tr>
+<td><code>telephone</code></td>
+<td>string</td>
+<td>required</td>
+<td>The telephone number of the Rider.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+<td>The email of the Rider.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>The address of the Rider.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password of the Rider.</td>
+</tr>
+<tr>
+<td><code>password_confirmation</code></td>
+<td>string</td>
+<td>required</td>
+<td>The password confirmation for the password.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_05460b3b3ba25b151f80f2caf71b8714 -->
 <h1>general</h1>
 <!-- START_0c068b4037fb2e47e71bd44bd36e3e2a -->
 <h2>Authorize a client to access the user&#039;s account.</h2>

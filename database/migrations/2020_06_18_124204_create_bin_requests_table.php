@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBinOwnersTable extends Migration
+class CreateBinRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateBinOwnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('bin_owners', function (Blueprint $table) {
+        Schema::create('bin_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('owner_ID');
-            $table->integer('binId');
+            $table->integer('bin_id');
+            $table->integer('bin_current_level');
+            $table->integer('current_weight');
+            $table->integer('smoke_state');
+            $table->integer('bin_state');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateBinOwnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bin_owners');
+        Schema::dropIfExists('bin_requests');
     }
 }

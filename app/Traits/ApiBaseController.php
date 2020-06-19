@@ -57,6 +57,7 @@ trait ApiBaseController
         $data['fname'] = $user->fname;
         $data['lname'] = $user->lname;
         $data['other_name'] = $user->other_name;
+
         $data['email'] = $user->email;
 //        $data['password'] = $user->password;
         $data['token'] = $user->createToken(env('APP_NAME'))->accessToken;

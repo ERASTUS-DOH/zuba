@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tricycles extends Model
 {
     protected $fillable = [
-            'id',
-            'regNumber',
-            'colour',
-            'brand',
-            'max_capacity'
+        'id',
+        'regNumber',
+        'colour',
+        'brand',
+        'max_capacity'
     ];
 
 

@@ -15,7 +15,7 @@ use App\Traits\ApiBaseController;
 /**
  * @group Authentication Management
  *
- * User authentication and account settings.
+ * User, Bin Owner and Rider authentication and account settings.
  *
  * Class AuthenticationController
  * @package App\Http\Controllers\Api
@@ -131,7 +131,6 @@ class AuthenticationController extends Controller
                 'last_name' => 'required|string|max:255',
                 'other_name' => 'string|max:255',
                 'telephone' =>  'numeric',
-                'address' => 'string',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required'
             ]);
@@ -148,7 +147,6 @@ class AuthenticationController extends Controller
                 'fname' =>$request->input('first_name'),
                 'lname' =>$request->input('last_name'),
                 'other_name' =>$request->input('other_name'),
-                'address' => $request->input('address'),
                 'telephone' =>$request->input('telephone'),
                 'email' =>$request->input('email'),
                 'password' =>Hash::make($request->input('password'))

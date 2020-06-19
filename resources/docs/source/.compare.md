@@ -23,13 +23,13 @@ Welcome to the generated API reference.
 #Authentication Management
 
 
-User authentication and account settings.
+User, Bin Owner and Rider authentication and account settings.
 
 Class AuthenticationController
 <!-- START_7a184547882598fc164c10be7745584b -->
-## Login a User
+## Login a admin user
 
-Authenticates a user.
+Authenticates the admin user.
 
 > Example request:
 
@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"neque"}'
+    -d '{"email":"mail@mail.com","password":"impedit"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "neque"
+    "password": "impedit"
 }
 
 fetch(url, {
@@ -100,15 +100,15 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `email` | string |  required  | The email of the user.
-        `password` | string |  required  | The password of the user.
+    `email` | string |  required  | The email of the admin user.
+        `password` | string |  required  | The password of the admin user.
     
 <!-- END_7a184547882598fc164c10be7745584b -->
 
 <!-- START_7fef01e7235c89049ebe3685de4bff17 -->
-## Register a User
+## Register an admin user
 
-Registers a user as an entrepreneur or investor.
+Registers an admin user of the platform.
 
 > Example request:
 
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","email":"mail@mail.com","password":"minima","password_confirmation":"atque"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"deserunt","password_confirmation":"velit"}'
 
 ```
 
@@ -134,9 +134,11 @@ let headers = {
 let body = {
     "first_name": "Jane",
     "last_name": "Doe",
+    "other_name": "Elinam",
+    "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "minima",
-    "password_confirmation": "atque"
+    "password": "deserunt",
+    "password_confirmation": "velit"
 }
 
 fetch(url, {
@@ -161,6 +163,8 @@ fetch(url, {
         "id": 1,
         "first_name": "Jane",
         "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
         "email": "jane@doe.com",
         "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
     }
@@ -173,13 +177,343 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `first_name` | string |  required  | The first name of the user.
-        `last_name` | string |  required  | The last name of the user.
+    `first_name` | string |  required  | The first name of the admin user.
+        `last_name` | string |  required  | The last name of the admin user.
+        `other_name` | string |  required  | The other name of the admin user.
+        `telephone` | numeric |  required  | The telephone number of the admin user.
         `email` | string |  required  | The email of the user.
         `password` | string |  required  | The password of the user.
         `password_confirmation` | string |  required  | The password confirmation for the password.
     
 <!-- END_7fef01e7235c89049ebe3685de4bff17 -->
+
+<!-- START_4071205fadd9472d0d55124a1f7aa9c3 -->
+## Login a Bin Owner
+
+Authenticates the Bin Owner.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/owner/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"dolore"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/owner/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "dolore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/owner/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | The email of the binOwner.
+        `password` | string |  required  | The password of the binOwner.
+    
+<!-- END_4071205fadd9472d0d55124a1f7aa9c3 -->
+
+<!-- START_688925598239fc4cecb45a39564f5a4b -->
+## Register a Bin Owner
+
+Registers a Bin Owner of Whom each bin is supposed to have one.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/owner/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quod","password_confirmation":"aut"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/owner/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "other_name": "Doe",
+    "telephone": "0241406244",
+    "address": "Plt adjacent max-gee hotel.",
+    "email": "mail@mail.com",
+    "password": "quod",
+    "password_confirmation": "aut"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
+        "email": "jane@doe.com",
+        "address": "plt. adjacent max gee hotel",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/owner/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `first_name` | string |  required  | The first name of the bin owner.
+        `last_name` | string |  required  | The last name of the bin owner.
+        `other_name` | string |  required  | The other name of the bin owner.
+        `telephone` | numeric |  required  | The telephone number of the bin owner.
+        `address` | string |  required  | The address of the bin owner.
+        `email` | string |  required  | The email of the user.
+        `password` | string |  required  | The password of the user.
+        `password_confirmation` | string |  required  | The password confirmation for the password.
+    
+<!-- END_688925598239fc4cecb45a39564f5a4b -->
+
+<!-- START_68bcfbfe3201c132ab2bbb26ddec1230 -->
+## Login a Tricycle Rider
+
+Authenticates a Tricycle Rider.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/rider/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"mail@mail.com","password":"inventore"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/rider/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mail@mail.com",
+    "password": "inventore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "name": "Jane Doe",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "error": {
+        "code": 422,
+        "message": "Invalid credentials."
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/rider/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | The email of the Tricycle Rider.
+        `password` | string |  required  | The password of the Tricycle Rider.
+    
+<!-- END_68bcfbfe3201c132ab2bbb26ddec1230 -->
+
+<!-- START_05460b3b3ba25b151f80f2caf71b8714 -->
+## Register a Rider
+
+Registers a Rider as the one responsible for the waste collection.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/rider/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"cupiditate","password_confirmation":"fugit"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/rider/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "other_name": "Doe",
+    "telephone": "0244444444",
+    "email": "mail@mail.com",
+    "address": "plt. adjacent max-gee hotel.",
+    "password": "cupiditate",
+    "password_confirmation": "fugit"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": {
+        "id": 1,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "other_name": "Elinam",
+        "telephone": "0241406244",
+        "address": "plt. adjacent max-gee hotel",
+        "email": "jane@doe.com",
+        "token": "7geRI9P4LUFj3ensaxOV070Uk1yXeQ23ptqerJYc"
+    }
+}
+```
+
+### HTTP Request
+`POST api/v1/rider/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `first_name` | string |  required  | The first name of the Rider.
+        `last_name` | string |  required  | The last name of the Rider.
+        `other_name` | string |  required  | The last name of the Rider.
+        `telephone` | string |  required  | The telephone number of the Rider.
+        `email` | string |  required  | The email of the Rider.
+        `address` | numeric |  required  | The address of the Rider.
+        `password` | string |  required  | The password of the Rider.
+        `password_confirmation` | string |  required  | The password confirmation for the password.
+    
+<!-- END_05460b3b3ba25b151f80f2caf71b8714 -->
 
 #general
 

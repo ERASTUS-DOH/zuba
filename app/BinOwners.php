@@ -8,10 +8,7 @@ class BinOwners extends Model
 {
     //
     protected $fillable = [
-        'name',
-        'location',
-        'email',
-        'telephone',
+        'owner_ID',
         'binId'
     ];
 

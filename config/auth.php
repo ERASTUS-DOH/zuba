@@ -39,19 +39,19 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-            'hash' => false
+
         ],
 
         'owner' => [
             'driver' => 'session',
             'provider' => 'owner',
-            'hash' => false
+
         ],
 
         'rider' => [
             'driver' => 'session',
             'provider' => 'rider',
-            'hash' => false
+
         ],
 
 

@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TricycleRiders extends Model{
     protected $fillable = [
-            'id',
-            'fname',
-            'lname',
-            'email',
-            'telephone',
-            'residential_address'
+        'id',
+        'rider_id',
+        'truck_id'
     ];
 
-    public function bins(){
-        return $this->hasMany('App\Bins');
-    }
+
 }
