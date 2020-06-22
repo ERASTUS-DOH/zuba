@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bins;
+use App\Owners;
+use App\Riders;
+use App\Tricycles;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('zuba.index');
+        $riders = Riders::all();
+        $owners = Owners::all();
+        $tricycles = Tricycles::all();
+        $bins = Bins::all();
+
+        $data = [
+            'riders' => $riders,
+            'owners' => $owners,
+            'tricycles' => $tricycles,
+            'bins' => $bins
+        ];
+        return view('zuba.index', ['data' => $data]);
     }
 
 //    public function bins(){

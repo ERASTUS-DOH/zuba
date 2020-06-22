@@ -1,10 +1,11 @@
 @extends('layout.zuba')
 @section('content')
-    <a href="{{route('bins')}}" class="btn btn-success btn-link btn-wd btn-lg text-center">
-        <button class="btn  text-center" type="submit"><i class="fas fa-arrow-left "></i>
+    <a href="{{route('bins')}}" class="btn btn-link text-center">
+        <button class="btn btn-success text-center" type="submit"><i class="fas fa-arrow-left "></i>
             {{ __('Back') }}
         </button>
     </a>
+
     <div class="content">
         <div class="container-fluid">
             <!-- your content here -->

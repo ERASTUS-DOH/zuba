@@ -20,6 +20,7 @@ class CreateBinRequestsTable extends Migration
             $table->integer('current_weight');
             $table->integer('smoke_state');
             $table->integer('bin_state');
+            $table->integer('request_state');
             $table->timestamps();
         });
     }

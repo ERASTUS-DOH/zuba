@@ -17,6 +17,8 @@ class Bins extends Model
         'smoke_noti'
         ];
 
+
+
     public function binOwners(){
         return $this->hasOne('App\BinOwners');
     }
