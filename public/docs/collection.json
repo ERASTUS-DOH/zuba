@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "7518784d-edd7-4332-93bf-a46fafcba25e",
+        "_postman_id": "8aaf526c-e966-4d50-aa23-1746c1871f2f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"impedit\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"placeat\"\n}"
                         },
                         "description": "Authenticates the admin user.",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"deserunt\",\n    \"password_confirmation\": \"velit\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"facilis\",\n    \"password_confirmation\": \"molestiae\"\n}"
                         },
                         "description": "Registers an admin user of the platform.",
                         "response": []
@@ -89,7 +89,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"dolore\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"aut\"\n}"
                         },
                         "description": "Authenticates the Bin Owner.",
                         "response": []
@@ -117,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"quod\",\n    \"password_confirmation\": \"aut\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"nostrum\",\n    \"password_confirmation\": \"et\"\n}"
                         },
                         "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
                         "response": []
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"inventore\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"atque\"\n}"
                         },
                         "description": "Authenticates a Tricycle Rider.",
                         "response": []
@@ -173,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"cupiditate\",\n    \"password_confirmation\": \"fugit\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"fugit\",\n    \"password_confirmation\": \"et\"\n}"
                         },
                         "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
@@ -951,6 +951,34 @@
                             "query": []
                         },
                         "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "bins\/store",
+                            "query": []
+                        },
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",

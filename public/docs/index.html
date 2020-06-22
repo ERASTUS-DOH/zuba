@@ -61,7 +61,7 @@
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"impedit"}'
+    -d '{"email":"mail@mail.com","password":"placeat"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/login"
@@ -74,7 +74,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "impedit"
+    "password": "placeat"
 }
 
 fetch(url, {
@@ -146,7 +146,7 @@ fetch(url, {
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"deserunt","password_confirmation":"velit"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"facilis","password_confirmation":"molestiae"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/register"
@@ -163,8 +163,8 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "deserunt",
-    "password_confirmation": "velit"
+    "password": "facilis",
+    "password_confirmation": "molestiae"
 }
 
 fetch(url, {
@@ -260,7 +260,7 @@ fetch(url, {
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"dolore"}'
+    -d '{"email":"mail@mail.com","password":"aut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/owner/login"
@@ -273,7 +273,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "dolore"
+    "password": "aut"
 }
 
 fetch(url, {
@@ -345,7 +345,7 @@ fetch(url, {
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quod","password_confirmation":"aut"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"nostrum","password_confirmation":"et"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/owner/register"
@@ -363,8 +363,8 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "quod",
-    "password_confirmation": "aut"
+    "password": "nostrum",
+    "password_confirmation": "et"
 }
 
 fetch(url, {
@@ -467,7 +467,7 @@ fetch(url, {
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"inventore"}'
+    -d '{"email":"mail@mail.com","password":"atque"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/rider/login"
@@ -480,7 +480,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "inventore"
+    "password": "atque"
 }
 
 fetch(url, {
@@ -552,7 +552,7 @@ fetch(url, {
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"cupiditate","password_confirmation":"fugit"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"fugit","password_confirmation":"et"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/rider/register"
@@ -570,8 +570,8 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "cupiditate",
-    "password_confirmation": "fugit"
+    "password": "fugit",
+    "password_confirmation": "et"
 }
 
 fetch(url, {
@@ -1486,6 +1486,33 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET bins/{id}/edit</code></p>
 <!-- END_917451450c35c7665359b0609255f5d0 -->
+<!-- START_4fb848017d8507c8fe97c8693af6d460 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/bins/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/bins/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST bins/store</code></p>
+<!-- END_4fb848017d8507c8fe97c8693af6d460 -->
 <!-- START_82edf9d506df0d18ad1541dae2932a15 -->
 <h2>Display a listing of the resource.</h2>
 <blockquote>

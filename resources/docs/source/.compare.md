@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"impedit"}'
+    -d '{"email":"mail@mail.com","password":"placeat"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "impedit"
+    "password": "placeat"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"deserunt","password_confirmation":"velit"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"facilis","password_confirmation":"molestiae"}'
 
 ```
 
@@ -137,8 +137,8 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "deserunt",
-    "password_confirmation": "velit"
+    "password": "facilis",
+    "password_confirmation": "molestiae"
 }
 
 fetch(url, {
@@ -199,7 +199,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"dolore"}'
+    -d '{"email":"mail@mail.com","password":"aut"}'
 
 ```
 
@@ -215,7 +215,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "dolore"
+    "password": "aut"
 }
 
 fetch(url, {
@@ -278,7 +278,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quod","password_confirmation":"aut"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"nostrum","password_confirmation":"et"}'
 
 ```
 
@@ -299,8 +299,8 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "quod",
-    "password_confirmation": "aut"
+    "password": "nostrum",
+    "password_confirmation": "et"
 }
 
 fetch(url, {
@@ -363,7 +363,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"inventore"}'
+    -d '{"email":"mail@mail.com","password":"atque"}'
 
 ```
 
@@ -379,7 +379,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "inventore"
+    "password": "atque"
 }
 
 fetch(url, {
@@ -442,7 +442,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"cupiditate","password_confirmation":"fugit"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"fugit","password_confirmation":"et"}'
 
 ```
 
@@ -463,8 +463,8 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "cupiditate",
-    "password_confirmation": "fugit"
+    "password": "fugit",
+    "password_confirmation": "et"
 }
 
 fetch(url, {
@@ -1658,6 +1658,44 @@ null
 
 
 <!-- END_917451450c35c7665359b0609255f5d0 -->
+
+<!-- START_4fb848017d8507c8fe97c8693af6d460 -->
+## Store a newly created resource in storage.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/bins/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bins/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST bins/store`
+
+
+<!-- END_4fb848017d8507c8fe97c8693af6d460 -->
 
 <!-- START_82edf9d506df0d18ad1541dae2932a15 -->
 ## Display a listing of the resource.
