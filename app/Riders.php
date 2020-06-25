@@ -11,6 +11,7 @@ class Riders extends Authenticatable
     use Notifiable,HasApiTokens;
 
     protected $fillable = [
+        'title',
         'fname',
         'lname',
         'other_name',

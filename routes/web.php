@@ -25,12 +25,32 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+/**
+ * Defined Routes for the Bins
+ */
 Route::get('/bins','BinsController@index')->name('bins');
+Route::get('/bins/create','BinsController@create')->name('createBin');
 Route::get('/bins/{id}','BinsController@sample');
 Route::get('/bins/{id}/edit','BinsController@edit');
 Route::post('/bins/store','BinsController@store');
 
-Route::get('/tricycles','TricyclesController@index')->name('tricycles');
-Route::get('/binOwners','BinOwnersController@index')->name('binOwners');
+/**
+ * Defined Routes for the owners of the Bin
+ */
+Route::get('/binOwners','OwnerController@index')->name('binOwners');
+Route::get('/binOwners/{id}','OwnerController@show')->name('showOwner');
+Route::get('/binOwners/create','OwnerController@create')->name('createBinOwner');
+Route::post('/binOwners/store','OwnerController@store')->name('createOwner');
+
+/**
+ * Define Routes for the Tricycle riders.
+ */
+
+Route::get('/riders','RidersController@index');
+
+
+/**
+ * Defined Routes for the Tricycles.
+ */
+Route::get('/tricycles','TricyclesController@index');
 //Route::get()

@@ -258,6 +258,7 @@ class AuthenticationController extends Controller
     {
         //validate credentials
         $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'other_name' => 'string|max:255',
@@ -276,6 +277,7 @@ class AuthenticationController extends Controller
 
         //create the owner
         $owner = Owners::query()->create([
+            'title' => $request->input('title'),
             'fname' =>$request->input('first_name'),
             'lname' =>$request->input('last_name'),
             'other_name' =>$request->input('other_name'),
@@ -401,6 +403,7 @@ class AuthenticationController extends Controller
     {
         //validate credentials
         $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
              'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'other_name' => 'string|max:255',
@@ -419,6 +422,7 @@ class AuthenticationController extends Controller
 
         //create the rider
         $rider = Riders::query()->create([
+            'title' => $request->input('title'),
             'fname' =>$request->input('first_name'),
             'lname' =>$request->input('last_name'),
             'other_name' =>$request->input('other_name'),

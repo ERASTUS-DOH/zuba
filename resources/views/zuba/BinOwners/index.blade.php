@@ -5,10 +5,12 @@
             <!-- your content here -->
             <div class="row justify-content-start">
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <button class="btn btn-block btn-success" onclick="" data-toggle="modal"
-                            data-target="#exampleModal">
-                        <i class="fas fa-plus"></i> Add New User
-                    </button>
+                    <a href="{{route('createBinOwner')}}">
+                        <button class="btn btn-block btn-success" onclick="" data-toggle="modal"
+                                data-target="exampleModal">
+                            <i class="fas fa-plus"></i> Add New Owner
+                        </button>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <button class="btn btn-block btn-dark" onclick="">
@@ -70,20 +72,21 @@
                                                 </label>
                                             </div>
                                         </td> -->
+                                        @foreach($owners as $owner)
                                         <td>
-                                            1
+                                            {{$owner->id}}
                                         </td>
                                         <td>
-                                            Something LastName
+                                            {{$owner->fname. " ".$owner->lname}}
                                         </td>
                                         <td>
-                                            0244345655
+                                            {{$owner->telephone}}
                                         </td>
                                         <td>
-                                            email@gmail.com
+                                            {{$owner->email}}
                                         </td>
                                         <td>
-                                            No. 232 Opanka rd. Kotokoraba, Cape Coast
+                                            {{$owner->address}}
                                         </td>
                                         <td>
                                             GHR-2343-A
@@ -104,12 +107,15 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                    rel="tooltip" data-original-title="More" onclick="">
-                                                <i class="fas fa-lg fa-arrow-right"></i>
-                                            </button>
+                                            <a href="{{url('binOwners/'.$owner->id.'/')}}">
+                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
+                                                        rel="tooltip" data-original-title="More" onclick="">
+                                                    <i class="fas fa-lg fa-arrow-right"></i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -124,54 +130,86 @@
                 <div class=" modal-dialog" role="document">
                     <div class="modal-content card" style="background-color: #f3f3f3;">
                         <div class="modal-header card-header card-header-da nger theme-gradient">
-                            <h5 class="modal-title" id="exampleModalLabel">Register New User</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Register New Owner</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                        <form action="" method="GET">
+                        <form action="{{route('createOwner')}}" method="POST">
+                            @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">First Name</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control" required>
+{{--                                                <label for="title" class="bmd-label-floating">Title</label>--}}
+                                                <select name="title" id="title" class="form-control" required>
+                                                    <option selected >Select Your Title</option>
+                                                    <option class="form-control" value="Mr.">Mr.</option>
+                                                    <option class="form-control"value="Mrs.">Mrs.</option>
+                                                    <option class="form-control" value="Ms.">Ms.</option>
+                                                    <option class="form-control"value="Miss.">Miss.</option>
+                                                    <option class="form-control" value="Dr.">Dr.</option>
+                                                </select>
+{{--                                                <input type="text" name="fname" id="fname" class="form-control" required>--}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">Phone Number</label>
-                                                <input type="tel" class="form-control" required>
+                                                <label for="fname" class="bmd-label-floating">First Name</label>
+                                                <input type="text" name="fname" id="fname" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" required>
+                                                <label for="lname" class="bmd-label-floating">Last Name</label>
+                                                <input type="text" name="lname" id="lname" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                                <label for="other_name" class="bmd-label-floating">Other Name</label>
+                                                <input type="text" name="other_name" id="other_name" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                                <label for="telephone" class="bmd-label-floating">Telephone</label>
+                                                <input type="tel" name="telephone" id="telephone" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                                <label for="address" class="bmd-label-floating">Address</label>
+                                                <input type="text" id="address" name="address" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                                <label for="email" class="bmd-label-floating">Email</label>
+                                                <input type="email" name="email" id="email" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">Location</label>
-                                                <input type="text" class="form-control" required>
+                                                <label for="password" class="bmd-label-floating">Password</label>
+                                                <input type="password" id="password" name="password" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                                <label class="bmd-label-floating">Bin Serial Number</label>
-                                                <input type="text" class="form-control" required>
+                                                <label for="con-password" class="bmd-label-floating">Confirm Password</label>
+                                                <input type="password" name="password-confirmation" id="password-confirmation" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>

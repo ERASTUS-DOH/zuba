@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Bins;
+use App\Http\Requests\BinStoreRequest;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class BinsController extends Controller
 {
@@ -36,19 +38,39 @@ class BinsController extends Controller
      */
     public function create()
     {
-        //
+        return view('zuba.Bins.add');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Bin resource in the database.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\BinStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BinStoreRequest $request)
     {
-        //validate the user input.
-        dd($request);
+
+//        //verifying if the bin already exists.
+//        $check = Bins::where('serialNumber',$request->input('serialNumber'))->get();
+//
+//        if($check){
+//            return back()->withInput()->with('error','Bin with similar Serial number exits');
+//        }
+
+        //creation of new bin.
+        $bin = Bins::create([
+            'nickname' => $request->input('nickName'),
+            'serialNumber' => $request->input('serialNumber'),
+            'max_level' => $request->input('maxLevel'),
+            'maxWeight' => $request->input('maxWeight'),
+            'locationID' =>$request->input('locationID'),
+            'smoke_noti' => $request->input('smokeNotification')
+        ]);
+
+        if($bin){
+            return redirect()->route('bins')->with('success','Bin was created successfully!');
+        }
+
     }
 
     /**

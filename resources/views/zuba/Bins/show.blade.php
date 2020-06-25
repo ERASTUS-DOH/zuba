@@ -13,7 +13,7 @@
                 <div class="col-md-6">
                     <div class="card card-plain">
                         <div class="card-header card-header-info">
-                            <div class="row topCaption">
+                            <div class="topCaption">
                                 <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>
                                 <p class="topCaption ">  Owned-By : Mr Erastus</p>
                             </div>
@@ -85,15 +85,15 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <a href="/bins/{{15}}/edit" class="btn btn-primary btn-link btn-wd btn-lg text-center">
-                        <button class="btn  text-center" type="submit"><i class="fas fa-pen-square "></i>
+                    <a href="/bins/{{15}}/edit" class="btn  btn-link btn-wd g text-center">
+                        <button class="btn btn-primary text-center" type="submit"><i class="fas fa-pen-square "></i>
                             {{ __('edit') }}
                         </button>
                     </a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{route('bins')}}" class="btn btn- btn-link btn-wd btn-lg text-center">
-                        <button class="btn  text-center" type="submit"><i class="fas fa-arrow-right "></i>
+                    <a href="{{route('bins')}}" class="btn btn-link btn-wd  text-center">
+                        <button class="btn btn-danger text-center" type="submit"><i class="fas fa-arrow-right "></i>
                             {{ __('delete') }}
                         </button>
                     </a>

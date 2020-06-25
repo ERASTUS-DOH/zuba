@@ -13,6 +13,7 @@ class Owners extends Authenticatable
     use Notifiable,HasApiTokens;
 
     protected $fillable = [
+        'title',
         'fname',
         'lname',
         'other_name',
@@ -25,4 +26,8 @@ class Owners extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function bins(){
+        return $this->hasMany('App');
+    }
 }

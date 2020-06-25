@@ -15,6 +15,7 @@ class CreateRidersTable extends Migration
     {
         Schema::create('riders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->string('fname');
             $table->string('lname');
             $table->string('other_name')->nullable();

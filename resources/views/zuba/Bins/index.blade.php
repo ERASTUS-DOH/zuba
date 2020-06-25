@@ -1,12 +1,26 @@
 @extends('layout.zuba')
 @section('content')
 
+{{--   @hasSection('success')--}}
+{{--       <div class="alert alert-success">--}}
+{{--           @yield('success')--}}
+{{--       </div>--}}
+{{--   @endif--}}
+
+
+
+
+
+
     <div class="container row ">
         <div class="col-lg-3 col-md-3 col-sm-6">
+            <a href="{{route('createBin')}}">
             <button class="btn btn-block btn-success" onclick="" data-toggle="modal"
-                    data-target="#Add-New-Bin-Modal">
+                    data-target="Add-New-Bin-Modal">
+
                 <i class="fas fa-plus"> </i> Register - Bin
             </button>
+            </a>
         </div>
 {{--        <div class="col-lg-3 col-md-4 col-sm-6">--}}
 {{--            <button class="btn btn-block btn-dark" onclick="">--}}
@@ -15,61 +29,7 @@
 {{--        </div>--}}
     </div>
 
-    <form action="{{url('/bins/store')}}" method="POST">
 
-        @csrf
-        <div class="modal-body">
-            <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Nick-Name</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Serial-Name</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Max-Level</label>
-                            <input type="number" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Max-Weight</label>
-                            <input type="number" min="1" max="30" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    {{--                                <div class="col-md-6">--}}
-                    {{--                                    <div class="form-group bmd-form-group">--}}
-                    {{--                                        <label class="bmd-label-floating">Location</label>--}}
-                    {{--                                        <input type="text" class="form-control" required>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col-md-6">--}}
-                    {{--                                    <div class="form-group bmd-form-group">--}}
-                    {{--                                        <label class="bmd-label-floating">Bin Serial Number</label>--}}
-                    {{--                                        <input type="text" class="form-control" required>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer m-auto w-25 border-top-0">
-            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>
-                Save</button>
-        </div>
-    </form>
 
 
     <!-- Modal.Add -->
@@ -200,10 +160,10 @@
                                             Serial Number
                                         </th>
                                         <th>
-                                            Region
+                                            Nick Name
                                         </th>
                                         <th>
-                                            City
+                                            Location
                                         </th>
                                         <th>
                                             Actions
@@ -211,21 +171,23 @@
                                         </thead>
                                         <tbody>
                                         <!-- ------------------------------------------------------------------------ -->
+
+                                       @foreach($bins as $bin)
                                         <tr>
                                             <td>
                                                 <i class="fas fa-exclamation-circle error"></i>
                                             </td>
                                             <td>
-                                                GHR-2343-A
+                                                {{$bin->serialNumber}}
                                             </td>
                                             <td>
-                                                Central
+                                                {{$bin->nickname}}
                                             </td>
                                             <td>
-                                                Kotokoraba
+                                                {{$bin->locationID}}
                                             </td>
                                             <td>
-                                                <a href="/bins/{{15}}">
+                                                <a href="/bins/{{$bin->id}}}}">
                                                     <button class="btn btn-info btn-fab-mini btn-round table-btn"
                                                             onclick="window.location.href='url()';">
                                                         <i class="fas fa-lg fa-arrow-right"></i>
@@ -233,132 +195,133 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                       @endforeach
                                         <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-check-circle success"></i>
-                                            </td>
-                                            <td>
-                                                GHR-9375-J
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-check-circle success"></i>
-                                            </td>
-                                            <td>
-                                                GHR-5321-S
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-exclamation-circle error"></i>
-                                            </td>
-                                            <td>
-                                                GHR-9375-T
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-exclamation-circle error"></i>
-                                            </td>
-                                            <td>
-                                                GHR-5321-X
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-check-circle success"></i>
-                                            </td>
-                                            <td>
-                                                GHR-9375-D
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- ------------------------------------------------------------------------ -->
-                                        <tr>
-                                            <td>
-                                                <i class="fas fa-check-circle success"></i>
-                                            </td>
-                                            <td>
-                                                GHR-5321-U
-                                            </td>
-                                            <td>
-                                                Central
-                                            </td>
-                                            <td>
-                                                Abura
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                        onclick="window.location.href='bin.html';">
-                                                    <i class="fas fa-lg fa-arrow-right"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-check-circle success"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-9375-J--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-check-circle success"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-5321-S--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-exclamation-circle error"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-9375-T--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-exclamation-circle error"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-5321-X--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-check-circle success"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-9375-D--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
+{{--                                        <tr>--}}
+{{--                                            <td>--}}
+{{--                                                <i class="fas fa-check-circle success"></i>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                GHR-5321-U--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Central--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                Abura--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
+{{--                                                        onclick="window.location.href='bin.html';">--}}
+{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
                                         </tbody>
                                     </table>
                                 </div>

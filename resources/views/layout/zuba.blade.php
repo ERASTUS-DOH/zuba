@@ -62,9 +62,17 @@
                 <li class="nav-item @if(route::is('binOwners')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/binOwners')}}">
                         <i class="fas fa-users"></i>
-                        <p>Users</p>
+                        <p>Owners</p>
                     </a>
                 </li>
+
+                <li class="nav-item @if(route::is('riders')){{'active'}}@endif">
+                    <a class="nav-link" href="{{url('/riders')}}">
+                        <i class="fas fa-users"></i>
+                        <p>Riders</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="for_proj\pg\config.html">
                         <i class="fas fa-screwdriver"></i>
@@ -140,6 +148,7 @@
         <!-- End Navbar -->
 
         <div class="content">
+            @include('layout.flash-message')
             @yield('content')
         </div>
 

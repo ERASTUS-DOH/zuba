@@ -1,11 +1,58 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api;
+use App\Bins;
+use App\Http\Resources\BinCollection;
+use App\BinOwners;
+use App\Owners;
+use App\Traits\ApiBaseController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class BinOwnersController extends Controller
+
+
+
+/**
+ * @group Bin Management.
+ *
+ * Bin Owners management
+ * Class BinController
+ * @package App\Http\Controllers\Api
+ *
+ */
+class BinController extends Controller
 {
+    use ApiBaseController;
+
+    /**
+     *
+     * Function responsible for getting the individual bins for their respective owner
+     * @return BinCollection
+     *
+     *Owner Bins
+     *
+     * Get bins for an owner.
+     * @responseFile responses/owner.bin.json
+     */
+
+    public function getOwnerBins(){
+            //get the required user.
+            $owner = auth()->user();
+
+            //
+            $ownerBinIds = BinOwners::where('owner_ID', $owner->id)->get();
+
+            //array to hold bins
+            $bins = [];
+            $ownerBinIds->each(function($ownerBinId) use (&$bins) {
+                //find the bin
+                $bin = Bins::find($ownerBinId->binId);
+                //push to the bins array
+                array_push($bins, $bin);
+            });
+        return  new BinCollection(Collect($bins));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +60,7 @@ class BinOwnersController extends Controller
      */
     public function index()
     {
-        return view('zuba.users.index');
+        //
     }
 
     /**
@@ -25,9 +72,6 @@ class BinOwnersController extends Controller
     {
         //
     }
-
-
-
 
     /**
      * Store a newly created resource in storage.

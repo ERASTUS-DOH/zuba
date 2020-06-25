@@ -40,6 +40,14 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::post('rider/register','AuthenticationController@registerRider');
 });
 
+Route::prefix('v1')->namespace('Api')->middleware('auth:owner-api')->group(function () {
+
+    /**
+     * route for the getting the Bins of the various.
+     */
+    Route::get('owner/bins', 'BinController@getOwnerBins');
+});
+
 //fallback route
 Route::fallback(function () {
     return response()->json(

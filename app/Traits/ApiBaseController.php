@@ -77,6 +77,7 @@ trait ApiBaseController
     {
         $data = array();
         $data['id'] = $owner->id;
+        $data['title'] = $owner->title;
         $data['fname'] = $owner->fname;
         $data['lname'] = $owner->lname;
         $data['other_names'] = $owner->other_name;
@@ -98,6 +99,7 @@ trait ApiBaseController
     {
         $data = array();
         $data['id'] = $rider->id;
+        $data['title'] = $rider->title;
         $data['fname'] = $rider->fname;
         $data['lname'] = $rider->lname;
         $data['other_names'] = $rider->other_name;

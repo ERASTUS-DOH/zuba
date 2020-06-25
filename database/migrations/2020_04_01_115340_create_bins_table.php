@@ -19,8 +19,8 @@ class CreateBinsTable extends Migration
             $table->string('serialNumber');
             $table->string('max_level');
             $table->string('maxWeight');
-            $table->string('locationID');
-            $table->boolean('smoke_noti');
+            $table->string('locationID')->nullable();
+            $table->boolean('smoke_noti')->nullable();
 
             $table->timestamps();
         });
