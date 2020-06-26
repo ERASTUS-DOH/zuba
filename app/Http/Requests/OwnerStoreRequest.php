@@ -30,8 +30,8 @@ class OwnerStoreRequest extends FormRequest
             'other_name' => 'string',
             'telephone' => 'numeric',
             'address' =>'string',
-            'email' => 'email|unique:owners',
-            'password' => 'confirmed|min:8|required'
+            'email' => 'bail|required|email|unique:owners',
+            'password' => 'required|confirmed|min:8'
 
         ];
     }
@@ -55,7 +55,8 @@ class OwnerStoreRequest extends FormRequest
             'address.string' => 'The Address must be a combination of string literals',
             'email.string' => 'The email must be a combination of string literals',
             'email.unique' => 'An owner with similar email already exists',
-
+            'password.confirmed' => 'Passwords do not match',
+            'password.min' => 'Passwords should have a minimum of 8 characters'
         ]);
     }
 }

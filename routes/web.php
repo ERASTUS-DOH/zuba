@@ -37,9 +37,9 @@ Route::post('/bins/store','BinsController@store');
 /**
  * Defined Routes for the owners of the Bin
  */
-Route::get('/binOwners','OwnerController@index')->name('binOwners');
-Route::get('/binOwners/{id}','OwnerController@show')->name('showOwner');
+Route::get('/binOwners','OwnerController@index')->name('Owners');
 Route::get('/binOwners/create','OwnerController@create')->name('createBinOwner');
+Route::get('/binOwners/{id}','OwnerController@show')->name('showOwner');
 Route::post('/binOwners/store','OwnerController@store')->name('createOwner');
 
 /**

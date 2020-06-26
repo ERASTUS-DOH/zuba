@@ -15,7 +15,7 @@ use App\Traits\ApiBaseController;
 /**
  * @group Authentication Management
  *
- * User, Bin Owner and Rider authentication and account settings.
+ * Admin user, Bin Owner and Rider authentication and account settings.
  *
  * Class AuthenticationController
  * @package App\Http\Controllers\Api
@@ -102,7 +102,7 @@ class AuthenticationController extends Controller
      * @bodyParam telephone numeric required The telephone number of the admin user. Example: 0241406244
      * @bodyParam email string required The email of the user. Example: mail@mail.com
      * @bodyParam password string required The password of the user.
-     * @bodyParam password_confirmation string required The password confirmation for the password.
+//     * @bodyParam password_confirmation string required The password confirmation for the password.
      *
      * @response 200 {
      * "success": {
@@ -225,6 +225,7 @@ class AuthenticationController extends Controller
      *
      * Registers a Bin Owner of Whom each bin is supposed to have one.
      *
+     * @bodyParam title string required The name title of the bin owner. Example: Mr
      * @bodyParam first_name string required The first name of the bin owner. Example: Jane
      * @bodyParam last_name string required The last name of the bin owner. Example: Doe
      * @bodyParam other_name string required The other name of the bin owner. Example: Doe
@@ -232,7 +233,7 @@ class AuthenticationController extends Controller
      * @bodyParam address string required The address of the bin owner. Example: Plt adjacent max-gee hotel.
      * @bodyParam email string required The email of the user. Example: mail@mail.com
      * @bodyParam password string required The password of the user.
-     * @bodyParam password_confirmation string required The password confirmation for the password.
+    // * @bodyParam password_confirmation string required The password confirmation for the password.
      *
      * @response 200 {
      * "success": {
@@ -240,6 +241,7 @@ class AuthenticationController extends Controller
      * "message": "Request completed successfully."
      * },
      * "data": {
+     * "title":"Mr",
      * "id": 1,
      * "first_name": "Jane",
      * "last_name": "Doe",
@@ -369,7 +371,7 @@ class AuthenticationController extends Controller
      * Register a Rider
      *
      * Registers a Rider as the one responsible for the waste collection.
-     *
+     * @bodyParam title string required The name title of the rider. Example: Mr.
      * @bodyParam first_name string required The first name of the Rider. Example: Jane
      * @bodyParam last_name string required The last name of the Rider. Example: Doe
      * @bodyParam other_name string required The last name of the Rider. Example: Doe
@@ -377,7 +379,6 @@ class AuthenticationController extends Controller
      * @bodyParam email string required The email of the Rider. Example: mail@mail.com
      * @bodyParam address numeric required The address of the Rider. Example: plt. adjacent max-gee hotel.
      * @bodyParam password string required The password of the Rider.
-     * @bodyParam password_confirmation string required The password confirmation for the password.
      *
      * @response 200 {
      * "success": {
@@ -386,6 +387,7 @@ class AuthenticationController extends Controller
      * },
      * "data": {
      * "id": 1,
+     * "title":"Mr",
      * "first_name": "Jane",
      * "last_name": "Doe",
      * "other_name": "Elinam",

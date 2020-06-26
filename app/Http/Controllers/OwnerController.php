@@ -28,7 +28,7 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        return view('Zuba.BinOwners.add');
+        return view('zuba.BinOwners.add');
     }
 
 
@@ -47,6 +47,7 @@ class OwnerController extends Controller
 //        if($check){
 //            return Back()->with('error','An Owner with similar email aleady exist.');
 //        }
+        dd($request);
 
         $owner = Owners::create([
             'title' =>$request->input('title'),
@@ -68,7 +69,7 @@ class OwnerController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Displays the specified bin owner and their details. .
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

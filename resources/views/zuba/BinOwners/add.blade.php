@@ -45,7 +45,7 @@
     {{--            </div>--}}
     {{--        </nav>--}}
     {{--        <!-- End Navbar -->--}}
-    <a href="{{route('binOwners')}}" class="btn btn-link text-center pl-4">
+    <a href="{{route('Owners')}}" class="btn btn-link text-center pl-4">
         <button class="btn btn-success text-center" type="button"><i class="fas fa-arrow-left "></i>
             {{ __('Back') }}
         </button>
