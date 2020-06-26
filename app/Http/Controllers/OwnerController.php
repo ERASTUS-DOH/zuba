@@ -42,13 +42,6 @@ class OwnerController extends Controller
      */
     public function store(OwnerStoreRequest $request)
     {
-//        $check = Owners::where('email',$request->input('email'))->get();
-//
-//        if($check){
-//            return Back()->with('error','An Owner with similar email aleady exist.');
-//        }
-        dd($request);
-
         $owner = Owners::create([
             'title' =>$request->input('title'),
             'fname' =>$request->input('fname'),
