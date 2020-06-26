@@ -56,7 +56,7 @@ class OwnerController extends Controller
 
 
         if($owner){
-            return redirect()->route('binOwners')->with('success','New Owner was created successfully!');
+            return redirect()->route('Owners')->with('success','New Owner was created successfully!');
         }
 
     }
