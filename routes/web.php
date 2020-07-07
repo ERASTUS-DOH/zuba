@@ -40,17 +40,43 @@ Route::post('/bins/store','BinsController@store');
 Route::get('/binOwners','OwnerController@index')->name('Owners');
 Route::get('/binOwners/create','OwnerController@create')->name('createBinOwner');
 Route::get('/binOwners/{id}','OwnerController@show')->name('showOwner');
+Route::get('/binOwners/{id}/edit','OwnerController@edit')->name('editOwner');
+Route::put('/binOwners/{id}','OwnerController@update')->name('updateOwner');
 Route::post('/binOwners/store','OwnerController@store')->name('createOwner');
+Route::delete('/binOwners/{id}','OwnerController@destroy')->name('deleteOwner');
+
 
 /**
  * Define Routes for the Tricycle riders.
  */
 
-Route::get('/riders','RidersController@index');
+Route::get('/riders','RidersController@index')->name('riders');
+Route::get('/riders/create','RidersController@create')->name('createRider');
+Route::get('/riders/{id}','RidersController@show')->name('showRider');
+Route::get('/riders/{id}/edit','RidersController@edit')->name('editRider');
+Route::put('/riders/{id}','RidersController@update')->name('updateRider');
+Route::post('/riders/store','RidersController@store')->name('storeRider');
+Route::delete('/riders/{id}','RidersController@destroy');
 
 
 /**
  * Defined Routes for the Tricycles.
  */
-Route::get('/tricycles','TricyclesController@index');
+
+Route::get('/tricycles','TricyclesController@index')->name('cycles');
+Route::get('/tricycles/create','TricyclesController@create')->name('createCycle');
+Route::get('/tricycles/{id}','TricyclesController@show');
+Route::get('/tricycles/{id}/edit','TricyclesController@edit');
+Route::put('/tricycles/{id}','TricyclesController@update')->name('updateCycle');
+Route::post('/tricycles/store','TricyclesController@store')->name('storeCycle');
+Route::delete('/tricycles/{id}','TricyclesController@destroy');
 //Route::get()
+
+
+/**
+ * Defined Routes for the Settings action.
+ */
+
+Route::get('/settings','SettingsController@index')->name('settings');
+Route::get('/settings/assignBin','SettingsController@assignBin')->name('assignBin');
+Route::post('/settings/saveAssignation','SettingsController@saveAssignation')->name('saveAssigned');

@@ -45,7 +45,7 @@
     {{--            </div>--}}
     {{--        </nav>--}}
     {{--        <!-- End Navbar -->--}}
-    <a href="{{route('riders')}}" class="btn btn-link text-center pl-4">
+    <a href="{{route('cycles')}}" class="btn btn-link text-center pl-4">
         <button class="btn btn-success text-center" type="button"><i class="fas fa-arrow-left "></i>
             {{ __('Back') }}
         </button>
@@ -55,97 +55,61 @@
         <div class="container-fluid">
             <!-- your content here -->
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-8 m-auto">
                     <div class="card card-plain">
-                        <div class="card-header card-header-info">
-                            <h4 class="card-title mt-0"> Register A new Rider</h4>
+                        <div class="card-header card-header-info col-md-8">
+                            <h4 class="card-title mt-0"> Register A Cycle</h4>
                             <p class="card-category"> Fill the form below and click SAVE to submit your input</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tbody>
-                                    <form action="{{route('storeRider')}}" method="POST">
+                                    <form action="{{url('/tricycles/store')}}" method="post">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="card-body">
+
                                                 <div class="row mb-4">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <div class="form-group bmd-form-group">
-                                                            {{--                                                <label for="title" class="bmd-label-floating">Title</label>--}}
-                                                            <select name="title" id="title" class="form-control" required>
-                                                                <option selected >Select Your Title</option>
-                                                                <option class="form-control" value="Mr">Mr.</option>
-                                                                <option class="form-control"value="Mrs">Mrs.</option>
-                                                                <option class="form-control" value="Ms">Ms.</option>
-                                                                <option class="form-control"value="Miss">Miss.</option>
-                                                                <option class="form-control" value="Dr">Dr.</option>
-                                                            </select>
-                                                            {{--                                                <input type="text" name="fname" id="fname" class="form-control" required>--}}
+                                                            <label for="reg_number" class="bmd-label-floating">Registeration Number</label>
+                                                            <input type="text" name="reg_number" id="reg_number" class="form-control" required>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <div class="form-group bmd-form-group">
-                                                            <label for="fname" class="bmd-label-floating">First Name</label>
-                                                            <input type="text" name="fname" id="fname" class="form-control" required>
+                                                            <label for="brand" class="bmd-label-floating">Brand</label>
+                                                            <input type="text" name="brand" id="brand" class="form-control" required>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group bmd-form-group">
-                                                            <label for="lname" class="bmd-label-floating">Last Name</label>
-                                                            <input type="text" name="lname" id="lname" class="form-control" required>
-                                                        </div>
-                                                    </div>
+
+
                                                 </div>
-                                                <div class="row mb-4">
-                                                    <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-8">
                                                         <div class="form-group bmd-form-group">
-                                                            <label for="other_name" class="bmd-label-floating">Other Name</label>
-                                                            <input type="text" name="other_name" id="other_name" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group bmd-form-group">
-                                                            <label for="telephone" class="bmd-label-floating">Telephone</label>
-                                                            <input type="tel" name="telephone" id="telephone" class="form-control" required>
+                                                            <label for="color" class="bmd-label-floating">Color</label>
+                                                            <input type="text" id="color" name="color" class="form-control" required>
                                                         </div>
                                                     </div>
 
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <div class="form-group bmd-form-group">
-                                                            <label for="address" class="bmd-label-floating">Address</label>
-                                                            <input type="text" id="address" name="address" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group bmd-form-group">
-                                                            <label for="email" class="bmd-label-floating">Email</label>
-                                                            <input type="email" name="email" id="email" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group bmd-form-group">
-                                                            <label for="password" class="bmd-label-floating">Password</label>
-                                                            <input type="password" id="password" name="password" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group bmd-form-group">
-                                                            <label for="con-password" class="bmd-label-floating">Confirm Password</label>
-                                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                                                            <label for="max_capacity" class="bmd-label-floating">Maximum Capacity</label>
+                                                            <input type="number" id="max_capacity" name="max_capacity" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="modal-footer m-auto w-25 border-top-0">
+                                        <div class="modal-footer  w-25 border-top-0">
                                             <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>
                                                 Save</button>
                                         </div>
@@ -181,3 +145,4 @@
     </footer>
     </div>
 @endsection()
+

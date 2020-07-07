@@ -27,7 +27,7 @@ class Owners extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function bins(){
-        return $this->hasMany('App');
-    }
+//    public function bins(){
+//        return $this->hasMany('App');
+//    }
 }

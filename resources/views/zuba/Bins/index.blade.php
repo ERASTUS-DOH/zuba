@@ -187,13 +187,22 @@
                                                 {{$bin->locationID}}
                                             </td>
                                             <td>
+
+                                                <button class="btn btn-warning btn-fab-mini btn-round table-btn"
+                                                        rel="tooltip" data-original-title="Track Cycle"
+                                                        style="width: 35px;">
+                                                    <i class="fas fa-lg fa-map-marker-alt"></i>
+                                                </button>
+
                                                 <a href="/bins/{{$bin->id}}}}">
                                                     <button class="btn btn-info btn-fab-mini btn-round table-btn"
                                                             onclick="window.location.href='url()';">
                                                         <i class="fas fa-lg fa-arrow-right"></i>
                                                     </button>
                                                 </a>
+
                                             </td>
+
                                         </tr>
                                        @endforeach
                                         <!-- ------------------------------------------------------------------------ -->

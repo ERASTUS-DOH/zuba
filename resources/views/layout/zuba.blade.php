@@ -12,9 +12,9 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="{{asset('assets\fa-5.12.1\css\all.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/fa-5.12.1/css/all.css')}}">
     <!-- My customs -->
-    <link href="{{ asset('assets/for_proj\css\mains.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/for_proj/css/mains.css') }}" rel="stylesheet" />
     <!-- Material Kit CSS -->
     <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet" />
 {{--    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />--}}
@@ -53,28 +53,28 @@
                         <p>Bins</p>
                     </a>
                 </li>
-                <li class="nav-item @if(route::is('tricycles')){{'active'}}@endif">
+                <li class="nav-item @if(route::is('cycles')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/tricycles')}}">
                         <i class="fas fa-truck"></i>
                         <p>Tricycles</p>
                     </a>
                 </li>
-                <li class="nav-item @if(route::is('binOwners')){{'active'}}@endif">
+                <li class="nav-item @if(route::is('Owners')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/binOwners')}}">
                         <i class="fas fa-users"></i>
                         <p>Owners</p>
                     </a>
                 </li>
 
-                <li class="nav-item @if(route::is('riders')){{'active'}}@endif">
+                <li class="nav-item @if(route::is('riders')) {{'active'}} @endif">
                     <a class="nav-link" href="{{url('/riders')}}">
                         <i class="fas fa-users"></i>
                         <p>Riders</p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="for_proj\pg\config.html">
+                <li class="nav-item @if(route::is('settings')) {{'active'}} @endif">
+                    <a class="nav-link" href="{{route('settings')}}">
                         <i class="fas fa-screwdriver"></i>
                         <p>Settings</p>
                     </a>

@@ -14,8 +14,9 @@ class Bins extends Model
         'max_level',
         'maxWeight',
         'locationID',
-        'smoke_noti'
-        ];
+        'smoke_noti',
+        'assign_state'
+    ];
 
 
 

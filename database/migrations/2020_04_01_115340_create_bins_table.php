@@ -21,6 +21,7 @@ class CreateBinsTable extends Migration
             $table->string('maxWeight');
             $table->string('locationID')->nullable();
             $table->boolean('smoke_noti')->nullable();
+            $table->boolean('assign_state')->default(false);
 
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OwnerStoreRequest extends FormRequest
+class RiderStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,11 +35,11 @@ class OwnerStoreRequest extends FormRequest
         ];
     }
 
-//    /**
-//     * custom messages for the validation of the Owner's Details.
-//     *
-//     * @return array
-//     */
+    /**
+     * custom messages for the validation of the Riders's Details.
+     *
+     * @return array
+     */
 
 //    public function messages()
 //    {

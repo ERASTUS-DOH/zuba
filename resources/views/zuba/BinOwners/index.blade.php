@@ -12,11 +12,11 @@
                         </button>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <button class="btn btn-block btn-dark" onclick="">
-                        <i class="fas fa-minus"></i> Some Button
-                    </button>
-                </div>
+{{--                <div class="col-lg-3 col-md-4 col-sm-6">--}}
+{{--                    <button class="btn btn-block btn-dark" onclick="">--}}
+{{--                        <i class="fas fa-minus"></i> Some Button--}}
+{{--                    </button>--}}
+{{--                </div>--}}
             </div>
 
             <div class="row">
@@ -136,7 +136,7 @@
                             </button>
                         </div>
 
-                        <form action="{{route('createOwner')}}" method="POST">
+                        <form action="" method="POST">
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
@@ -224,47 +224,52 @@
                     </div>
                 </div>
             </div>
+{{--            @if($owner == null)--}}
+{{--            @else--}}
+{{--            <!-- Modal.Delete -->--}}
+{{--            <div class="modal fade pt-5" id="exampleModal2" tabindex="-1" role="dialog"--}}
+{{--                 aria-labelledby="exampleModalLabel2" aria-hidden="true">--}}
+{{--                <div class=" modal-dialog" role="document">--}}
+{{--                    <div class="modal-content card" style="background-color: #f3f3f3;">--}}
+{{--                        <div class="modal-header card-header card-header-danger">--}}
+{{--                            <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>--}}
+{{--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                <span aria-hidden="true">&times;</span>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
 
-            <!-- Modal.Delete -->
-            <div class="modal fade pt-5" id="exampleModal2" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div class=" modal-dialog" role="document">
-                    <div class="modal-content card" style="background-color: #f3f3f3;">
-                        <div class="modal-header card-header card-header-danger">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+{{--                        <form action="/binOwners/{{$owner->id}}" method="post">--}}
+{{--                            @csrf--}}
+{{--                            @method('DELETE')--}}
+{{--                            <div class="modal-body" style="margin-bottom: 0px !important;">--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <div class="row justify-content-center">--}}
+{{--                                        <p class="">Are you sure you want to delete this Bin-Owner?</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="row justify-content-center">--}}
+{{--                                        <h5 class="bold">{{$owner->fname.' '.$owner->lname}}</h5>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        <form action="" method="GET">
-                            <div class="modal-body" style="margin-bottom: 0px !important;">
-                                <div class="card-body">
-                                    <div class="row justify-content-center">
-                                        <p class="">Are you sure you want to delete this user?</p>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <h5 class="bold">Something LastName</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer justify-content-center p-0">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <button type="button" class="btn btn-danger"><i
-                                                class="fas fa-times-circle"></i> No</button>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <button type="submit" class="btn btn-success"><i
-                                                class="fas fa-check-circle"></i> Yes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+{{--                            <div class="modal-footer justify-content-center p-0">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-5">--}}
+{{--                                        <a href="{{route('Owners')}}" class="btn btn-danger">--}}
+{{--                                            <i class="fas fa-times-circle"></i> No--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-5">--}}
+{{--                                        <button type="submit" class="btn btn-success"><i--}}
+{{--                                                class="fas fa-check-circle"></i> Yes</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--                @endif--}}
         </div>
     </div>
 

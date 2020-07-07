@@ -1,76 +1,93 @@
 @extends('layout.zuba')
 @section('content')
 <div class="content">
-    <div class="container-fluid">
-        <form action="" method="GET">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="card card-profile">
-                            <h4 class="card-header-myDef card-title">Ilupeju, Juliet</h4>
-                            <div class="card-body">
-                                <div class="card-header-image img-shell-2 p-3">
-                                    <img class="img" src="../assets/img/faces/marc.jpg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="card card-profile">
-                            <div class="card-header-myDef">Fingerprint data</div>
-                            <div class="card-body">
-                                <div class="img-shell p-0">
-                                    <a href="#" onclick="" class="btn active btn-secondary"><i class="fas fa-fingerprint fa-5x"></i><div class="ripple-container"></div></a>
+
+    <div class="container-fluid">
+        <a href="{{route('Owners')}}" class="text-center">
+            <button class="btn btn-success text-center" type="submit"><i class="fas fa-arrow-left "></i>
+                {{ __('Back') }}
+            </button>
+        </a>
+
+
+        <form action="{{url('/binOwners/'.$owner->id.'/edit')}}" method="GET">
+            <div class="row">
+                <div class="col-md-">
+                    <div class="">
+                        <div class="card card-profile rounded-circle" style="width: 200px; height: 200px;
+">
+{{--                            <h4 class="card-header-myDef card-title">Ilupeju, Juliet</h4>--}}
+                            <div class="card-body ">
+                                <div class="card-header-image" style="margin: 5px auto;">
+                                    <div class="" style="overflow: hidden">
+                                        <img class="img" src="../assets/img/faces/marc.jpg" style="max-width: 160px; border-radius: 50%">
+                                    </div>
+
+{{--                                    <i class="fas fa-user-circle fa-8x" style="color:grey;"></i>--}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+{{--                    <div class="">--}}
+{{--                        <div class="card card-profile">--}}
+{{--                            <div class="card-header-myDef">Fingerprint data</div>--}}
+{{--                            <div class="card-body">--}}
+{{--                                <div class="img-shell p-0">--}}
+{{--                                    <a href="#" onclick="" class="btn active btn-secondary"><i class="fas fa-fingerprint fa-5x"></i><div class="ripple-container"></div></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
+
+{{--                    @foreach($owner as $owner)--}}
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header card-header-myDef">
-                            <p class="card-category">Fill all the fields in this form to successfully add a
-                                new
-                                student</p>
+                            <p class="card-category">Profile details of the Bin Owner. </p>
                         </div>
                         <div class="card-body">
-                            <div class="row mb-4">
-                                <div class="col-md-6">
+                            <div class="row mb-4 pt-4">
+                                <div class="col-md-2">
                                     <div class="form-group bmd-form-group is-filled">
                                         <label class="bmd-label-floating">Mr/Mrs/Ms</label>
-                                        <input type="text" class="form-control" value="Ms" readonly="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">First Name</label>
-                                        <input type="text" class="form-control" value="Juliet" readonly="">
+                                        <input type="text" name="title" id="title" class="form-control" value="{{ $owner->title }}" readonly="">
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row mb-4">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Middle Name</label>
-                                        <input type="text" class="form-control" value="Ama" readonly="">
+                                        <label for="fname" class="bmd-label-floating">First Name</label>
+                                        <input type="text" name="fname" id="fname" class="form-control" value="{{ $owner->fname }}" readonly="">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+
+                                <div class="col-md-4">
                                     <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Last Name</label>
-                                        <input type="text" class="form-control" value="Ilupeju" readonly="">
+                                        <label for="other_name" class="bmd-label-floating">Middle Name</label>
+                                        <input type="text" id="other_name" name="other_name" class="form-control" value="{{ $owner->other_name }}" readonly="">
                                     </div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group is-filled">
+                                        <label for="lname" class="bmd-label-floating">Last Name</label>
+                                        <input type="text" name="lname" id="lname" class="form-control" value="{{ $owner->lname }}" readonly="">
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Residencial Adress</label>
-                                        <input type="text" class="form-control" value="Akosombo - Volta Region" readonly="">
+                                        <label for="address" class="bmd-label-floating">Residencial Adress</label>
+                                        <input type="text" class="form-control" name="address" id="address" value="{{ $owner->address }}" readonly="">
                                     </div>
                                 </div>
                             </div>
@@ -78,35 +95,14 @@
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Index Number</label>
-                                        <input type="text" class="form-control" value="PS/ITC/16/0000" readonly="">
+                                        <label for="telephone" class="bmd-label-floating">Telephone</label>
+                                        <input type="tel" name="telephone" id="telephone"  class="form-control" value="{{ $owner->telephone }}" readonly="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Program</label>
-                                        <input type="text" class="form-control" value="BSc Information Technology" readonly="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col-md-4">
-                                    <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Year</label>
-                                        <input type="text" class="form-control" value="2016" readonly="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Course Title</label>
-                                        <input type="text" class="form-control" value="Something Goes Here" readonly="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group bmd-form-group is-filled">
-                                        <label class="bmd-label-floating">Course Code</label>
-                                        <input type="text" class="form-control" value="Some Code" readonly="">
+                                        <label for="email" class="bmd-label-floating">Email</label>
+                                        <input type="email" name="email" id="email" class="form-control" value="{{ $owner->email }}" readonly="">
                                     </div>
                                 </div>
                             </div>
@@ -116,17 +112,93 @@
             </div>
 
             <div class="row mt-5 w-50 m-auto">
+{{--                <a href="/binOwners/{{ $owner->id }}/edit">--}}
+
+
+                    <div class="col-6">
+{{--                        <a href="{{}}" class="button-container">--}}
+                            <button type="submit" class="btn btn-block btn-myDef" onclick=""><i class="fas fa-edit"></i>
+                                Edit</button>
+{{--                        </a>--}}
+                    </div>
+
+
                 <div class="col-6">
-                    <button type="" class="btn btn-block btn-myDef" onclick=""><i class="fas fa-edit"></i>
-                        Edit</button>
-                </div>
-                <div class="col-6">
-                    <button type="submit" class="btn btn-block btn-success" onclick=""><i class="fas fa-save"></i>
-                        Save</button>
+                    <button type="" class="btn btn-block btn-danger" onclick=""><i class="fas fa-trash"></i>
+                        Delete</button>
                 </div>
             </div>
             <div class="clear fix"></div>
         </form>
     </div>
 </div>
+
+<div class="content mt-5">
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <div class="card card-plain">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title mt-0"> List of Owned</h4>
+                        <p class="card-category"> Pick a bin to view more information</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                <th>
+                                    <!-- Nothing goes here -->
+                                </th>
+                                <th>
+                                    Serial Number
+                                </th>
+                                <th>
+                                    Nick Name
+                                </th>
+                                <th>
+                                    Location
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                                </thead>
+                                <tbody>
+                                <!-- ------------------------------------------------------------------------ -->
+
+                                @foreach($details as $bin)
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-exclamation-circle error"></i>
+                                        </td>
+                                        <td>
+                                            {{$bin->serialNumber}}
+                                        </td>
+                                        <td>
+                                            {{$bin->nickname}}
+                                        </td>
+                                        <td>
+                                            {{$bin->locationID}}
+                                        </td>
+                                        <td>
+                                            <a href="/bins/{{$bin->id}}}}">
+                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"
+                                                        onclick="window.location.href='url()';">
+                                                    <i class="fas fa-lg fa-arrow-right"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
