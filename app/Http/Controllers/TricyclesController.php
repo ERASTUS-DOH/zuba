@@ -19,6 +19,9 @@ class TricyclesController extends Controller
         return view('zuba.Tricycles.index', ['cycles' => $cycles]);
     }
 
+
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -19,6 +19,8 @@
 {{--                </div>--}}
             </div>
 
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-plain" style="margin-top: 0;">
@@ -92,12 +94,61 @@
                                                 GHR-2343-A
                                             </td>
                                             <td>
-                                                <button class="btn btn-danger btn-fab-mini btn-round table-btn"
-                                                        data-toggle="modal" data-target="#exampleModal2"
-                                                        rel="tooltip" data-original-title="Delete"
-                                                        style="width: 35px;">
-                                                    <i class="fas fa-lg fa-times"></i>
-                                                </button>
+                                                    <button class="btn btn-danger btn-fab-mini btn-round table-btn"
+                                                            data-toggle="modal" data-target="#deleteModal"
+                                                            rel="tooltip" data-original-title="Delete Rider"
+                                                            style="width: 35px;">
+                                                        <i class="fas fa-lg fa-times"></i>
+                                                    </button>
+
+
+                                                {{--start of delete modal--}}
+
+                                                <div class="modal fade pt-5" id="deleteModal" tabindex="-1" role="dialog"
+                                                     aria-labelledby="" aria-hidden="true">
+                                                    <div class=" modal-dialog" role="document">
+                                                        <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                            <div class="modal-header card-header card-header-danger">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+
+                                                            <form action="{{route('deleteRider',[$rider->id])}}" method="POST">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="row justify-content-center">
+                                                                            <p class="">Are you sure you want to delete this rider?</p>
+                                                                        </div>
+                                                                        <div class="row justify-content-center">
+                                                                            <h5 class="bold">{{$rider->fname." ".$rider->lname}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-footer justify-content-center p-0">
+                                                                    <div class="row">
+                                                                        <div class="col-md-5">
+                                                                            <button type="button" class="btn btn-danger"><i
+                                                                                    class="fas fa-times-circle"></i> No</button>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <button type="submit" class="btn btn-success"><i
+                                                                                    class="fas fa-check-circle"></i> Yes
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--end of delete modal--}}
+
                                             </td>
                                             <td>
                                                 <button class="btn btn-warning btn-fab-mini btn-round table-btn"
@@ -109,10 +160,12 @@
                                             <td>
                                                 <a href="/riders/{{$rider->id}}">
                                                     <button class="btn btn-info btn-fab-mini btn-round table-btn"
-                                                            rel="tooltip" data-original-title="More" onclick="">
+                                                            rel="tooltip" data-original-title="More" onclick="" >
+
                                                         <i class="fas fa-lg fa-arrow-right"></i>
                                                     </button>
                                                 </a>
+
                                             </td>
                                     </tr>
                                     @endforeach

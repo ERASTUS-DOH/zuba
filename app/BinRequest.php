@@ -10,12 +10,14 @@ class BinRequest extends Model
     protected $fillable = [
         'id',
         'bin_id',
-        'bin_current_level',
-        'current_weight',
-        'smoke_state',
-        'bin_state'
+        'waste_level',
+        'weight',
+        'smoke_noti',
+        'location_id',
+        'request_state'
 
     ];
+
 
     //bins relationship with the request.
     public function bins(){

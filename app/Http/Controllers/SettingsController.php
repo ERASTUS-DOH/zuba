@@ -6,7 +6,7 @@ use App\BinOwners;
 use App\Bins;
 use App\Owners;
 use Illuminate\Http\Request;
-use vendor\project\StatusTest;
+//use vendor\project\StatusTest;
 
 class SettingsController extends Controller
 {
@@ -35,7 +35,6 @@ class SettingsController extends Controller
 
     //function to save the assigned bin to the owner.
     public function saveAssignation(Request $request){
-
 
         $assigned = BinOwners::create([
             'owner_ID' =>$request->input('owner_id'),

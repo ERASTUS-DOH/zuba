@@ -186,151 +186,142 @@
                                             <td>
                                                 {{$bin->locationID}}
                                             </td>
+
                                             <td>
+                                                @if(!$bin->assign_state)
+                                                    <a href="bins/assign/{{$bin->id}}">
+                                                        <button class="btn btn-success btn-fab-mini btn-round table-btn"
+                                                                rel="tooltip" data-original-title="Assign Bin"
+                                                                style="width: 35px;">
+                                                            <i class="fas fa-lg fa-tags"></i>
+                                                        </button>
+                                                    </a>|
+                                                    @else
+{{--                                                    <a href="bins/de_assign/{{$bin->id}}">--}}
+                                                        <button class="btn btn-warning btn-fab-mini btn-round table-btn"
+                                                                rel="tooltip" data-original-title="De-assign Bin"
+                                                                data-toggle="modal" data-target="#deAssignModal"
+                                                                style="width: 35px;">
 
-                                                <button class="btn btn-warning btn-fab-mini btn-round table-btn"
-                                                        rel="tooltip" data-original-title="Track Cycle"
-                                                        style="width: 35px;">
-                                                    <i class="fas fa-lg fa-map-marker-alt"></i>
-                                                </button>
+                                                            <i class="fas fa-lg fa-bolt"></i>
+                                                        </button> |
+{{--                                                    </a>|--}}
 
+                                                    {{--start of de-assign modal--}}
+
+                                                    <div class="modal fade pt-5" id="deAssignModal" tabindex="-1" role="dialog"
+                                                         aria-labelledby="" aria-hidden="true">
+                                                        <div class=" modal-dialog" role="document">
+                                                            <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                                <div class="modal-header card-header card-header-warning">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">De-Assign Bin</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+
+                                                                <form action="bins/de_assign/{{$bin->id}}" method="get">
+                                                                    @method('get')
+                                                                    @csrf
+                                                                    <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                                        <div class="card-body">
+                                                                            <div class="row justify-content-center">
+                                                                                <p class="">Are you sure you want to de-assign this bin ?</p>
+                                                                            </div>
+                                                                            <div class="row justify-content-center">
+                                                                                <h5 class="bold"></h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer justify-content-center p-0">
+                                                                        <div class="row">
+                                                                            <div class="col-md-5">
+                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                                                                           class="fas fa-times-circle"></i> No</button>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <button type="submit" class="btn btn-success"><i
+                                                                                        class="fas fa-check-circle"></i> Yes
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {{--end of de-assign modal--}}
+                                                @endif
                                                 <a href="/bins/{{$bin->id}}}}">
                                                     <button class="btn btn-info btn-fab-mini btn-round table-btn"
+                                                            rel="tooltip" data-original-title="More Info"
+                                                            style="width: 35px;"
                                                             onclick="window.location.href='url()';">
                                                         <i class="fas fa-lg fa-arrow-right"></i>
                                                     </button>
-                                                </a>
+                                                </a> |
+                                                        <button class="btn btn-danger btn-fab-mini btn-round table-btn"
+                                                                rel="tooltip" data-original-title="Delete Bin"
+                                                                data-toggle="modal" data-target="#deleteModal"
+                                                                style="width: 35px;"
+                                                                onclick="">
+                                                            <i class="fas fa-lg fa-times"></i>
+                                                        </button>
+
+
+                                                    {{--start of delete modal--}}
+
+                                                    <div class="modal fade pt-5" id="deleteModal" tabindex="-1" role="dialog"
+                                                         aria-labelledby="" aria-hidden="true">
+                                                        <div class=" modal-dialog" role="document">
+                                                            <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                                <div class="modal-header card-header card-header-danger">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Bin</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+
+                                                                <form action="{{route('deleteBin',['$id' => $bin->id])}}" method="GET">
+                                                                    @method('GET')
+                                                                    @csrf
+                                                                    <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                                        <div class="card-body">
+                                                                            <div class="row justify-content-center">
+                                                                                <p class="">Are you sure you want to delete this bin ?</p>
+                                                                            </div>
+                                                                            <div class="row justify-content-center">
+                                                                                <h5 class="bold"></h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer justify-content-center p-0">
+                                                                        <div class="row">
+                                                                            <div class="col-md-5">
+                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                                                                        class="fas fa-times-circle"></i> No</button>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <button type="submit" class="btn btn-success"><i
+                                                                                        class="fas fa-check-circle"></i> Yes
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {{--end of de-assign modal--}}
 
                                             </td>
 
                                         </tr>
                                        @endforeach
-                                        <!-- ------------------------------------------------------------------------ -->
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-check-circle success"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-9375-J--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-check-circle success"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-5321-S--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-exclamation-circle error"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-9375-T--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-exclamation-circle error"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-5321-X--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-check-circle success"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-9375-D--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        <!-- ------------------------------------------------------------------------ -->--}}
-{{--                                        <tr>--}}
-{{--                                            <td>--}}
-{{--                                                <i class="fas fa-check-circle success"></i>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                GHR-5321-U--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Central--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                Abura--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <button class="btn btn-info btn-fab-mini btn-round table-btn"--}}
-{{--                                                        onclick="window.location.href='bin.html';">--}}
-{{--                                                    <i class="fas fa-lg fa-arrow-right"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
                                         </tbody>
                                     </table>
                                 </div>

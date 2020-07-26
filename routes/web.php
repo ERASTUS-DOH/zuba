@@ -33,6 +33,11 @@ Route::get('/bins/create','BinsController@create')->name('createBin');
 Route::get('/bins/{id}','BinsController@sample');
 Route::get('/bins/{id}/edit','BinsController@edit');
 Route::post('/bins/store','BinsController@store');
+Route::get('bins/assign/{id}', 'BinsController@assignBin');
+Route::post('bins/assign/save', 'BinsController@saveAssignation')->name('saveAssignation');
+Route::get('bins/de_assign/{id}','BinsController@de_assign')->name('de_assignation');
+Route::get('/bins/{id}','BinsController@destroy')->name('deleteBin');
+
 
 /**
  * Defined Routes for the owners of the Bin
@@ -56,7 +61,7 @@ Route::get('/riders/{id}','RidersController@show')->name('showRider');
 Route::get('/riders/{id}/edit','RidersController@edit')->name('editRider');
 Route::put('/riders/{id}','RidersController@update')->name('updateRider');
 Route::post('/riders/store','RidersController@store')->name('storeRider');
-Route::delete('/riders/{id}','RidersController@destroy');
+Route::delete('/riders/{id}','RidersController@destroy')->name('deleteRider');
 
 
 /**
@@ -79,4 +84,4 @@ Route::delete('/tricycles/{id}','TricyclesController@destroy');
 
 Route::get('/settings','SettingsController@index')->name('settings');
 Route::get('/settings/assignBin','SettingsController@assignBin')->name('assignBin');
-Route::post('/settings/saveAssignation','SettingsController@saveAssignation')->name('saveAssigned');
+//Route::post('/settings/saveAssignation','SettingsController@saveAssignation')->name('saveAssigned');

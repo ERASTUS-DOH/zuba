@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Api;
 use App\Bins;
 use App\Http\Resources\BinCollection;
 use App\BinOwners;
-use App\Owners;
+use App\BinRequest;
 use App\Traits\ApiBaseController;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-
+use Illuminate\Support\Facades\Validator;
 
 
 /**
@@ -52,6 +52,42 @@ class BinController extends Controller
             });
         return  new BinCollection(Collect($bins));
     }
+
+    /**
+     * Function for storing the incoming request of the bin.
+     * @param Request $request
+     * @return JsonResponse ()
+     */
+
+    public function storeBinStatics(Request $request){
+        //validating the values coming from the bin.
+
+        $validator = Validator::make($request->all(), [
+            'bin_id' => 'required|integer|max:10',
+            'waste_level' => 'required|double|max:10',
+            'smoke_noti' => 'required|integer',
+            'weight' =>  'required|double',
+            'location_id' => 'required|string',
+            'request_state' => 'required|boolean'
+        ]);
+
+        if($validator->fails()){
+            return $this->sendErrorResponse($validator->errors()->first());
+        }
+
+//        $bin_request = BinRequest::query()->create([
+//            'bin_id' => $request->input('bin_id'),
+//            'waste_level' => $request->input('waste_level'),
+//            'smoke_noti' => $request->input('smoke_noti'),
+//            'weight' => $request->input('weight'),
+//            'location_id' => $request->input('location_id'),
+//            'request_state' => $request->input('request_state')
+//        ]);
+
+        return  $this->sendSuccessResponse('Request sent successfully');
+    }
+
+
 
     /**
      * Display a listing of the resource.

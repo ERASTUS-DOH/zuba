@@ -48,6 +48,15 @@ Route::prefix('v1')->namespace('Api')->middleware('auth:owner-api')->group(funct
     Route::get('owner/bins', 'BinController@getOwnerBins');
 });
 
+
+Route::prefix('v1')->namespace('Api')->group(function () {
+
+    /**
+     * route for getting data from bins
+     */
+    Route::get('bins/statistics', 'BinController@storeBinStatistics');
+});
+
 //fallback route
 Route::fallback(function () {
     return response()->json(

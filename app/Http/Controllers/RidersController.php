@@ -129,6 +129,7 @@ class RidersController extends Controller
      */
     public function destroy($id)
     {
+
         $rider = Riders::find($id)->delete();
         if($rider){
             return redirect(url('/riders'))->with('success','Rider deleted successfully');
