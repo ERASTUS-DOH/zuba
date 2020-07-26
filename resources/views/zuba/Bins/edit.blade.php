@@ -86,11 +86,11 @@
                 </a>
             </div>
             <div class="">
-                <a href="{{route('bins')}}" class="btn btn-danger btn-link btn-wd btn-lg text-center">
+{{--                <a href="{{route('bins')}}" class="btn btn-danger btn-link btn-wd btn-lg text-center">--}}
                     <button class="btn  text-center" type="submit"><i class="fas fa-times"></i>
                         {{ __('cancel') }}
                     </button>
-                </a>
+{{--                </a>--}}
             </div>
         </div>
     </div>

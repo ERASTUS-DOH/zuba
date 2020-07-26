@@ -30,13 +30,13 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::get('/bins','BinsController@index')->name('bins');
 Route::get('/bins/create','BinsController@create')->name('createBin');
-Route::get('/bins/{id}','BinsController@sample');
+Route::get('/bins/{id}','BinsController@show');
 Route::get('/bins/{id}/edit','BinsController@edit');
 Route::post('/bins/store','BinsController@store');
 Route::get('bins/assign/{id}', 'BinsController@assignBin');
 Route::post('bins/assign/save', 'BinsController@saveAssignation')->name('saveAssignation');
 Route::get('bins/de_assign/{id}','BinsController@de_assign')->name('de_assignation');
-Route::get('/bins/{id}','BinsController@destroy')->name('deleteBin');
+Route::delete('/bins/delete{id}','BinsController@destroy')->name('deleteBin');
 
 
 /**

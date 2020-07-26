@@ -254,7 +254,7 @@
 
                                                     {{--end of de-assign modal--}}
                                                 @endif
-                                                <a href="/bins/{{$bin->id}}}}">
+                                                <a href="/bins/{{$bin->id}}">
                                                     <button class="btn btn-info btn-fab-mini btn-round table-btn"
                                                             rel="tooltip" data-original-title="More Info"
                                                             style="width: 35px;"
@@ -284,8 +284,8 @@
                                                                     </button>
                                                                 </div>
 
-                                                                <form action="{{route('deleteBin',['$id' => $bin->id])}}" method="GET">
-                                                                    @method('GET')
+                                                                <form action="/bins/delete/{{$bin->id}}" method="delete">
+                                                                    @method('delete')
                                                                     @csrf
                                                                     <div class="modal-body" style="margin-bottom: 0px !important;">
                                                                         <div class="card-body">

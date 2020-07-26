@@ -124,7 +124,8 @@ class BinsController extends Controller
      */
     public function show($id)
     {
-        //
+        $bin = Bins::find($id);
+        return view('zuba.Bins.show',['bin' => $bin]);
     }
 
     /**
