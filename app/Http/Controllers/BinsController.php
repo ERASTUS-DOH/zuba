@@ -125,7 +125,16 @@ class BinsController extends Controller
     public function show($id)
     {
         $bin = Bins::find($id);
-        return view('zuba.Bins.show',['bin' => $bin]);
+
+        $owner = '';
+        //validation of bin ownership
+        if($bin->assign_state){
+            $binOwner = BinOwners::where('binId','=',$id)->first();
+            $owner_id = $binOwner->owner_ID;
+            $owner = Owners::find($owner_id);
+        }
+
+        return view('zuba.Bins.show',['bin' => $bin,'owner' => $owner]);
     }
 
     /**
@@ -159,6 +168,8 @@ class BinsController extends Controller
      */
     public function destroy($id)
     {
+
+
         $bin = Bins::find($id);
 
         //check to see if the bin has been assigned to an owner

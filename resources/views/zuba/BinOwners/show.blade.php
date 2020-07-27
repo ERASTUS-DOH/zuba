@@ -112,23 +112,12 @@
             </div>
 
             <div class="row mt-5 w-50 m-auto">
-{{--                <a href="/binOwners/{{ $owner->id }}/edit">--}}
-
-
                     <div class="col-6">
-{{--                        <a href="{{}}" class="button-container">--}}
                             <button type="submit" class="btn btn-block btn-myDef" onclick=""><i class="fas fa-edit"></i>
-                                Edit</button>
-{{--                        </a>--}}
+                                Edit
+                            </button>
                     </div>
-
-
-                <div class="col-6">
-                    <button type="" class="btn btn-block btn-danger" onclick=""><i class="fas fa-trash"></i>
-                        Delete</button>
-                </div>
             </div>
-            <div class="clear fix"></div>
         </form>
     </div>
 </div>
@@ -179,7 +168,7 @@
                                             {{$bin->locationID}}
                                         </td>
                                         <td>
-                                            <a href="/bins/{{$bin->id}}}}">
+                                            <a href="/bins/{{$bin->id}}">
                                                 <button class="btn btn-info btn-fab-mini btn-round table-btn"
                                                         onclick="window.location.href='url()';">
                                                     <i class="fas fa-lg fa-arrow-right"></i>

@@ -20,8 +20,8 @@
                     </button>
                 </div>
 
-                <form action="/bins/delete/{{$bin->id}}" method="delete">
-                    @method('delete')
+                <form action="{{route('deleteBin',['id'=>$bin->id])}}" method="POST">
+                    @method('DELETE')
                     @csrf
                     <div class="modal-body" style="margin-bottom: 0px !important;">
                         <div class="card-body">
@@ -62,8 +62,13 @@
                     <div class="card card-plain">
                         <div class="card-header card-header-info">
                             <div class="topCaption">
-                                <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>
-                                <p class="topCaption ">  Owned-By : Mr Erastus</p>
+                                <h4 class="card-title mt-0"> Serial Number: {{$bin->serialNumber}}</h4>
+                                <p class="topCaption ">  Owned-By :
+                                    @if($owner)
+                                    {{$owner->fname.' '.$owner->lname}}
+                                    @else{{'NOT ASSIGNED'}}
+                                    @endif
+                                </p>
                             </div>
 {{--                            <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>--}}
                             <p class="card-category"> Location: Kotokoraba, Cape Coast</p>
@@ -141,17 +146,19 @@
                 </div>
                 <div class="col-md-3">
 
-                        <button class="btn btn-danger btn-link btn-wd g text-center"  data-original-title="Delete Bin"
-                                data-toggle="modal" data-target="#deleteModal"
-                                style="width: 35px;">
-                            <i class="fas fa-times ">
+{{--                        <button class="btn  btn-link btn-wd g text-center"  data-original-title="Delete Bin"--}}
+{{--                                data-toggle="modal" data-target="#deleteModal"--}}
+{{--                                style="width: 35px;">--}}
+{{--                            <i class="fas fa-times ">--}}
 
-                            </i>
-                            {{ __('delete') }}
-                        </button>
+{{--                            </i>--}}
+{{--                            {{ __('delete') }}--}}
+{{--                        </button>--}}
 
-                    <button class="btn  text-center" type="submit"><i class="fas fa-times"></i>
-                        {{ __('cancel') }}
+                    <button class="btn btn-danger text-center" data-original-title="Delete Bin"
+                            data-toggle="modal" data-target="#deleteModal"
+                            ><i class="fas fa-times"></i>
+                        {{ __('delete') }}
                     </button>
 
                 </div>

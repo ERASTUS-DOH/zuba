@@ -284,8 +284,8 @@
                                                                     </button>
                                                                 </div>
 
-                                                                <form action="/bins/delete/{{$bin->id}}" method="delete">
-                                                                    @method('delete')
+                                                                <form action="{{route('deleteBin',['id'=>$bin->id])}}" method="POST">
+                                                                    @method('DELETE')
                                                                     @csrf
                                                                     <div class="modal-body" style="margin-bottom: 0px !important;">
                                                                         <div class="card-body">

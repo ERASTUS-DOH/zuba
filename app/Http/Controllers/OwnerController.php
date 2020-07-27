@@ -149,6 +149,13 @@ class OwnerController extends Controller
      */
     public function destroy($id)
     {
+        //validating if a bin has been assigned to this owner.
+        $hasBin =BinOwners::where('owner_ID','=',$id)->first();
+
+        if($hasBin){
+            return redirect(url('/binOwners'))->with('error','Bin Owner has a bin.');
+        }
+
         $owner = Owners::find($id)->delete();
         if($owner){
             return redirect(url('/binOwners'))->with('success','Bin Owner deleted successfully');

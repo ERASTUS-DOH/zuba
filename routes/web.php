@@ -36,7 +36,7 @@ Route::post('/bins/store','BinsController@store');
 Route::get('bins/assign/{id}', 'BinsController@assignBin');
 Route::post('bins/assign/save', 'BinsController@saveAssignation')->name('saveAssignation');
 Route::get('bins/de_assign/{id}','BinsController@de_assign')->name('de_assignation');
-Route::delete('/bins/delete{id}','BinsController@destroy')->name('deleteBin');
+Route::delete('/bins/{id}','BinsController@destroy')->name('deleteBin');
 
 
 /**
