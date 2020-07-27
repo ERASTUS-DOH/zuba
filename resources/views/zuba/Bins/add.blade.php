@@ -48,14 +48,17 @@
     {{--            </div>--}}
     {{--        </nav>--}}
     {{--        <!-- End Navbar -->--}}
-<a href="{{route('bins')}}" class="btn btn-link text-center pl-4">
-    <button class="btn btn-success text-center" type="button"><i class="fas fa-arrow-left "></i>
-        {{ __('Back') }}
-    </button>
-</a>
+
 
     <div class="content">
         <div class="container-fluid">
+
+            <a href="{{route('bins')}}" class="btn btn-link text-center pl-4 ml-5">
+                <button class="btn btn-success text-center" type="button"><i class="fas fa-arrow-left "></i>
+                    {{ __('Back') }}
+                </button>
+            </a>
+
             <!-- your content here -->
             <div class="row">
                 <div class="mx-auto col-md-9">
@@ -126,7 +129,7 @@
 {{--                                                    </div>--}}
                                                 </div>
                                             </div>
-                                        </div>
+{{--                                        </div>--}}
 
                                         <div class="modal-footer m-auto w-25 border-top-0">
                                             <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>

@@ -73,8 +73,9 @@ Route::get('/tricycles/create','TricyclesController@create')->name('createCycle'
 Route::get('/tricycles/{id}','TricyclesController@show');
 Route::get('/tricycles/{id}/edit','TricyclesController@edit');
 Route::put('/tricycles/{id}','TricyclesController@update')->name('updateCycle');
+Route::post('/tricycles/assign/save','TricyclesController@assignCycle')->name('assignCycle');
 Route::post('/tricycles/store','TricyclesController@store')->name('storeCycle');
-Route::delete('/tricycles/{id}','TricyclesController@destroy');
+Route::delete('/tricycles/{id}','TricyclesController@destroy')->name('deleteCycle');
 //Route::get()
 
 

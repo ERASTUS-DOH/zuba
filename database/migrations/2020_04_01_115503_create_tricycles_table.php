@@ -19,6 +19,7 @@ class CreateTricyclesTable extends Migration
             $table->string('colour');
             $table->string('brand');
             $table->string('max_capacity');
+            $table->boolean('assign_state')->default(false);
             $table->timestamps();
         });
     }

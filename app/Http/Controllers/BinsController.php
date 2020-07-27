@@ -21,6 +21,7 @@ class BinsController extends Controller
     {
         //fetching list of all registered bins.
         $bins = Bins::all();
+        //$owners = Owners::all();
 
        //function to return all the bins available.
         return view('zuba.Bins.index',['bins' => $bins]);
@@ -168,7 +169,6 @@ class BinsController extends Controller
      */
     public function destroy($id)
     {
-
 
         $bin = Bins::find($id);
 

@@ -75,14 +75,14 @@ class BinController extends Controller
             return $this->sendErrorResponse($validator->errors()->first());
         }
 
-//        $bin_request = BinRequest::query()->create([
-//            'bin_id' => $request->input('bin_id'),
-//            'waste_level' => $request->input('waste_level'),
-//            'smoke_noti' => $request->input('smoke_noti'),
-//            'weight' => $request->input('weight'),
-//            'location_id' => $request->input('location_id'),
-//            'request_state' => $request->input('request_state')
-//        ]);
+        $bin_request = BinRequest::query()->create([
+            'bin_id' => $request->input('bin_id'),
+            'waste_level' => $request->input('waste_level'),
+            'smoke_noti' => $request->input('smoke_noti'),
+            'weight' => $request->input('weight'),
+            'location_id' => $request->input('location_id'),
+            'request_state' => $request->input('request_state')
+        ]);
 
         return  $this->sendSuccessResponse('Request sent successfully');
     }

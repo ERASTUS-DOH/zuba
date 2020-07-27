@@ -61,8 +61,8 @@
                         <div class="card-icon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <p class="card-category">Bin Owners</p>
-                        <h3 class="card-title">{{ $data['owners']->count() }}</h3>
+                        <p class="card-category">Number of Bin Request</p>
+                        <h3 class="card-title">{{ $data['bin_requests']->count() }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">

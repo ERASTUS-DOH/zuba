@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CycleStoreRequest;
+use App\Owners;
+use App\Riders;
+use App\TricycleRiders;
 use App\Tricycles;
 use Illuminate\Http\Request;
 
@@ -16,10 +19,31 @@ class TricyclesController extends Controller
     public function index()
     {
         $cycles = Tricycles::all();
-        return view('zuba.Tricycles.index', ['cycles' => $cycles]);
+        $riders = Riders::all();
+        return view('zuba.Tricycles.index', ['cycles' => $cycles,'riders' => $riders]);
     }
 
 
+    //assign a cycle to a rider.
+    public function assignCycle(Request $request){
+        $assigned = TricycleRiders::create([
+            'rider_id' => $request->input('rider_id'),
+            'truck_id' => $request->input('cycle_id'),
+        ]);
+
+        $cycle = Tricycles::find($request->input('cycle_id'));
+        $cycle->assign_state = true;
+        $update = $cycle->save();
+
+
+
+        if($assigned && $update){
+            return redirect(route('cycles'))->with('success','Tricycle assigned to a rider successfully');
+        }
+
+        return back()->with('error','Tricycle was not assigned');
+
+    }
 
 
     /**
@@ -112,6 +136,15 @@ class TricyclesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //validate if the cycle has owner.
+        $cycle = Tricycles::find($id);
+        if($cycle->assign_state){
+            return redirect(route('cycles'))->with('error','Tricycle has an assigned owner');
+        }
+
+        //Delete and re-route.
+        if($cycle->delete){
+            return redirect(route('cycles'))->with('success','Tricycle was deleted successfully');
+        }
     }
 }

@@ -9,7 +9,7 @@
     <div class="content">
         <div class="container-fluid">
             <!-- your content here -->
-            <div class="row">
+
                 <div class="col-md-6">
                     <div class="card card-plain">
                         <div class="card-header card-header-info">
@@ -83,14 +83,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-trans">
-                        <div class="card bin-shell">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-md-3">
