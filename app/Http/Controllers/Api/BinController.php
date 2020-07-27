@@ -59,7 +59,7 @@ class BinController extends Controller
      * @return JsonResponse ()
      */
 
-    public function storeBinStatics(Request $request){
+    public function storeBinStatistics(Request $request){
         //validating the values coming from the bin.
 
         $validator = Validator::make($request->all(), [
