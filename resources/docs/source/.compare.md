@@ -23,7 +23,7 @@ Welcome to the generated API reference.
 #Authentication Management
 
 
-User, Bin Owner and Rider authentication and account settings.
+Admin user, Bin Owner and Rider authentication and account settings.
 
 Class AuthenticationController
 <!-- START_7a184547882598fc164c10be7745584b -->
@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"excepturi"}'
+    -d '{"email":"mail@mail.com","password":"porro"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "excepturi"
+    "password": "porro"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"et","password_confirmation":"quia"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"voluptatem"}'
 
 ```
 
@@ -137,8 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "et",
-    "password_confirmation": "quia"
+    "password": "voluptatem"
 }
 
 fetch(url, {
@@ -183,7 +182,6 @@ Parameter | Type | Status | Description
         `telephone` | numeric |  required  | The telephone number of the admin user.
         `email` | string |  required  | The email of the user.
         `password` | string |  required  | The password of the user.
-        `password_confirmation` | string |  required  | The password confirmation for the password.
     
 <!-- END_7fef01e7235c89049ebe3685de4bff17 -->
 
@@ -199,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"molestiae"}'
+    -d '{"email":"mail@mail.com","password":"aut"}'
 
 ```
 
@@ -215,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "molestiae"
+    "password": "aut"
 }
 
 fetch(url, {
@@ -278,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quia","password_confirmation":"eum"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"delectus"}'
 
 ```
 
@@ -293,14 +291,14 @@ let headers = {
 };
 
 let body = {
+    "title": "Mr",
     "first_name": "Jane",
     "last_name": "Doe",
     "other_name": "Doe",
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "quia",
-    "password_confirmation": "eum"
+    "password": "delectus"
 }
 
 fetch(url, {
@@ -322,6 +320,7 @@ fetch(url, {
         "message": "Request completed successfully."
     },
     "data": {
+        "title": "Mr",
         "id": 1,
         "first_name": "Jane",
         "last_name": "Doe",
@@ -340,14 +339,14 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `first_name` | string |  required  | The first name of the bin owner.
+    `title` | string |  required  | The name title of the bin owner.
+        `first_name` | string |  required  | The first name of the bin owner.
         `last_name` | string |  required  | The last name of the bin owner.
         `other_name` | string |  required  | The other name of the bin owner.
         `telephone` | numeric |  required  | The telephone number of the bin owner.
         `address` | string |  required  | The address of the bin owner.
         `email` | string |  required  | The email of the user.
         `password` | string |  required  | The password of the user.
-        `password_confirmation` | string |  required  | The password confirmation for the password.
     
 <!-- END_688925598239fc4cecb45a39564f5a4b -->
 
@@ -363,7 +362,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"iste"}'
+    -d '{"email":"mail@mail.com","password":"aperiam"}'
 
 ```
 
@@ -379,7 +378,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "iste"
+    "password": "aperiam"
 }
 
 fetch(url, {
@@ -442,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"aut","password_confirmation":"hic"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"velit"}'
 
 ```
 
@@ -457,14 +456,14 @@ let headers = {
 };
 
 let body = {
+    "title": "Mr.",
     "first_name": "Jane",
     "last_name": "Doe",
     "other_name": "Doe",
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "aut",
-    "password_confirmation": "hic"
+    "password": "velit"
 }
 
 fetch(url, {
@@ -487,6 +486,7 @@ fetch(url, {
     },
     "data": {
         "id": 1,
+        "title": "Mr",
         "first_name": "Jane",
         "last_name": "Doe",
         "other_name": "Elinam",
@@ -504,14 +504,14 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `first_name` | string |  required  | The first name of the Rider.
+    `title` | string |  required  | The name title of the rider.
+        `first_name` | string |  required  | The first name of the Rider.
         `last_name` | string |  required  | The last name of the Rider.
         `other_name` | string |  required  | The last name of the Rider.
         `telephone` | string |  required  | The telephone number of the Rider.
         `email` | string |  required  | The email of the Rider.
         `address` | numeric |  required  | The address of the Rider.
         `password` | string |  required  | The password of the Rider.
-        `password_confirmation` | string |  required  | The password confirmation for the password.
     
 <!-- END_05460b3b3ba25b151f80f2caf71b8714 -->
 
@@ -1678,7 +1678,8 @@ null
 <!-- END_dbf24a43b7328b093343228bbd805293 -->
 
 <!-- START_5d49cb3471c6b1b7fc7c946500ca3bfc -->
-## bins/{id}
+## Display the specified resource.
+
 > Example request:
 
 ```bash
@@ -1707,10 +1708,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -1800,6 +1803,165 @@ fetch(url, {
 
 <!-- END_4fb848017d8507c8fe97c8693af6d460 -->
 
+<!-- START_4ce73b199d0d0516bbb3daae84a6e5fb -->
+## bins/assign/{id}
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bins/assign/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bins/assign/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bins/assign/{id}`
+
+
+<!-- END_4ce73b199d0d0516bbb3daae84a6e5fb -->
+
+<!-- START_8e76baba4a74d8faf570dfba8700faf7 -->
+## bins/assign/save
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/bins/assign/save" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bins/assign/save"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST bins/assign/save`
+
+
+<!-- END_8e76baba4a74d8faf570dfba8700faf7 -->
+
+<!-- START_a426696a4dcce047662e9c9cc113b32d -->
+## bins/de_assign/{id}
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bins/de_assign/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bins/de_assign/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bins/de_assign/{id}`
+
+
+<!-- END_a426696a4dcce047662e9c9cc113b32d -->
+
+<!-- START_690eedf5a8e252b113a09085f2a4c6b1 -->
+## Remove the specified resource from storage.
+
+> Example request:
+
+```bash
+curl -X DELETE \
+    "http://localhost/bins/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bins/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE bins/{id}`
+
+
+<!-- END_690eedf5a8e252b113a09085f2a4c6b1 -->
+
 <!-- START_26e366bd435f781cfa1a8b430de66b0b -->
 ## Display a listing of the resource.
 
@@ -1842,49 +2004,6 @@ null
 
 
 <!-- END_26e366bd435f781cfa1a8b430de66b0b -->
-
-<!-- START_eebcb88d7849e698130c595cdf2b17b9 -->
-## Display the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/binOwners/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/binOwners/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET binOwners/{id}`
-
-
-<!-- END_eebcb88d7849e698130c595cdf2b17b9 -->
 
 <!-- START_8c09ac569f9f0aa413dafce88787d075 -->
 ## Show the form for creating a new resource.
@@ -1929,6 +2048,130 @@ null
 
 <!-- END_8c09ac569f9f0aa413dafce88787d075 -->
 
+<!-- START_eebcb88d7849e698130c595cdf2b17b9 -->
+## Displays the specified bin owner and their details. .
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET binOwners/{id}`
+
+
+<!-- END_eebcb88d7849e698130c595cdf2b17b9 -->
+
+<!-- START_65e185127fe2b7b165a7cd9b6ea987b5 -->
+## Show the form for editing the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/binOwners/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/binOwners/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET binOwners/{id}/edit`
+
+
+<!-- END_65e185127fe2b7b165a7cd9b6ea987b5 -->
+
+<!-- START_bf5b9cc35b528f9f5b487023201e081d -->
+## Update the specified resource in storage.
+
+> Example request:
+
+```bash
+curl -X PUT \
+    "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT binOwners/{id}`
+
+
+<!-- END_bf5b9cc35b528f9f5b487023201e081d -->
+
 <!-- START_72776c504b0ae520e8b84cb88752f1e1 -->
 ## Store a newly created resource in storage.
 
@@ -1967,6 +2210,44 @@ fetch(url, {
 
 <!-- END_72776c504b0ae520e8b84cb88752f1e1 -->
 
+<!-- START_30e3371e55b4a324a4c3a0fdf77792c8 -->
+## Remove the specified resource from storage.
+
+> Example request:
+
+```bash
+curl -X DELETE \
+    "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE binOwners/{id}`
+
+
+<!-- END_30e3371e55b4a324a4c3a0fdf77792c8 -->
+
 <!-- START_38edf23b01946b641ef14e34e0d3019e -->
 ## Display a listing of the resource.
 
@@ -1998,12 +2279,260 @@ fetch(url, {
 ```
 
 
+> Example response (200):
+
+```json
+null
+```
 
 ### HTTP Request
 `GET riders`
 
 
 <!-- END_38edf23b01946b641ef14e34e0d3019e -->
+
+<!-- START_73e3a71f0e104bbd3d23ee89acff135d -->
+## Show the form for creating a new resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/riders/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET riders/create`
+
+
+<!-- END_73e3a71f0e104bbd3d23ee89acff135d -->
+
+<!-- START_2b5175ffe689e79b5e5d267189317e80 -->
+## Display the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET riders/{id}`
+
+
+<!-- END_2b5175ffe689e79b5e5d267189317e80 -->
+
+<!-- START_77d49b86c61c251d91d5429810b3d9df -->
+## Show the form for editing the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/riders/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET riders/{id}/edit`
+
+
+<!-- END_77d49b86c61c251d91d5429810b3d9df -->
+
+<!-- START_6abf8a97ddc30f4fff7eaf051dddd568 -->
+## Update the specified resource in storage.
+
+> Example request:
+
+```bash
+curl -X PUT \
+    "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT riders/{id}`
+
+
+<!-- END_6abf8a97ddc30f4fff7eaf051dddd568 -->
+
+<!-- START_26e50db014816304c9752717d9089d6e -->
+## Store a newly created resource in storage.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/riders/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST riders/store`
+
+
+<!-- END_26e50db014816304c9752717d9089d6e -->
+
+<!-- START_42d91648a67b9468eaa19e9c695bd110 -->
+## Remove the specified resource from storage.
+
+> Example request:
+
+```bash
+curl -X DELETE \
+    "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE riders/{id}`
+
+
+<!-- END_42d91648a67b9468eaa19e9c695bd110 -->
 
 <!-- START_82edf9d506df0d18ad1541dae2932a15 -->
 ## Display a listing of the resource.
@@ -2047,5 +2576,373 @@ null
 
 
 <!-- END_82edf9d506df0d18ad1541dae2932a15 -->
+
+<!-- START_48c8ce6906b17c417a7fc83297a2474b -->
+## Show the form for creating a new resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/tricycles/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET tricycles/create`
+
+
+<!-- END_48c8ce6906b17c417a7fc83297a2474b -->
+
+<!-- START_59f1e930a97f6aa1c4d3048f1a7e5274 -->
+## Display the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET tricycles/{id}`
+
+
+<!-- END_59f1e930a97f6aa1c4d3048f1a7e5274 -->
+
+<!-- START_3ae0906701807ead85ade88275bb231e -->
+## Show the form for editing the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/tricycles/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET tricycles/{id}/edit`
+
+
+<!-- END_3ae0906701807ead85ade88275bb231e -->
+
+<!-- START_d9578115574358ccfdfb737322027ce6 -->
+## Update the specified resource in storage.
+
+> Example request:
+
+```bash
+curl -X PUT \
+    "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT tricycles/{id}`
+
+
+<!-- END_d9578115574358ccfdfb737322027ce6 -->
+
+<!-- START_4d107b083672a0791183863186d3c465 -->
+## tricycles/assign/save
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/tricycles/assign/save" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/assign/save"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST tricycles/assign/save`
+
+
+<!-- END_4d107b083672a0791183863186d3c465 -->
+
+<!-- START_6897138875e43d15f5503e9cc7ec1a17 -->
+## Store a newly created resource in storage.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/tricycles/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST tricycles/store`
+
+
+<!-- END_6897138875e43d15f5503e9cc7ec1a17 -->
+
+<!-- START_155e51bcea8f4063e352d59bf08d7242 -->
+## Remove the specified resource from storage.
+
+> Example request:
+
+```bash
+curl -X DELETE \
+    "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE tricycles/{id}`
+
+
+<!-- END_155e51bcea8f4063e352d59bf08d7242 -->
+
+<!-- START_62c09084921155416dc5e292b293a549 -->
+## Display a listing of the resource.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/settings" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/settings"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET settings`
+
+
+<!-- END_62c09084921155416dc5e292b293a549 -->
+
+<!-- START_fd98cbfb92cf5c7b6a8e50a5ebe4b24c -->
+## show the page to assign Bin to respective registered owners.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/settings/assignBin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/settings/assignBin"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET settings/assignBin`
+
+
+<!-- END_fd98cbfb92cf5c7b6a8e50a5ebe4b24c -->
 
 

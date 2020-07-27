@@ -49,7 +49,7 @@
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>Authentication Management</h1>
-<p>User, Bin Owner and Rider authentication and account settings.</p>
+<p>Admin user, Bin Owner and Rider authentication and account settings.</p>
 <p>Class AuthenticationController</p>
 <!-- START_7a184547882598fc164c10be7745584b -->
 <h2>Login a admin user</h2>
@@ -61,7 +61,7 @@
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"excepturi"}'
+    -d '{"email":"mail@mail.com","password":"porro"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/login"
@@ -74,7 +74,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "excepturi"
+    "password": "porro"
 }
 
 fetch(url, {
@@ -146,7 +146,7 @@ fetch(url, {
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"et","password_confirmation":"quia"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"voluptatem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/user/register"
@@ -163,8 +163,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "et",
-    "password_confirmation": "quia"
+    "password": "voluptatem"
 }
 
 fetch(url, {
@@ -241,12 +240,6 @@ fetch(url, {
 <td>required</td>
 <td>The password of the user.</td>
 </tr>
-<tr>
-<td><code>password_confirmation</code></td>
-<td>string</td>
-<td>required</td>
-<td>The password confirmation for the password.</td>
-</tr>
 </tbody>
 </table>
 <!-- END_7fef01e7235c89049ebe3685de4bff17 -->
@@ -260,7 +253,7 @@ fetch(url, {
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"molestiae"}'
+    -d '{"email":"mail@mail.com","password":"aut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/owner/login"
@@ -273,7 +266,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "molestiae"
+    "password": "aut"
 }
 
 fetch(url, {
@@ -345,7 +338,7 @@ fetch(url, {
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"quia","password_confirmation":"eum"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"delectus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/owner/register"
@@ -357,14 +350,14 @@ let headers = {
 };
 
 let body = {
+    "title": "Mr",
     "first_name": "Jane",
     "last_name": "Doe",
     "other_name": "Doe",
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "quia",
-    "password_confirmation": "eum"
+    "password": "delectus"
 }
 
 fetch(url, {
@@ -383,6 +376,7 @@ fetch(url, {
         "message": "Request completed successfully."
     },
     "data": {
+        "title": "Mr",
         "id": 1,
         "first_name": "Jane",
         "last_name": "Doe",
@@ -406,6 +400,12 @@ fetch(url, {
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>required</td>
+<td>The name title of the bin owner.</td>
+</tr>
 <tr>
 <td><code>first_name</code></td>
 <td>string</td>
@@ -448,12 +448,6 @@ fetch(url, {
 <td>required</td>
 <td>The password of the user.</td>
 </tr>
-<tr>
-<td><code>password_confirmation</code></td>
-<td>string</td>
-<td>required</td>
-<td>The password confirmation for the password.</td>
-</tr>
 </tbody>
 </table>
 <!-- END_688925598239fc4cecb45a39564f5a4b -->
@@ -467,7 +461,7 @@ fetch(url, {
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"iste"}'
+    -d '{"email":"mail@mail.com","password":"aperiam"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/rider/login"
@@ -480,7 +474,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "iste"
+    "password": "aperiam"
 }
 
 fetch(url, {
@@ -552,7 +546,7 @@ fetch(url, {
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"aut","password_confirmation":"hic"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"velit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/rider/register"
@@ -564,14 +558,14 @@ let headers = {
 };
 
 let body = {
+    "title": "Mr.",
     "first_name": "Jane",
     "last_name": "Doe",
     "other_name": "Doe",
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "aut",
-    "password_confirmation": "hic"
+    "password": "velit"
 }
 
 fetch(url, {
@@ -591,6 +585,7 @@ fetch(url, {
     },
     "data": {
         "id": 1,
+        "title": "Mr",
         "first_name": "Jane",
         "last_name": "Doe",
         "other_name": "Elinam",
@@ -613,6 +608,12 @@ fetch(url, {
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>required</td>
+<td>The name title of the rider.</td>
+</tr>
 <tr>
 <td><code>first_name</code></td>
 <td>string</td>
@@ -654,12 +655,6 @@ fetch(url, {
 <td>string</td>
 <td>required</td>
 <td>The password of the Rider.</td>
-</tr>
-<tr>
-<td><code>password_confirmation</code></td>
-<td>string</td>
-<td>required</td>
-<td>The password confirmation for the password.</td>
 </tr>
 </tbody>
 </table>
@@ -1502,7 +1497,7 @@ fetch(url, {
 <p><code>GET bins/create</code></p>
 <!-- END_dbf24a43b7328b093343228bbd805293 -->
 <!-- START_5d49cb3471c6b1b7fc7c946500ca3bfc -->
-<h2>bins/{id}</h2>
+<h2>Display the specified resource.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1526,9 +1521,11 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET bins/{id}</code></p>
 <!-- END_5d49cb3471c6b1b7fc7c946500ca3bfc -->
@@ -1590,6 +1587,122 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>POST bins/store</code></p>
 <!-- END_4fb848017d8507c8fe97c8693af6d460 -->
+<!-- START_4ce73b199d0d0516bbb3daae84a6e5fb -->
+<h2>bins/assign/{id}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/bins/assign/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/bins/assign/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET bins/assign/{id}</code></p>
+<!-- END_4ce73b199d0d0516bbb3daae84a6e5fb -->
+<!-- START_8e76baba4a74d8faf570dfba8700faf7 -->
+<h2>bins/assign/save</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/bins/assign/save" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/bins/assign/save"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST bins/assign/save</code></p>
+<!-- END_8e76baba4a74d8faf570dfba8700faf7 -->
+<!-- START_a426696a4dcce047662e9c9cc113b32d -->
+<h2>bins/de_assign/{id}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/bins/de_assign/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/bins/de_assign/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (302):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET bins/de_assign/{id}</code></p>
+<!-- END_a426696a4dcce047662e9c9cc113b32d -->
+<!-- START_690eedf5a8e252b113a09085f2a4c6b1 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost/bins/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/bins/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE bins/{id}</code></p>
+<!-- END_690eedf5a8e252b113a09085f2a4c6b1 -->
 <!-- START_26e366bd435f781cfa1a8b430de66b0b -->
 <h2>Display a listing of the resource.</h2>
 <blockquote>
@@ -1621,37 +1734,6 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET binOwners</code></p>
 <!-- END_26e366bd435f781cfa1a8b430de66b0b -->
-<!-- START_eebcb88d7849e698130c595cdf2b17b9 -->
-<h2>Display the specified resource.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/binOwners/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/binOwners/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET binOwners/{id}</code></p>
-<!-- END_eebcb88d7849e698130c595cdf2b17b9 -->
 <!-- START_8c09ac569f9f0aa413dafce88787d075 -->
 <h2>Show the form for creating a new resource.</h2>
 <blockquote>
@@ -1683,6 +1765,95 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET binOwners/create</code></p>
 <!-- END_8c09ac569f9f0aa413dafce88787d075 -->
+<!-- START_eebcb88d7849e698130c595cdf2b17b9 -->
+<h2>Displays the specified bin owner and their details. .</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET binOwners/{id}</code></p>
+<!-- END_eebcb88d7849e698130c595cdf2b17b9 -->
+<!-- START_65e185127fe2b7b165a7cd9b6ea987b5 -->
+<h2>Show the form for editing the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/binOwners/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/binOwners/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET binOwners/{id}/edit</code></p>
+<!-- END_65e185127fe2b7b165a7cd9b6ea987b5 -->
+<!-- START_bf5b9cc35b528f9f5b487023201e081d -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT binOwners/{id}</code></p>
+<!-- END_bf5b9cc35b528f9f5b487023201e081d -->
 <!-- START_72776c504b0ae520e8b84cb88752f1e1 -->
 <h2>Store a newly created resource in storage.</h2>
 <blockquote>
@@ -1710,6 +1881,33 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>POST binOwners/store</code></p>
 <!-- END_72776c504b0ae520e8b84cb88752f1e1 -->
+<!-- START_30e3371e55b4a324a4c3a0fdf77792c8 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost/binOwners/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/binOwners/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE binOwners/{id}</code></p>
+<!-- END_30e3371e55b4a324a4c3a0fdf77792c8 -->
 <!-- START_38edf23b01946b641ef14e34e0d3019e -->
 <h2>Display a listing of the resource.</h2>
 <blockquote>
@@ -1734,9 +1932,187 @@ fetch(url, {
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET riders</code></p>
 <!-- END_38edf23b01946b641ef14e34e0d3019e -->
+<!-- START_73e3a71f0e104bbd3d23ee89acff135d -->
+<h2>Show the form for creating a new resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/riders/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET riders/create</code></p>
+<!-- END_73e3a71f0e104bbd3d23ee89acff135d -->
+<!-- START_2b5175ffe689e79b5e5d267189317e80 -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET riders/{id}</code></p>
+<!-- END_2b5175ffe689e79b5e5d267189317e80 -->
+<!-- START_77d49b86c61c251d91d5429810b3d9df -->
+<h2>Show the form for editing the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/riders/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET riders/{id}/edit</code></p>
+<!-- END_77d49b86c61c251d91d5429810b3d9df -->
+<!-- START_6abf8a97ddc30f4fff7eaf051dddd568 -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT riders/{id}</code></p>
+<!-- END_6abf8a97ddc30f4fff7eaf051dddd568 -->
+<!-- START_26e50db014816304c9752717d9089d6e -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/riders/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST riders/store</code></p>
+<!-- END_26e50db014816304c9752717d9089d6e -->
+<!-- START_42d91648a67b9468eaa19e9c695bd110 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost/riders/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/riders/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE riders/{id}</code></p>
+<!-- END_42d91648a67b9468eaa19e9c695bd110 -->
 <!-- START_82edf9d506df0d18ad1541dae2932a15 -->
 <h2>Display a listing of the resource.</h2>
 <blockquote>
@@ -1768,6 +2144,271 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET tricycles</code></p>
 <!-- END_82edf9d506df0d18ad1541dae2932a15 -->
+<!-- START_48c8ce6906b17c417a7fc83297a2474b -->
+<h2>Show the form for creating a new resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/tricycles/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tricycles/create</code></p>
+<!-- END_48c8ce6906b17c417a7fc83297a2474b -->
+<!-- START_59f1e930a97f6aa1c4d3048f1a7e5274 -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tricycles/{id}</code></p>
+<!-- END_59f1e930a97f6aa1c4d3048f1a7e5274 -->
+<!-- START_3ae0906701807ead85ade88275bb231e -->
+<h2>Show the form for editing the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/tricycles/1/edit" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/1/edit"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tricycles/{id}/edit</code></p>
+<!-- END_3ae0906701807ead85ade88275bb231e -->
+<!-- START_d9578115574358ccfdfb737322027ce6 -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT tricycles/{id}</code></p>
+<!-- END_d9578115574358ccfdfb737322027ce6 -->
+<!-- START_4d107b083672a0791183863186d3c465 -->
+<h2>tricycles/assign/save</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/tricycles/assign/save" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/assign/save"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST tricycles/assign/save</code></p>
+<!-- END_4d107b083672a0791183863186d3c465 -->
+<!-- START_6897138875e43d15f5503e9cc7ec1a17 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/tricycles/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST tricycles/store</code></p>
+<!-- END_6897138875e43d15f5503e9cc7ec1a17 -->
+<!-- START_155e51bcea8f4063e352d59bf08d7242 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost/tricycles/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tricycles/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE tricycles/{id}</code></p>
+<!-- END_155e51bcea8f4063e352d59bf08d7242 -->
+<!-- START_62c09084921155416dc5e292b293a549 -->
+<h2>Display a listing of the resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/settings" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/settings"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET settings</code></p>
+<!-- END_62c09084921155416dc5e292b293a549 -->
+<!-- START_fd98cbfb92cf5c7b6a8e50a5ebe4b24c -->
+<h2>show the page to assign Bin to respective registered owners.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/settings/assignBin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/settings/assignBin"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET settings/assignBin</code></p>
+<!-- END_fd98cbfb92cf5c7b6a8e50a5ebe4b24c -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">
