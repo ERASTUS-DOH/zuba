@@ -74,9 +74,10 @@ Route::get('/tricycles/{id}','TricyclesController@show');
 Route::get('/tricycles/{id}/edit','TricyclesController@edit');
 Route::put('/tricycles/{id}','TricyclesController@update')->name('updateCycle');
 Route::post('/tricycles/assign/save','TricyclesController@assignCycle')->name('assignCycle');
+Route::get('/tricycles/de_assign/{id}','TricyclesController@de_assign')->name('de_assignation');
 Route::post('/tricycles/store','TricyclesController@store')->name('storeCycle');
 Route::delete('/tricycles/{id}','TricyclesController@destroy')->name('deleteCycle');
-//Route::get()
+
 
 
 /**
@@ -86,3 +87,6 @@ Route::delete('/tricycles/{id}','TricyclesController@destroy')->name('deleteCycl
 Route::get('/settings','SettingsController@index')->name('settings');
 Route::get('/settings/assignBin','SettingsController@assignBin')->name('assignBin');
 //Route::post('/settings/saveAssignation','SettingsController@saveAssignation')->name('saveAssigned');
+
+
+Route::get('/bin_requests','Bin_requestController@index')->name('requests');

@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "05efdaf5-6041-4ace-9317-e5c82f4993db",
+        "_postman_id": "7c9e972f-9117-482b-a88d-b6086d2ce32e",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"porro\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"alias\"\n}"
                         },
                         "description": "Authenticates the admin user.",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"voluptatem\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"voluptates\"\n}"
                         },
                         "description": "Registers an admin user of the platform.",
                         "response": []
@@ -89,7 +89,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"aut\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"sint\"\n}"
                         },
                         "description": "Authenticates the Bin Owner.",
                         "response": []
@@ -117,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"delectus\"\n}"
+                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ut\"\n}"
                         },
                         "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
                         "response": []
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"aperiam\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"excepturi\"\n}"
                         },
                         "description": "Authenticates a Tricycle Rider.",
                         "response": []
@@ -173,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"velit\"\n}"
+                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"soluta\"\n}"
                         },
                         "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
@@ -210,6 +210,34 @@
                             "raw": "[]"
                         },
                         "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register a new Bin statistics",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/bins\/statistics",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"bin_id\": 1,\n    \"waste_level\": 2,\n    \"smoke_noti\": false,\n    \"weight\": 3,\n    \"location_long\": \"5.1106446\",\n    \"location_lat\": \"-5.1106446\"\n}"
+                        },
+                        "description": "Registers a new request issued by the bin for pickup.",
                         "response": []
                     }
                 }
@@ -1732,6 +1760,34 @@
                     }
                 },
                 {
+                    "name": "tricycles\/de_assign\/{id}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "tricycles\/de_assign\/:id",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
                     "name": "Store a newly created resource in storage.",
                     "request": {
                         "url": {
@@ -1822,6 +1878,34 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "settings\/assignBin",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "bin_requests",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "bin_requests",
                             "query": []
                         },
                         "method": "GET",

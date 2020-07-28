@@ -13,7 +13,8 @@ class BinRequest extends Model
         'waste_level',
         'weight',
         'smoke_noti',
-        'location_id',
+        'location_long',
+        'location_lat',
         'request_state'
 
     ];

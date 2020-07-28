@@ -59,7 +59,66 @@
                                             {{$cycle->brand}}
                                         </td>
                                         <td>
-                                            {{$cycle->id}}
+{{--                                            {{$cycle->id}}--}}
+
+                                          @if($cycle->assign_state)
+                                              {{-- start of de-assign tricycle modal --}}
+                                                <button class="btn btn-warning btn-fab-mini btn-round table-btn"
+                                                        rel="tooltip" data-original-title="De-assign Tricycle"
+                                                        data-toggle="modal" data-target="#deAssignModal- {{ $cycle->id }}"
+                                                        style="width: 35px;">
+
+                                                    <i class="fas fa-lg fa-bolt"></i>
+                                                </button>
+                                            {{-- end of de-assign tricycle modal --}}
+
+                                                {{--start of de-assign modal--}}
+
+                                                <div class="modal fade pt-5" id="deAssignModal- {{ $cycle->id }}" tabindex="-1" role="dialog"
+                                                     aria-labelledby="" aria-hidden="true">
+                                                    <div class=" modal-dialog" role="document">
+                                                        <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                            <div class="modal-header card-header card-header-warning">
+                                                                <h5 class="modal-title" id="exampleModalLabel">De-Assign Tricycle</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+
+                                                            <form action="{{route('de_assignation',['id' => $cycle->id])}}" method="GET">
+                                                                @method('GET')
+                                                                @csrf
+                                                                <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="row justify-content-center">
+                                                                            <p class="">Are you sure you want to de-assign this Tricycle ?</p>
+                                                                        </div>
+                                                                        <div class="row justify-content-center">
+                                                                            <h5 class="bold"></h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-footer justify-content-center p-0">
+                                                                    <div class="row">
+                                                                        <div class="col-md-5">
+                                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><i
+                                                                                    class="fas fa-times-circle"></i> No</button>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <button type="submit" class="btn btn-warning"><i
+                                                                                    class="fas fa-check-circle"></i> Yes
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--end of de-assign modal--}}
+                                            @else
 
                                             {{--Assign Track to Rider--}}
                                             <button class="btn btn-success btn-fab-mini btn-round table-btn"
@@ -115,53 +174,8 @@
                                                 </div>
                                             </div>
                                             {{--End of Assign modal--}}
+                                            @endif
 
-                                            {{--start of de-assign modal--}}
-
-                                            <div class="modal fade pt-5" id="deAssignModal" tabindex="-1" role="dialog"
-                                                 aria-labelledby="" aria-hidden="true">
-                                                <div class=" modal-dialog" role="document">
-                                                    <div class="modal-content card" style="background-color: #f3f3f3;">
-                                                        <div class="modal-header card-header card-header-warning">
-                                                            <h5 class="modal-title" id="exampleModalLabel">De-Assign Bin</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-
-                                                        <form action="" method="get">
-                                                            @method('get')
-                                                            @csrf
-                                                            <div class="modal-body" style="margin-bottom: 0px !important;">
-                                                                <div class="card-body">
-                                                                    <div class="row justify-content-center">
-                                                                        <p class="">Are you sure you want to de-assign this bin ?</p>
-                                                                    </div>
-                                                                    <div class="row justify-content-center">
-                                                                        <h5 class="bold"></h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="modal-footer justify-content-center p-0">
-                                                                <div class="row">
-                                                                    <div class="col-md-5">
-                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-                                                                                class="fas fa-times-circle"></i> No</button>
-                                                                    </div>
-                                                                    <div class="col-md-5">
-                                                                        <button type="submit" class="btn btn-success"><i
-                                                                                class="fas fa-check-circle"></i> Yes
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{--end of de-assign modal--}}
 
                                             {{--Start of view Details--}}
                                             <a href="/tricycles/{{$cycle->id}}">
@@ -191,7 +205,7 @@
                                                 <div class=" modal-dialog" role="document">
                                                     <div class="modal-content card" style="background-color: #f3f3f3;">
                                                         <div class="modal-header card-header card-header-danger">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Delete Tricycle {{$cycle->id}}</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Delete Tricycle</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -203,7 +217,7 @@
                                                             <div class="modal-body" style="margin-bottom: 0px !important;">
                                                                 <div class="card-body">
                                                                     <div class="row justify-content-center">
-                                                                        <p class="">Are you sure you want to <b>Delete</b>{{$cycle->id}} this Tricycle?</p>
+                                                                        <p class="">Are you sure you want to <b>Delete</b> this Tricycle?</p>
                                                                     </div>
                                                                     <div class="row justify-content-center">
                                                                         <h5 class="bold"></h5>

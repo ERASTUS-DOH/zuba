@@ -47,12 +47,21 @@
 {{--                        @endphp--}}
                     </a>
                 </li>
+
+                <li class="nav-item @if(route::is('requests')){{'active'}}@endif">
+                    <a class="nav-link" href="{{url('/bin_requests')}}">
+                        <i class="fas fa-clock"></i>
+                        <p>Requests</p>
+                    </a>
+                </li>
+
                 <li class="nav-item @if(route::is('bins')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/bins')}}">
                         <i class="fas fa-dumpster"></i>
                         <p>Bins</p>
                     </a>
                 </li>
+
                 <li class="nav-item @if(route::is('cycles')){{'active'}}@endif">
                     <a class="nav-link" href="{{url('/tricycles')}}">
                         <i class="fas fa-truck"></i>
@@ -68,7 +77,7 @@
 
                 <li class="nav-item @if(route::is('riders')) {{'active'}} @endif">
                     <a class="nav-link" href="{{url('/riders')}}">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-bicycle"></i>
                         <p>Riders</p>
                     </a>
                 </li>

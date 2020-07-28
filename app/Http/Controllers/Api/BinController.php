@@ -59,16 +59,47 @@ class BinController extends Controller
      * @return JsonResponse ()
      */
 
+    /**
+     * Register a new Bin statistics
+     *
+     * Registers a new request issued by the bin for pickup.
+     * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
+     * @bodyParam waste_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam smoke_noti boolean required The smoke notification status. Example: 0
+     * @bodyParam weight double required The weight of the bin. Example: 3.0
+     * @bodyParam location_long string required The longitude of the location of the bin. Example:5.1106446
+     * @bodyParam location_lat string required The latitude of the location of the bin. Example: -5.1106446
+     *
+     *
+     * @response 200 {
+     * "success": {
+     * "code": 200,
+     * "message": "Request completed successfully."
+     * },
+     * "data": {
+     * "bin_id": 1,
+     * "waste_level":"1.0",
+     * "smoke_noti": "1",
+     * "weight": "1.0",
+     * "location_long": "5.1106446",
+     * "location_lat": "-5.1106446",
+    *    }
+     * }
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
     public function storeBinStatistics(Request $request){
         //validating the values coming from the bin.
 
         $validator = Validator::make($request->all(), [
             'bin_id' => 'required|integer|max:10',
             'waste_level' => 'required|double|max:10',
-            'smoke_noti' => 'required|integer',
+            'smoke_noti' => 'required|boolean',
             'weight' =>  'required|double',
-            'location_id' => 'required|string',
-            'request_state' => 'required|boolean'
+            'location_long' => 'required|string',
+            'location_lat' => 'required|string',
         ]);
 
         if($validator->fails()){
@@ -80,8 +111,8 @@ class BinController extends Controller
             'waste_level' => $request->input('waste_level'),
             'smoke_noti' => $request->input('smoke_noti'),
             'weight' => $request->input('weight'),
-            'location_id' => $request->input('location_id'),
-            'request_state' => $request->input('request_state')
+            'location_long' => $request->input('location_long'),
+            'location_lat' => $request->input('location_lat'),
         ]);
 
         return  $this->sendSuccessResponse('Request sent successfully');

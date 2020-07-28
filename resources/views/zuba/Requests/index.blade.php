@@ -9,13 +9,12 @@
                         <div class="card-icon">
                             <i class="fas fa-dumpster"></i>
                         </div>
-                        <p class="card-category">Bins Deployed</p>
-                        <h3 class="card-title">{{ $data['bins']->count() }}
-                        </h3>
+                        <p class="card-category">Bins-Request Received Today</p>
+                        <h3 class="card-title"></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="{{url('/bins')}}"> Show all bins</a>
+                            <a href="{{url('/bins')}}">Show all bin request issued today</a>
                         </div>
                     </div>
                 </div>
@@ -27,29 +26,12 @@
                         <div class="card-icon">
                             <i class="fas fa-truck"></i>
                         </div>
-                        <p class="card-category"> Tricycles</p>
-                        <h3 class="card-title">{{ $data['tricycles']->count() }}</h3>
+                        <p class="card-category"> Home Pick Request</p>
+                        <h3 class="card-title"></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="{{url('/tricycles')}}">Show All Tricycles</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-3">
-                <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon">
-                        <div class="card-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <p class="card-category">Payments</p>
-                        <h3 class="card-title">{{ $data['riders']->count() }}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="javascript:;">Show All Riders</a>
+                            <a href="{{url('/tricycles')}}">Show All Home Pick Request issued</a>
                         </div>
                     </div>
                 </div>
@@ -61,12 +43,29 @@
                         <div class="card-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <p class="card-category">Bin Active Request</p>
-                        <h3 class="card-title">{{ $data['bin_requests']->count() }}</h3>
+                        <p class="card-category">Pending Request</p>
+                        <h3 class="card-title"></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="javascript:;">Show All Bin-Owners</a>
+                            <a href="javascript:;">Show All Pending Request</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="card-category">Resolved Requests</p>
+                        <h3 class="card-title"></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="javascript:;">Show All Resolved Requests</a>
                         </div>
                     </div>
                 </div>
@@ -174,4 +173,4 @@
             <div id="map"></div>
         </div>
     </div>
-    @endsection
+@endsection

@@ -46,6 +46,22 @@ class TricyclesController extends Controller
     }
 
 
+    //function responsible for de_assigning the tricycle from the rider.
+    public function de_assign($id){
+        $delete = TricycleRiders::where('truck_id',$id)->delete();
+        $cycle = Tricycles::find($id);
+        $cycle->assign_state = false;
+        $update = $cycle->save();
+
+        if($delete && $update){
+            return redirect(route('cycles'))->with('success','Tricycle de-assigned successfully');
+        }
+
+        return back()->with('error','Tricycle de-assignation unsuccessful');
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
