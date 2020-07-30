@@ -22,7 +22,8 @@ class Bin extends JsonResource
             'max_weight'=> $this->maxWeight,
             'current_weight' => $this->current_weight,
             'current_level' => $this->current_level,
-            'location_id'=> $this->locationID,
+            'location_long'=> $this->location_long,
+            'location_lat'=> $this->location_lat,
             'smoke_noti'=> $this->smokeNoti
         ];
     }

@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"omnis"}'
+    -d '{"email":"mail@mail.com","password":"laboriosam"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "omnis"
+    "password": "laboriosam"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"illum"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"et"}'
 
 ```
 
@@ -137,7 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "illum"
+    "password": "et"
 }
 
 fetch(url, {
@@ -197,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"ipsum"}'
+    -d '{"email":"mail@mail.com","password":"sed"}'
 
 ```
 
@@ -213,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "ipsum"
+    "password": "sed"
 }
 
 fetch(url, {
@@ -276,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"enim"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"voluptatem"}'
 
 ```
 
@@ -298,7 +298,7 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "enim"
+    "password": "voluptatem"
 }
 
 fetch(url, {
@@ -362,7 +362,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"est"}'
+    -d '{"email":"mail@mail.com","password":"aliquid"}'
 
 ```
 
@@ -378,7 +378,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "est"
+    "password": "aliquid"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"laborum"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"praesentium"}'
 
 ```
 
@@ -463,7 +463,7 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "laborum"
+    "password": "praesentium"
 }
 
 fetch(url, {
@@ -1896,10 +1896,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -2098,10 +2100,12 @@ fetch(url, {
 ```
 
 
-> Example response (302):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -2265,10 +2269,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -2308,10 +2314,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -3423,10 +3431,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
