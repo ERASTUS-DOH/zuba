@@ -64,10 +64,10 @@
                             <div class="topCaption">
                                 <h4 class="card-title mt-0"> Serial Number: {{$bin->serialNumber}}</h4>
                                 <p class="topCaption ">  Owned-By :
-{{--                                    @if($owner)--}}
-{{--                                    {{$owner->fname.' '.$owner->lname}}--}}
+                                    @if($owner)
+                                    {{$owner->fname.' '.$owner->lname}}
                                     @else{{'NOT ASSIGNED'}}
-{{--                                    @endif--}}
+                                    @endif
                                 </p>
                             </div>
 {{--                            <h4 class="card-title mt-0"> Serial Number: GHR-2343-A</h4>--}}

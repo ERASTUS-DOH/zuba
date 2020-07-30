@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"alias"}'
+    -d '{"email":"mail@mail.com","password":"omnis"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "alias"
+    "password": "omnis"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"voluptates"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"illum"}'
 
 ```
 
@@ -137,7 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "voluptates"
+    "password": "illum"
 }
 
 fetch(url, {
@@ -197,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"sint"}'
+    -d '{"email":"mail@mail.com","password":"ipsum"}'
 
 ```
 
@@ -213,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "sint"
+    "password": "ipsum"
 }
 
 fetch(url, {
@@ -276,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"ut"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"enim"}'
 
 ```
 
@@ -298,7 +298,7 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "ut"
+    "password": "enim"
 }
 
 fetch(url, {
@@ -362,7 +362,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"excepturi"}'
+    -d '{"email":"mail@mail.com","password":"est"}'
 
 ```
 
@@ -378,7 +378,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "excepturi"
+    "password": "est"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"soluta"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"laborum"}'
 
 ```
 
@@ -463,7 +463,7 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "soluta"
+    "password": "laborum"
 }
 
 fetch(url, {
@@ -575,7 +575,7 @@ fetch(url, {
 
 <!-- END_3dd5a7d02a332200d256aae0f9b39483 -->
 
-<!-- START_a547670df75cb1c52d05920b91e6d6aa -->
+<!-- START_1b10ef1ce565c873c9621fc16c787851 -->
 ## Register a new Bin statistics
 
 Registers a new request issued by the bin for pickup.
@@ -583,17 +583,17 @@ Registers a new request issued by the bin for pickup.
 > Example request:
 
 ```bash
-curl -X GET \
-    -G "http://localhost/api/v1/bins/statistics" \
+curl -X POST \
+    "http://localhost/api/v1/bins/statistics/pickup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"bin_id":1,"waste_level":2,"smoke_noti":false,"weight":3,"location_long":"5.1106446","location_lat":"-5.1106446"}'
+    -d '{"bin_id":1,"current_level":2,"current_weight":3,"smoke_noti":false,"location_long":"5.1106446","location_lat":"-5.1106446"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/bins/statistics"
+    "http://localhost/api/v1/bins/statistics/pickup"
 );
 
 let headers = {
@@ -603,15 +603,15 @@ let headers = {
 
 let body = {
     "bin_id": 1,
-    "waste_level": 2,
+    "current_level": 2,
+    "current_weight": 3,
     "smoke_noti": false,
-    "weight": 3,
     "location_long": "5.1106446",
     "location_lat": "-5.1106446"
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
@@ -627,19 +627,141 @@ null
 ```
 
 ### HTTP Request
-`GET api/v1/bins/statistics`
+`POST api/v1/bins/statistics/pickup`
 
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     `bin_id` | integer |  required  | The id of the bin issuing the request.
-        `waste_level` | float |  required  | The level of waste in the bin.
+        `current_level` | float |  required  | The level of waste in the bin.
+        `current_weight` | float |  required  | The weight of the bin.
         `smoke_noti` | boolean |  required  | The smoke notification status.
-        `weight` | float |  required  | The weight of the bin.
         `location_long` | string |  required  | The longitude of the location of the bin.
         `location_lat` | string |  required  | The latitude of the location of the bin.
     
-<!-- END_a547670df75cb1c52d05920b91e6d6aa -->
+<!-- END_1b10ef1ce565c873c9621fc16c787851 -->
+
+<!-- START_625ac2a10b0da7fe07a3dcfe1df7d5ea -->
+## Update a  Bin statistics
+
+Updates the states of bin.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/bins/statistics/update" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"bin_id":1,"current_level":2,"current_weight":3,"smoke_noti":false,"location_long":"5.1106446","location_lat":"-5.1106446"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/bins/statistics/update"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "bin_id": 1,
+    "current_level": 2,
+    "current_weight": 3,
+    "smoke_noti": false,
+    "location_long": "5.1106446",
+    "location_lat": "-5.1106446"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`POST api/v1/bins/statistics/update`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `bin_id` | integer |  required  | The id of the bin issuing the request.
+        `current_level` | float |  required  | The level of waste in the bin.
+        `current_weight` | float |  required  | The weight of the bin.
+        `smoke_noti` | boolean |  required  | The smoke notification status.
+        `location_long` | string |  required  | The longitude of the location of the bin.
+        `location_lat` | string |  required  | The latitude of the location of the bin.
+    
+<!-- END_625ac2a10b0da7fe07a3dcfe1df7d5ea -->
+
+<!-- START_b84031acc4697616d24555b8c4088f56 -->
+## create a  Bin manual pickup statistics
+
+creates bin pickup statistics of bin.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/bins/statistics/manualPickup" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"bin_id":1}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/bins/statistics/manualPickup"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "bin_id": 1
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`POST api/v1/bins/statistics/manualPickup`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `bin_id` | integer |  required  | The id of the bin issuing the request.
+    
+<!-- END_b84031acc4697616d24555b8c4088f56 -->
 
 #general
 
@@ -1774,12 +1896,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -1978,12 +2098,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (302):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2061,12 +2179,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2149,12 +2265,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2194,12 +2308,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -3112,5 +3224,215 @@ null
 
 
 <!-- END_9daff6b07651ab1e88ddea0dbe660ed4 -->
+
+<!-- START_869b57fb2ee978c08ff3b121dcbafe78 -->
+## bin_requests/all
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bin_requests/all" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bin_requests/all"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bin_requests/all`
+
+
+<!-- END_869b57fb2ee978c08ff3b121dcbafe78 -->
+
+<!-- START_c4e35b7468a8835996862238e8838822 -->
+## bin_requests/pickup
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bin_requests/pickup" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bin_requests/pickup"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bin_requests/pickup`
+
+
+<!-- END_c4e35b7468a8835996862238e8838822 -->
+
+<!-- START_757889525224f858caf46ebe6d8e33b6 -->
+## bin_requests/pending
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bin_requests/pending" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bin_requests/pending"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bin_requests/pending`
+
+
+<!-- END_757889525224f858caf46ebe6d8e33b6 -->
+
+<!-- START_567ef6ff5aec0a50c4299d9180074f92 -->
+## bin_requests/resolved
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bin_requests/resolved" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bin_requests/resolved"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bin_requests/resolved`
+
+
+<!-- END_567ef6ff5aec0a50c4299d9180074f92 -->
+
+<!-- START_2704d9e2f9e9ac7247e1d06fbd58b643 -->
+## bin_requests/{id}
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/bin_requests/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/bin_requests/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET bin_requests/{id}`
+
+
+<!-- END_2704d9e2f9e9ac7247e1d06fbd58b643 -->
 
 

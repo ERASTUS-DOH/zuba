@@ -20,6 +20,8 @@ class Bin extends JsonResource
             'serial_number'=> $this->serialNumber,
             'max_level'=> $this->max_level,
             'max_weight'=> $this->maxWeight,
+            'current_weight' => $this->current_weight,
+            'current_level' => $this->current_level,
             'location_id'=> $this->locationID,
             'smoke_noti'=> $this->smokeNoti
         ];

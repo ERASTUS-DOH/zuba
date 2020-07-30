@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 use App\Bins;
+use App\Http\Resources\Bin;
 use App\Http\Resources\BinCollection;
 use App\BinOwners;
 use App\BinRequest;
+use App\ManualPickRequest;
 use App\Traits\ApiBaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -64,9 +66,9 @@ class BinController extends Controller
      *
      * Registers a new request issued by the bin for pickup.
      * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
-     * @bodyParam waste_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam current_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam current_weight double required The weight of the bin. Example: 3.0
      * @bodyParam smoke_noti boolean required The smoke notification status. Example: 0
-     * @bodyParam weight double required The weight of the bin. Example: 3.0
      * @bodyParam location_long string required The longitude of the location of the bin. Example:5.1106446
      * @bodyParam location_lat string required The latitude of the location of the bin. Example: -5.1106446
      *
@@ -78,9 +80,9 @@ class BinController extends Controller
      * },
      * "data": {
      * "bin_id": 1,
-     * "waste_level":"1.0",
+     * "current_level":"1.0",
+     * "current_weight": "1.0",
      * "smoke_noti": "1",
-     * "weight": "1.0",
      * "location_long": "5.1106446",
      * "location_lat": "-5.1106446",
     *    }
@@ -95,9 +97,9 @@ class BinController extends Controller
 
         $validator = Validator::make($request->all(), [
             'bin_id' => 'required|integer|max:10',
-            'waste_level' => 'required|double|max:10',
+            'current_level' => 'required|numeric|max:10',
+            'current_weight' =>  'required|numeric',
             'smoke_noti' => 'required|boolean',
-            'weight' =>  'required|double',
             'location_long' => 'required|string',
             'location_lat' => 'required|string',
         ]);
@@ -108,16 +110,143 @@ class BinController extends Controller
 
         $bin_request = BinRequest::query()->create([
             'bin_id' => $request->input('bin_id'),
-            'waste_level' => $request->input('waste_level'),
+            'current_level' => $request->input('current_level'),
+            'current_weight' => $request->input('current_weight'),
             'smoke_noti' => $request->input('smoke_noti'),
-            'weight' => $request->input('weight'),
             'location_long' => $request->input('location_long'),
             'location_lat' => $request->input('location_lat'),
+            'request_state' => 1,
         ]);
 
-        return  $this->sendSuccessResponse('Request sent successfully');
+        return  $this->sendSuccessResponse('Request received successfully');
     }
 
+
+
+    /**
+     * Function for updating the incoming request of the bin.
+     * @param Request $request
+     * @return JsonResponse ()
+     */
+
+    /**
+     * Update a  Bin statistics
+     *
+     * Updates the states of bin.
+     * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
+     * @bodyParam current_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam current_weight double required The weight of the bin. Example: 3.0
+     * @bodyParam smoke_noti boolean required The smoke notification status. Example: 0
+     * @bodyParam location_long string required The longitude of the location of the bin. Example:5.1106446
+     * @bodyParam location_lat string required The latitude of the location of the bin. Example: -5.1106446
+     *
+     *
+     * @response 200 {
+     * "success": {
+     * "code": 200,
+     * "message": "Request completed successfully."
+     * },
+     * "data": {
+     * "bin_id": 1,
+     * "current_level":"1.0",
+     * "current_weight": "1.0",
+     * "smoke_noti": "1",
+     * "location_long": "5.1106446",
+     * "location_lat": "-5.1106446",
+     *    }
+     * }
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function storeBinUpdateStats(Request $request){
+        //validation of incoming request.
+        $validator = Validator::make($request->all(),[
+            'bin_id' => 'required|integer',
+            'current_level' => 'required|numeric|max:10',
+            'current_weight' => 'required|numeric|max:10',
+            'smoke_noti' => 'required|boolean',
+            'location_long' => 'required|string',
+            'location_lat'  => 'required|string'
+        ]);
+
+        if($validator->fails()){
+            return $this->sendErrorResponse($validator->errors()->first());
+        }
+
+        $updateBin = Bins::find($request->input('bin_id'));
+        $updateBin->current_level = $request->input('current_level');
+        $updateBin->current_weight = $request->input('current_weight');
+        $updateBin->smoke_noti = $request->input('smoke_noti');
+        $updateBin->location_long = $request->input('location_long');
+        $updateBin->location_lat = $request->input('location_lat');
+
+       if($updateBin->save()){
+           return  $this->sendSuccessResponse('Request received successfully');
+       }
+
+       return $this->sendErrorResponse('Request not successfull');
+
+    }
+
+
+    /**
+     * Function for creating a new manual pickup request from the mobile application.
+     * @param Request $request
+     * @return JsonResponse ()
+     */
+
+    /**
+     * create a  Bin manual pickup statistics
+     *
+     * creates bin pickup statistics of bin.
+     * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
+     *
+     *
+     *
+     * @response 200 {
+     * "success": {
+     * "code": 200,
+     * "message": "Request completed successfully."
+     * },
+     * "data": {
+     * "bin_id": 1
+     * }
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
+
+    public function storeManualStats(Request $request){
+        //validate the incoming request from the mobile app.
+        $validator =  Validator::make($request->all(),[
+            'bin_id' => 'integer|required'
+        ]);
+
+        if($validator->fails()){
+            return $this->sendErrorResponse($validator->errors()->first());
+        }
+
+        $bin = Bins::find($request->input('bin_id'));
+
+        $pickup_request = ManualPickRequest::query()->create([
+            'bin_id' => $bin->id,
+            'current_level' => $bin->current_level,
+            'current_weight' => $bin->current_weight,
+            'smoke_noti' => $bin->smoke_noti,
+            'location_long' => $bin->location_long,
+            'location_lat' => $bin->location_lat,
+            'request_state' => 1,
+        ]);
+
+        if($pickup_request){
+            return  $this->sendSuccessResponse('Request received successfully');
+        }
+
+    }
 
 
     /**

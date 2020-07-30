@@ -112,13 +112,24 @@
                                                                 <input type="text" name="smoke_noti" id="smoke_noti" class="form-control" required>
                                                             </div>
                                                         </div>
+
+                                                    </div>
+
+                                                    <div class="row mb-4">
                                                         <div class="col-md-6">
                                                             <div class="form-group bmd-form-group">
-                                                                <label for="serialNumber" class="bmd-label-floating">Location ID</label>
-                                                                <input type="text" name="locationID" id="locationID" class="form-control" required>
+                                                                <label for="serialNumber" class="bmd-label-floating">Location's Longitude</label>
+                                                                <input type="text" name="location_long" id="location_long" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group bmd-form-group">
+                                                                <label for="serialNumber" class="bmd-label-floating">Location Latitude</label>
+                                                                <input type="text" name="location_lat" id="location_lat" class="form-control" required>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 <div/>
 {{--                                                    <div class="col-md-6">--}}
 {{--                                                        <div class="form-group bmd-form-group">--}}

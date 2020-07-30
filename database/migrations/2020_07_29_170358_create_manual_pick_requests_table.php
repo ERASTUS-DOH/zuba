@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBinRequestsTable extends Migration
+class CreateManualPickRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateBinRequestsTable extends Migration
      */
     public function up()
     {
-
-        Schema::create('bin_requests', function (Blueprint $table) {
+        Schema::create('manual_pick_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('bin_id');
             $table->float('current_level');
             $table->float('current_weight');
             $table->boolean('smoke_noti');
-            $table->float('location_long');
-            $table->float('location_lat');
+            $table->string('location_long');
+            $table->string('location_lat');
             $table->integer('request_state')->default(1);
+//            $table->foreign('request_state')->references('id')->on('request_states');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateBinRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bin_requests');
+        Schema::dropIfExists('manual_pick_requests');
     }
 }

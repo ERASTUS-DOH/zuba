@@ -437,6 +437,6 @@ class AuthenticationController extends Controller
 
         //data to be sent back
         return $this->sendSuccessResponse($this->generateRiderData($rider));
-      }
+        }
 
     }

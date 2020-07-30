@@ -93,6 +93,7 @@ class BinsController extends Controller
      */
     public function store(BinStoreRequest $request)
     {
+//        dd($request);
 
 //        //verifying if the bin already exists.
 //        $check = Bins::where('serialNumber',$request->input('serialNumber'))->get();
@@ -101,14 +102,16 @@ class BinsController extends Controller
 //            return back()->withInput()->with('error','Bin with similar Serial number exits');
 //        }
 
+
         //creation of new bin.
         $bin = Bins::create([
             'nickname' => $request->input('nickName'),
             'serialNumber' => $request->input('serialNumber'),
             'max_level' => $request->input('maxLevel'),
             'maxWeight' => $request->input('maxWeight'),
-            'locationID' =>$request->input('locationID'),
-            'smoke_noti' => $request->input('smokeNotification')
+            'location_long' =>$request->input('location_long'),
+            'location_lat' =>$request->input('location_lat'),
+            'smoke_noti' => $request->input('smoke_noti')
         ]);
 
         if($bin){

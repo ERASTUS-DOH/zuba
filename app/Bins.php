@@ -13,7 +13,10 @@ class Bins extends Model
         'serialNumber',
         'max_level',
         'maxWeight',
-        'locationID',
+        'current_level',
+        'current_weight',
+        'location_lat',
+        'location_long',
         'smoke_noti',
         'assign_state'
     ];

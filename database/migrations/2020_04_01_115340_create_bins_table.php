@@ -19,10 +19,12 @@ class CreateBinsTable extends Migration
             $table->string('serialNumber');
             $table->string('max_level');
             $table->string('maxWeight');
-            $table->string('locationID')->nullable();
+            $table->string('current_level')->default('0');
+            $table->string('current_weight')->default('0');
+            $table->string('location_long')->nullable();
+            $table->string('location_lat')->nullable();
             $table->boolean('smoke_noti')->nullable();
-            $table->boolean('assign_state')->default(false);
-
+            $table->integer('assign_state')->default(false);
             $table->timestamps();
         });
     }
