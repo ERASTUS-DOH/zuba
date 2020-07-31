@@ -58,6 +58,7 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     Route::get('bins/statistics/update','BinController@storeBinUpdateStats');
     Route::post('bins/statistics/manualPickup','BinController@storeManualStats');
     Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
+    Route::get('bins/test','BinController@storetest');
 });
 
 //fallback route

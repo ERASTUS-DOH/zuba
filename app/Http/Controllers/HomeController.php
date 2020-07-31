@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BinRequest;
 use App\Bins;
 use App\Owners;
+use App\RequestType;
 use App\Riders;
 use App\Tricycles;
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class HomeController extends Controller
         $tricycles = Tricycles::all();
         $bins = Bins::all();
         $bin_requests = BinRequest::all();
+        $test = RequestType::all();
 
         $data = [
             'riders' => $riders,
@@ -40,6 +42,7 @@ class HomeController extends Controller
             'tricycles' => $tricycles,
             'bins' => $bins,
             'bin_requests' => $bin_requests,
+            'test' => $test,
         ];
         return view('zuba.index', ['data' => $data]);
     }

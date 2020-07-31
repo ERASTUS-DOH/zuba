@@ -45,7 +45,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <p class="card-category">Payments</p>
-                        <h3 class="card-title">{{ $data['riders']->count() }}</h3>
+                        <h3 class="card-title">{{ $data['test']->count() }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">

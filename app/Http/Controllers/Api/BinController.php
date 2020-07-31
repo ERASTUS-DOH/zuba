@@ -8,6 +8,7 @@ use App\Http\Resources\BinCollection;
 use App\BinOwners;
 use App\BinRequest;
 use App\ManualPickRequest;
+use App\RequestType;
 use App\Traits\ApiBaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -251,6 +252,16 @@ class BinController extends Controller
             return  $this->sendSuccessResponse('Request received successfully');
         }
 
+    }
+
+    public function storetest(Request $request){
+        $test = RequestType::query()->create([
+            'request_type' => $request->input('test'),
+        ]);
+
+        if($test){
+            return  $this->sendSuccessResponse('Request received successfully');
+        }
     }
 
 
