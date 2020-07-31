@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Events\BinStatusBroadcast;
 use App\Bins;
 use App\Http\Resources\Bin;
 use App\Http\Resources\BinCollection;
@@ -116,7 +117,10 @@ class BinController extends Controller
             'location_long' => $request->input('location_long'),
             'location_lat' => $request->input('location_lat'),
             'request_state' => 1,
+            'request_type' => 0
         ]);
+
+        broadcast(new BinStatusBroadcast($bin_request));
 
         return  $this->sendSuccessResponse('Request received successfully');
     }
@@ -232,7 +236,7 @@ class BinController extends Controller
 
         $bin = Bins::find($request->input('bin_id'));
 
-        $pickup_request = ManualPickRequest::query()->create([
+        $pickup_request = BinRequest::query()->create([
             'bin_id' => $bin->id,
             'current_level' => $bin->current_level,
             'current_weight' => $bin->current_weight,
@@ -240,6 +244,7 @@ class BinController extends Controller
             'location_long' => $bin->location_long,
             'location_lat' => $bin->location_lat,
             'request_state' => 1,
+            'request_type' => 1,
         ]);
 
         if($pickup_request){

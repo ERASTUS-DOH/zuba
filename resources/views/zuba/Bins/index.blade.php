@@ -203,7 +203,7 @@
                                                                 data-toggle="modal" data-target="#deAssignModal"
                                                                 style="width: 35px;">
 
-                                                            <i class="fas fa-lg fa-bolt"></i>
+                                                            <i class="fas fa-lg fa-undo"></i>
                                                         </button> |
 {{--                                                    </a>|--}}
 

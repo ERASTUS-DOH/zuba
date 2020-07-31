@@ -14,7 +14,7 @@ class Bin_requestController extends Controller
     //function responsible for listing all the pick_up requests.
     public function index(){
         $pickup_requests = BinRequest::all();
-        $manual_requests = ManualPickRequest::all();
+        $manual_requests = BinRequest::where('request_type','=','1')->get();
         $pending_requests = BinRequest::where('request_state','=','1')->get();
         $resolved_requests = BinRequest::where('request_state','=','2')->get();
 //        $data = [

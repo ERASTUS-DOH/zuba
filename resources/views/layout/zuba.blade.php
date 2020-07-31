@@ -17,7 +17,7 @@
     <link href="{{ asset('assets/for_proj/css/mains.css') }}" rel="stylesheet" />
     <!-- Material Kit CSS -->
     <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet" />
-{{--    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />--}}
+    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
 </head>
 
 <body>

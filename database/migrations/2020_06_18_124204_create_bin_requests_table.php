@@ -23,6 +23,7 @@ class CreateBinRequestsTable extends Migration
             $table->float('location_long');
             $table->float('location_lat');
             $table->integer('request_state')->default(1);
+            $table->integer('request_type')->default(0);
             $table->timestamps();
         });
     }

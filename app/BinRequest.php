@@ -16,7 +16,8 @@ class BinRequest extends Model
         'smoke_noti',
         'location_long',
         'location_lat',
-        'request_state'
+        'request_state',
+        'request_type'
 
     ];
 

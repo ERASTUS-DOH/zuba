@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "a9b5f607-38c1-4abc-844c-9e7e69fa1ebf",
+        "_postman_id": "6c966593-caa7-4023-a255-3ff440c38921",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"laboriosam\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"animi\"\n}"
                         },
                         "description": "Authenticates the admin user.",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"et\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"animi\"\n}"
                         },
                         "description": "Registers an admin user of the platform.",
                         "response": []
@@ -89,7 +89,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"sed\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"blanditiis\"\n}"
                         },
                         "description": "Authenticates the Bin Owner.",
                         "response": []
@@ -117,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"voluptatem\"\n}"
+                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"et\"\n}"
                         },
                         "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
                         "response": []
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"aliquid\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"magnam\"\n}"
                         },
                         "description": "Authenticates a Tricycle Rider.",
                         "response": []
@@ -173,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"praesentium\"\n}"
+                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"aut\"\n}"
                         },
                         "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
