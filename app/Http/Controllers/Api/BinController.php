@@ -94,9 +94,6 @@ class BinController extends Controller
      */
 
     public function storeBinStatistics(Request $request){
-
-        return  $this->sendSuccessResponse($request->input('name'));
-
         $validator = Validator::make($request->all(), [
             'i' => 'required|integer|max:10',
             'cl' => 'required|numeric|max:10',
