@@ -94,15 +94,16 @@ class BinController extends Controller
      */
 
     public function storeBinStatistics(Request $request){
-        //validating the values coming from the bin.
+
+        return  $this->sendSuccessResponse($request->input('name'));
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required|integer|max:10',
-            'c_level' => 'required|numeric|max:10',
-            'c_weight' =>  'required|numeric',
-            's_noti' => 'required|boolean',
-            'loc_long' => 'required|string',
-            'loc_lat' => 'required|string',
+            'i' => 'required|integer|max:10',
+            'cl' => 'required|numeric|max:10',
+            'cw' =>  'required|numeric',
+            'sn' => 'required|boolean',
+            'lg' => 'required|string',
+            'lt' => 'required|string',
         ]);
 
         if($validator->fails()){
@@ -110,12 +111,12 @@ class BinController extends Controller
         }
 
         $bin_request = BinRequest::query()->create([
-            'bin_id' => $request->input('id'),
-            'current_level' => $request->input('c_level'),
-            'current_weight' => $request->input('c_weight'),
-            'smoke_noti' => $request->input('s_noti'),
-            'location_long' => $request->input('loc_long'),
-            'location_lat' => $request->input('loc_lat'),
+            'bin_id' => $request->input('i'),
+            'current_level' => $request->input('cl'),
+            'current_weight' => $request->input('cw'),
+            'smoke_noti' => $request->input('sn'),
+            'location_long' => $request->input('lg'),
+            'location_lat' => $request->input('lt'),
             'request_state' => 1,
             'request_type' => 0
         ]);
@@ -167,24 +168,24 @@ class BinController extends Controller
     public function storeBinUpdateStats(Request $request){
         //validation of incoming request.
         $validator = Validator::make($request->all(),[
-            'id' => 'required|integer',
-            'c_level' => 'required|numeric|max:10',
-            'c_weight' => 'required|numeric|max:10',
-            's_noti' => 'required|boolean',
-            'loc_long' => 'required|string',
-            'loclat'  => 'required|string'
+            'i' => 'required|integer',
+            'cl' => 'required|numeric|max:10',
+            'cw' => 'required|numeric|max:10',
+            'sn' => 'required|boolean',
+            'lg' => 'required|string',
+            'lt'  => 'required|string'
         ]);
 
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first());
         }
 
-        $updateBin = Bins::find($request->input('id'));
-        $updateBin->current_level = $request->input('c_level');
-        $updateBin->current_weight = $request->input('c_weight');
-        $updateBin->smoke_noti = $request->input('s_noti');
-        $updateBin->location_long = $request->input('loc_long');
-        $updateBin->location_lat = $request->input('loc_lat');
+        $updateBin = Bins::find($request->input('i'));
+        $updateBin->current_level = $request->input('cl');
+        $updateBin->current_weight = $request->input('cw');
+        $updateBin->smoke_noti = $request->input('sn');
+        $updateBin->location_long = $request->input('lg');
+        $updateBin->location_lat = $request->input('lt');
 
        if($updateBin->save()){
            return  $this->sendSuccessResponse('Request received successfully');
