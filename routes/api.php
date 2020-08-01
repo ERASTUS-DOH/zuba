@@ -46,6 +46,7 @@ Route::prefix('v1')->namespace('Api')->middleware('auth:owner-api')->group(funct
      * route for the getting the Bins of the various.
      */
     Route::get('owner/bins', 'BinController@getOwnerBins');
+//    Route::get('rider/pickups','B@get');
 });
 
 
@@ -54,8 +55,8 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     /**
      * route for getting data from bins
      */
-    Route::get('bins/statistics/pickup', 'BinController@storeBinStatistics');
-    Route::get('bins/statistics/update','BinController@storeBinUpdateStats');
+    Route::post('bins/pickup', 'BinController@storeBinStatistics');
+    Route::post('bins/update','BinController@storeBinUpdateStats');
     Route::post('bins/statistics/manualPickup','BinController@storeManualStats');
     Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
     Route::get('bins/test','BinController@storetest');

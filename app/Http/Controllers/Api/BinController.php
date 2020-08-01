@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 use App\Events\BinStatusBroadcast;
 use App\Bins;
-use App\Http\Resources\Bin;
 use App\Http\Resources\BinCollection;
 use App\BinOwners;
 use App\BinRequest;
-use App\ManualPickRequest;
+//use App\ManualPickRequest;
 use App\RequestType;
 use App\Traits\ApiBaseController;
 use Illuminate\Http\JsonResponse;
@@ -67,12 +66,12 @@ class BinController extends Controller
      * Register a new Bin statistics
      *
      * Registers a new request issued by the bin for pickup.
-     * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
-     * @bodyParam current_level double required The level of waste in the bin. Example: 2.0.
-     * @bodyParam current_weight double required The weight of the bin. Example: 3.0
-     * @bodyParam smoke_noti boolean required The smoke notification status. Example: 0
-     * @bodyParam location_long string required The longitude of the location of the bin. Example:5.1106446
-     * @bodyParam location_lat string required The latitude of the location of the bin. Example: -5.1106446
+     * @bodyParam id integer required The id of the bin issuing the request. Example: 1.
+     * @bodyParam c_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam c_weight double required The weight of the bin. Example: 3.0
+     * @bodyParam s_noti boolean required The smoke notification status. Example: 0
+     * @bodyParam loc_long string required The longitude of the location of the bin. Example:5.1106446
+     * @bodyParam loc_lat string required The latitude of the location of the bin. Example: -5.1106446
      *
      *
      * @response 200 {
@@ -81,12 +80,12 @@ class BinController extends Controller
      * "message": "Request completed successfully."
      * },
      * "data": {
-     * "bin_id": 1,
-     * "current_level":"1.0",
-     * "current_weight": "1.0",
-     * "smoke_noti": "1",
-     * "location_long": "5.1106446",
-     * "location_lat": "-5.1106446",
+     * "id": 1,
+     * "c_level":"1.0",
+     * "c_weight": "1.0",
+     * "s_noti": "1",
+     * "loc_long": "5.1106446",
+     * "loc_lat": "-5.1106446",
     *    }
      * }
      *
@@ -98,12 +97,12 @@ class BinController extends Controller
         //validating the values coming from the bin.
 
         $validator = Validator::make($request->all(), [
-            'bin_id' => 'required|integer|max:10',
-            'current_level' => 'required|numeric|max:10',
-            'current_weight' =>  'required|numeric',
-            'smoke_noti' => 'required|boolean',
-            'location_long' => 'required|string',
-            'location_lat' => 'required|string',
+            'id' => 'required|integer|max:10',
+            'c_level' => 'required|numeric|max:10',
+            'c_weight' =>  'required|numeric',
+            's_noti' => 'required|boolean',
+            'loc_long' => 'required|string',
+            'loc_lat' => 'required|string',
         ]);
 
         if($validator->fails()){
@@ -111,12 +110,12 @@ class BinController extends Controller
         }
 
         $bin_request = BinRequest::query()->create([
-            'bin_id' => $request->input('bin_id'),
-            'current_level' => $request->input('current_level'),
-            'current_weight' => $request->input('current_weight'),
-            'smoke_noti' => $request->input('smoke_noti'),
-            'location_long' => $request->input('location_long'),
-            'location_lat' => $request->input('location_lat'),
+            'bin_id' => $request->input('id'),
+            'current_level' => $request->input('c_level'),
+            'current_weight' => $request->input('c_weight'),
+            'smoke_noti' => $request->input('s_noti'),
+            'location_long' => $request->input('loc_long'),
+            'location_lat' => $request->input('loc_lat'),
             'request_state' => 1,
             'request_type' => 0
         ]);
@@ -138,12 +137,12 @@ class BinController extends Controller
      * Update a  Bin statistics
      *
      * Updates the states of bin.
-     * @bodyParam bin_id integer required The id of the bin issuing the request. Example: 1.
-     * @bodyParam current_level double required The level of waste in the bin. Example: 2.0.
-     * @bodyParam current_weight double required The weight of the bin. Example: 3.0
-     * @bodyParam smoke_noti boolean required The smoke notification status. Example: 0
-     * @bodyParam location_long string required The longitude of the location of the bin. Example:5.1106446
-     * @bodyParam location_lat string required The latitude of the location of the bin. Example: -5.1106446
+     * @bodyParam id integer required The id of the bin issuing the request. Example: 1.
+     * @bodyParam c_level double required The level of waste in the bin. Example: 2.0.
+     * @bodyParam c_weight double required The weight of the bin. Example: 3.0
+     * @bodyParam s_noti boolean required The smoke notification status. Example: 0
+     * @bodyParam loc_long string required The longitude of the location of the bin. Example:5.1106446
+     * @bodyParam loc_lat string required The latitude of the location of the bin. Example: -5.1106446
      *
      *
      * @response 200 {
@@ -152,12 +151,12 @@ class BinController extends Controller
      * "message": "Request completed successfully."
      * },
      * "data": {
-     * "bin_id": 1,
-     * "current_level":"1.0",
-     * "current_weight": "1.0",
-     * "smoke_noti": "1",
-     * "location_long": "5.1106446",
-     * "location_lat": "-5.1106446",
+     * "id": 1,
+     * "c_level":"1.0",
+     * "c_weight": "1.0",
+     * "s_noti": "1",
+     * "loc_long": "5.1106446",
+     * "loc_lat": "-5.1106446",
      *    }
      * }
      *
@@ -168,24 +167,24 @@ class BinController extends Controller
     public function storeBinUpdateStats(Request $request){
         //validation of incoming request.
         $validator = Validator::make($request->all(),[
-            'bin_id' => 'required|integer',
-            'current_level' => 'required|numeric|max:10',
-            'current_weight' => 'required|numeric|max:10',
-            'smoke_noti' => 'required|boolean',
-            'location_long' => 'required|string',
-            'location_lat'  => 'required|string'
+            'id' => 'required|integer',
+            'c_level' => 'required|numeric|max:10',
+            'c_weight' => 'required|numeric|max:10',
+            's_noti' => 'required|boolean',
+            'loc_long' => 'required|string',
+            'loclat'  => 'required|string'
         ]);
 
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first());
         }
 
-        $updateBin = Bins::find($request->input('bin_id'));
-        $updateBin->current_level = $request->input('current_level');
-        $updateBin->current_weight = $request->input('current_weight');
-        $updateBin->smoke_noti = $request->input('smoke_noti');
-        $updateBin->location_long = $request->input('location_long');
-        $updateBin->location_lat = $request->input('location_lat');
+        $updateBin = Bins::find($request->input('id'));
+        $updateBin->current_level = $request->input('c_level');
+        $updateBin->current_weight = $request->input('c_weight');
+        $updateBin->smoke_noti = $request->input('s_noti');
+        $updateBin->location_long = $request->input('loc_long');
+        $updateBin->location_lat = $request->input('loc_lat');
 
        if($updateBin->save()){
            return  $this->sendSuccessResponse('Request received successfully');
@@ -254,9 +253,9 @@ class BinController extends Controller
 
     }
 
-    public function storetest(Request $request){
+    public function storetest(){
         $test = RequestType::query()->create([
-            'request_type' => $request->input('test'),
+            'request_type' => "welcome"
         ]);
 
         if($test){

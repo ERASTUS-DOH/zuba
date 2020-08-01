@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "6c966593-caa7-4023-a255-3ff440c38921",
+        "_postman_id": "fef17d53-14ea-4627-a74f-d3eac5e9812c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"animi\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"quo\"\n}"
                         },
                         "description": "Authenticates the admin user.",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"animi\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"recusandae\"\n}"
                         },
                         "description": "Registers an admin user of the platform.",
                         "response": []
@@ -89,7 +89,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"blanditiis\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ea\"\n}"
                         },
                         "description": "Authenticates the Bin Owner.",
                         "response": []
@@ -117,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"et\"\n}"
+                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"debitis\"\n}"
                         },
                         "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
                         "response": []
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"magnam\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ut\"\n}"
                         },
                         "description": "Authenticates a Tricycle Rider.",
                         "response": []
@@ -173,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"aut\"\n}"
+                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"quas\"\n}"
                         },
                         "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
@@ -222,7 +222,7 @@
                             "path": "api\/v1\/bins\/statistics\/pickup",
                             "query": []
                         },
-                        "method": "POST",
+                        "method": "GET",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -250,7 +250,7 @@
                             "path": "api\/v1\/bins\/statistics\/update",
                             "query": []
                         },
-                        "method": "POST",
+                        "method": "GET",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -294,6 +294,34 @@
                             "raw": "{\n    \"bin_id\": 1\n}"
                         },
                         "description": "creates bin pickup statistics of bin.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/v1\/bins\/test",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/v1\/bins\/test",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
                         "response": []
                     }
                 }
