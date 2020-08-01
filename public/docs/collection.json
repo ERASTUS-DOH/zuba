@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "zuba API",
-        "_postman_id": "fef17d53-14ea-4627-a74f-d3eac5e9812c",
+        "_postman_id": "d7c047f3-71f4-4a98-b051-e5f9d60a7167",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"quo\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"totam\"\n}"
                         },
                         "description": "Authenticates the admin user.",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"recusandae\"\n}"
+                            "raw": "{\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Elinam\",\n    \"telephone\": \"0241406244\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"voluptatibus\"\n}"
                         },
                         "description": "Registers an admin user of the platform.",
                         "response": []
@@ -89,7 +89,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ea\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"occaecati\"\n}"
                         },
                         "description": "Authenticates the Bin Owner.",
                         "response": []
@@ -117,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"debitis\"\n}"
+                            "raw": "{\n    \"title\": \"Mr\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0241406244\",\n    \"address\": \"Plt adjacent max-gee hotel.\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"sapiente\"\n}"
                         },
                         "description": "Registers a Bin Owner of Whom each bin is supposed to have one.",
                         "response": []
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"ut\"\n}"
+                            "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"in\"\n}"
                         },
                         "description": "Authenticates a Tricycle Rider.",
                         "response": []
@@ -173,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"quas\"\n}"
+                            "raw": "{\n    \"title\": \"Mr.\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"other_name\": \"Doe\",\n    \"telephone\": \"0244444444\",\n    \"email\": \"mail@mail.com\",\n    \"address\": \"plt. adjacent max-gee hotel.\",\n    \"password\": \"quis\"\n}"
                         },
                         "description": "Registers a Rider as the one responsible for the waste collection.",
                         "response": []
@@ -219,10 +219,10 @@
                         "url": {
                             "protocol": "http",
                             "host": "localhost",
-                            "path": "api\/v1\/bins\/statistics\/pickup",
+                            "path": "api\/v1\/bins\/pickup",
                             "query": []
                         },
-                        "method": "GET",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -235,7 +235,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"bin_id\": 1,\n    \"current_level\": 2,\n    \"current_weight\": 3,\n    \"smoke_noti\": false,\n    \"location_long\": \"5.1106446\",\n    \"location_lat\": \"-5.1106446\"\n}"
+                            "raw": "{\n    \"id\": 1,\n    \"c_level\": 2,\n    \"c_weight\": 3,\n    \"s_noti\": false,\n    \"loc_long\": \"5.1106446\",\n    \"loc_lat\": \"-5.1106446\"\n}"
                         },
                         "description": "Registers a new request issued by the bin for pickup.",
                         "response": []
@@ -247,10 +247,10 @@
                         "url": {
                             "protocol": "http",
                             "host": "localhost",
-                            "path": "api\/v1\/bins\/statistics\/update",
+                            "path": "api\/v1\/bins\/update",
                             "query": []
                         },
-                        "method": "GET",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -263,7 +263,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"bin_id\": 1,\n    \"current_level\": 2,\n    \"current_weight\": 3,\n    \"smoke_noti\": false,\n    \"location_long\": \"5.1106446\",\n    \"location_lat\": \"-5.1106446\"\n}"
+                            "raw": "{\n    \"id\": 1,\n    \"c_level\": 2,\n    \"c_weight\": 3,\n    \"s_noti\": false,\n    \"loc_long\": \"5.1106446\",\n    \"loc_lat\": \"-5.1106446\"\n}"
                         },
                         "description": "Updates the states of bin.",
                         "response": []

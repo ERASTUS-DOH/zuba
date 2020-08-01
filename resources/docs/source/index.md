@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"quo"}'
+    -d '{"email":"mail@mail.com","password":"totam"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "quo"
+    "password": "totam"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"recusandae"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"voluptatibus"}'
 
 ```
 
@@ -137,7 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "recusandae"
+    "password": "voluptatibus"
 }
 
 fetch(url, {
@@ -197,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"ea"}'
+    -d '{"email":"mail@mail.com","password":"occaecati"}'
 
 ```
 
@@ -213,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "ea"
+    "password": "occaecati"
 }
 
 fetch(url, {
@@ -276,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"debitis"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"sapiente"}'
 
 ```
 
@@ -298,7 +298,7 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "debitis"
+    "password": "sapiente"
 }
 
 fetch(url, {
@@ -362,7 +362,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"ut"}'
+    -d '{"email":"mail@mail.com","password":"in"}'
 
 ```
 
@@ -378,7 +378,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "ut"
+    "password": "in"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"quas"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"quis"}'
 
 ```
 
@@ -463,7 +463,7 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "quas"
+    "password": "quis"
 }
 
 fetch(url, {
@@ -575,7 +575,7 @@ fetch(url, {
 
 <!-- END_3dd5a7d02a332200d256aae0f9b39483 -->
 
-<!-- START_36645127349df45c1ffd99b8b2d57e65 -->
+<!-- START_62f5bbe4696a75b795d3318af149df4c -->
 ## Register a new Bin statistics
 
 Registers a new request issued by the bin for pickup.
@@ -583,17 +583,17 @@ Registers a new request issued by the bin for pickup.
 > Example request:
 
 ```bash
-curl -X GET \
-    -G "http://localhost/api/v1/bins/statistics/pickup" \
+curl -X POST \
+    "http://localhost/api/v1/bins/pickup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"bin_id":1,"current_level":2,"current_weight":3,"smoke_noti":false,"location_long":"5.1106446","location_lat":"-5.1106446"}'
+    -d '{"id":1,"c_level":2,"c_weight":3,"s_noti":false,"loc_long":"5.1106446","loc_lat":"-5.1106446"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/bins/statistics/pickup"
+    "http://localhost/api/v1/bins/pickup"
 );
 
 let headers = {
@@ -602,16 +602,16 @@ let headers = {
 };
 
 let body = {
-    "bin_id": 1,
-    "current_level": 2,
-    "current_weight": 3,
-    "smoke_noti": false,
-    "location_long": "5.1106446",
-    "location_lat": "-5.1106446"
+    "id": 1,
+    "c_level": 2,
+    "c_weight": 3,
+    "s_noti": false,
+    "loc_long": "5.1106446",
+    "loc_lat": "-5.1106446"
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
@@ -627,21 +627,21 @@ null
 ```
 
 ### HTTP Request
-`GET api/v1/bins/statistics/pickup`
+`POST api/v1/bins/pickup`
 
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `bin_id` | integer |  required  | The id of the bin issuing the request.
-        `current_level` | float |  required  | The level of waste in the bin.
-        `current_weight` | float |  required  | The weight of the bin.
-        `smoke_noti` | boolean |  required  | The smoke notification status.
-        `location_long` | string |  required  | The longitude of the location of the bin.
-        `location_lat` | string |  required  | The latitude of the location of the bin.
+    `id` | integer |  required  | The id of the bin issuing the request.
+        `c_level` | float |  required  | The level of waste in the bin.
+        `c_weight` | float |  required  | The weight of the bin.
+        `s_noti` | boolean |  required  | The smoke notification status.
+        `loc_long` | string |  required  | The longitude of the location of the bin.
+        `loc_lat` | string |  required  | The latitude of the location of the bin.
     
-<!-- END_36645127349df45c1ffd99b8b2d57e65 -->
+<!-- END_62f5bbe4696a75b795d3318af149df4c -->
 
-<!-- START_79f3ae1ab3052ae7dcf536bd7e32bbae -->
+<!-- START_1891044952edc151ec076b57a011359b -->
 ## Update a  Bin statistics
 
 Updates the states of bin.
@@ -649,17 +649,17 @@ Updates the states of bin.
 > Example request:
 
 ```bash
-curl -X GET \
-    -G "http://localhost/api/v1/bins/statistics/update" \
+curl -X POST \
+    "http://localhost/api/v1/bins/update" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"bin_id":1,"current_level":2,"current_weight":3,"smoke_noti":false,"location_long":"5.1106446","location_lat":"-5.1106446"}'
+    -d '{"id":1,"c_level":2,"c_weight":3,"s_noti":false,"loc_long":"5.1106446","loc_lat":"-5.1106446"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/bins/statistics/update"
+    "http://localhost/api/v1/bins/update"
 );
 
 let headers = {
@@ -668,16 +668,16 @@ let headers = {
 };
 
 let body = {
-    "bin_id": 1,
-    "current_level": 2,
-    "current_weight": 3,
-    "smoke_noti": false,
-    "location_long": "5.1106446",
-    "location_lat": "-5.1106446"
+    "id": 1,
+    "c_level": 2,
+    "c_weight": 3,
+    "s_noti": false,
+    "loc_long": "5.1106446",
+    "loc_lat": "-5.1106446"
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
@@ -693,19 +693,19 @@ null
 ```
 
 ### HTTP Request
-`GET api/v1/bins/statistics/update`
+`POST api/v1/bins/update`
 
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `bin_id` | integer |  required  | The id of the bin issuing the request.
-        `current_level` | float |  required  | The level of waste in the bin.
-        `current_weight` | float |  required  | The weight of the bin.
-        `smoke_noti` | boolean |  required  | The smoke notification status.
-        `location_long` | string |  required  | The longitude of the location of the bin.
-        `location_lat` | string |  required  | The latitude of the location of the bin.
+    `id` | integer |  required  | The id of the bin issuing the request.
+        `c_level` | float |  required  | The level of waste in the bin.
+        `c_weight` | float |  required  | The weight of the bin.
+        `s_noti` | boolean |  required  | The smoke notification status.
+        `loc_long` | string |  required  | The longitude of the location of the bin.
+        `loc_lat` | string |  required  | The latitude of the location of the bin.
     
-<!-- END_79f3ae1ab3052ae7dcf536bd7e32bbae -->
+<!-- END_1891044952edc151ec076b57a011359b -->
 
 <!-- START_b84031acc4697616d24555b8c4088f56 -->
 ## create a  Bin manual pickup statistics
@@ -793,14 +793,15 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "error": {
-        "code": 500,
-        "message": "SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: request_types.request_type (SQL: insert into \"request_types\" (\"request_type\", \"updated_at\", \"created_at\") values (?, 2020-08-01 08:30:25, 2020-08-01 08:30:25))"
-    }
+    "success": {
+        "code": 200,
+        "message": "Request completed successfully."
+    },
+    "data": "Request received successfully"
 }
 ```
 
