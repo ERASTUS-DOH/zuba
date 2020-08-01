@@ -56,9 +56,9 @@ Route::prefix('v1')->namespace('Api')->group(function () {
      * route for getting data from bins
      */
     Route::get('b', 'BinController@storeBinStatistics');
-    Route::get('bins/update','BinController@storeBinUpdateStats');
-    Route::get('bins/statistics/manualPickup','BinController@storeManualStats');
-//    Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
+    Route::post('bins/update','BinController@storeBinUpdateStats');
+    Route::post('bins/statistics/manualPickup','BinController@storeManualStats');
+    Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
     Route::get('bins/test','BinController@storetest');
 });
 

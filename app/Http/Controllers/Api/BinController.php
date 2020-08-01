@@ -95,13 +95,15 @@ class BinController extends Controller
 
     public function storeBinStatistics(Request $request){
         $validator = Validator::make($request->all(), [
-            'i' => 'required|integer|max:10',
-            'cl' => 'required|numeric|max:10',
+            'i' => 'required|integer',
+            'cl' => 'required|numeric',
             'cw' =>  'required|numeric',
             'sn' => 'required|boolean',
             'lg' => 'required|string',
             'lt' => 'required|string',
         ]);
+
+//        return  $this->sendSuccessResponse('Request received successfully');
 
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first());
@@ -166,23 +168,23 @@ class BinController extends Controller
         //validation of incoming request.
         $validator = Validator::make($request->all(),[
             'i' => 'required|integer',
-            'cl' => 'required|numeric|max:10',
-            'cw' => 'required|numeric|max:10',
-            'sn' => 'required|boolean',
-            'lg' => 'required|string',
-            'lt'  => 'required|string'
+            'cl' => 'required|numeric',
+            'cw' => 'required|numeric',
+            's_noti' => 'required|boolean',
+            'loc_long' => 'required|string',
+            'loclat'  => 'required|string'
         ]);
 
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first());
         }
 
-        $updateBin = Bins::find($request->input('i'));
-        $updateBin->current_level = $request->input('cl');
-        $updateBin->current_weight = $request->input('cw');
-        $updateBin->smoke_noti = $request->input('sn');
-        $updateBin->location_long = $request->input('lg');
-        $updateBin->location_lat = $request->input('lt');
+        $updateBin = Bins::find($request->input('id'));
+        $updateBin->current_level = $request->input('c_level');
+        $updateBin->current_weight = $request->input('c_weight');
+        $updateBin->smoke_noti = $request->input('s_noti');
+        $updateBin->location_long = $request->input('loc_long');
+        $updateBin->location_lat = $request->input('loc_lat');
 
        if($updateBin->save()){
            return  $this->sendSuccessResponse('Request received successfully');
@@ -252,6 +254,7 @@ class BinController extends Controller
     }
 
     public function storetest(){
+        return  $this->sendSuccessResponse('Request received successfully');
         $test = RequestType::query()->create([
             'request_type' => "welcome"
         ]);
