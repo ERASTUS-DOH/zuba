@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"totam"}'
+    -d '{"email":"mail@mail.com","password":"maiores"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "totam"
+    "password": "maiores"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"voluptatibus"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"occaecati"}'
 
 ```
 
@@ -137,7 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "voluptatibus"
+    "password": "occaecati"
 }
 
 fetch(url, {
@@ -197,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"occaecati"}'
+    -d '{"email":"mail@mail.com","password":"voluptatibus"}'
 
 ```
 
@@ -213,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "occaecati"
+    "password": "voluptatibus"
 }
 
 fetch(url, {
@@ -276,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"sapiente"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"rem"}'
 
 ```
 
@@ -298,7 +298,7 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "sapiente"
+    "password": "rem"
 }
 
 fetch(url, {
@@ -362,7 +362,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"in"}'
+    -d '{"email":"mail@mail.com","password":"enim"}'
 
 ```
 
@@ -378,7 +378,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "in"
+    "password": "enim"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"quis"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"enim"}'
 
 ```
 
@@ -463,7 +463,7 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "quis"
+    "password": "enim"
 }
 
 fetch(url, {
@@ -575,7 +575,7 @@ fetch(url, {
 
 <!-- END_3dd5a7d02a332200d256aae0f9b39483 -->
 
-<!-- START_62f5bbe4696a75b795d3318af149df4c -->
+<!-- START_40fb1ea21ca7ce67eeb95a6059e0b287 -->
 ## Register a new Bin statistics
 
 Registers a new request issued by the bin for pickup.
@@ -583,8 +583,8 @@ Registers a new request issued by the bin for pickup.
 > Example request:
 
 ```bash
-curl -X POST \
-    "http://localhost/api/v1/bins/pickup" \
+curl -X GET \
+    -G "http://localhost/api/v1/b" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"id":1,"c_level":2,"c_weight":3,"s_noti":false,"loc_long":"5.1106446","loc_lat":"-5.1106446"}'
@@ -593,7 +593,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/bins/pickup"
+    "http://localhost/api/v1/b"
 );
 
 let headers = {
@@ -611,7 +611,7 @@ let body = {
 }
 
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers: headers,
     body: body
 })
@@ -627,7 +627,7 @@ null
 ```
 
 ### HTTP Request
-`POST api/v1/bins/pickup`
+`GET api/v1/b`
 
 #### Body Parameters
 Parameter | Type | Status | Description
@@ -639,7 +639,7 @@ Parameter | Type | Status | Description
         `loc_long` | string |  required  | The longitude of the location of the bin.
         `loc_lat` | string |  required  | The latitude of the location of the bin.
     
-<!-- END_62f5bbe4696a75b795d3318af149df4c -->
+<!-- END_40fb1ea21ca7ce67eeb95a6059e0b287 -->
 
 <!-- START_1891044952edc151ec076b57a011359b -->
 ## Update a  Bin statistics
@@ -2599,12 +2599,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2644,12 +2642,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2889,12 +2885,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2934,12 +2928,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -3053,12 +3045,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (302):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
