@@ -50,6 +50,15 @@ Route::prefix('v1')->namespace('Api')->middleware('auth:owner-api')->group(funct
 });
 
 
+Route::prefix('v1')->namespace('Api')->middleware('auth:rider-api')->group(function () {
+
+    /**
+     * route for the getting the Tricycles of the various owners.
+     */
+    Route::get('rider/cycles', 'TricycleController@getOwnerCycles');
+});
+
+
 Route::prefix('v1')->namespace('Api')->group(function () {
 
     /**
@@ -61,6 +70,7 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
     Route::get('bins/test','BinController@storetest');
 });
+
 
 //fallback route
 Route::fallback(function () {

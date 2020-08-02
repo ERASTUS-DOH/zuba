@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\ApiBaseController;
-//use phpseclib\Crypt\Hash;
+
 
 /**
  * @group Authentication Management
