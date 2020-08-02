@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use App\Traits\ApiBaseController;
 use App\TricycleRiders;
 use App\Tricycles;
@@ -11,9 +10,8 @@ use App\Http\Controllers\Controller;
 
 
 /**
- * @group Cycles Management.
- *
- * Tricyle Owners management
+ * @group Tricycles Management.
+ * Tricycle Owners management
  * Class TricycleController
  * @package App\Http\Controllers\Api
  *
@@ -24,10 +22,10 @@ class TricycleController extends Controller
 
     /**
      *
-     * Function responsible for getting the individual bins for their respective owner
+     * Function responsible for getting the individual tricycle details for their respective owner
      * @return TricycleCollection
      *
-     *Riders Tricycless
+     *Riders Tricycles
      *
      * Get the tricycles for a rider.
      * @responseFile response/rider.bin.json
