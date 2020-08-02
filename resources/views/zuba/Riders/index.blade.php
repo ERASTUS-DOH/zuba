@@ -95,7 +95,7 @@
                                             </td>
                                             <td>
                                                     <button class="btn btn-danger btn-fab-mini btn-round table-btn"
-                                                            data-toggle="modal" data-target="#deleteModal"
+                                                            data-toggle="modal" data-target="#deleteModal-{{ $rider->id }}"
                                                             rel="tooltip" data-original-title="Delete Rider"
                                                             style="width: 35px;">
                                                         <i class="fas fa-lg fa-times"></i>
@@ -104,7 +104,7 @@
 
                                                 {{--start of delete modal--}}
 
-                                                <div class="modal fade pt-5" id="deleteModal" tabindex="-1" role="dialog"
+                                                <div class="modal fade pt-5" id="deleteModal-{{ $rider->id }}" tabindex="-1" role="dialog"
                                                      aria-labelledby="" aria-hidden="true">
                                                     <div class=" modal-dialog" role="document">
                                                         <div class="modal-content card" style="background-color: #f3f3f3;">

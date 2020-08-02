@@ -20,7 +20,7 @@
                         </button>
                     </div>
 
-                    <form action="" method="POST">
+                    <form action="{{route('deleteRequest',['id' => $request->id])}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <div class="modal-body" style="margin-bottom: 0px !important;">
@@ -184,7 +184,7 @@
                                             <td>
                                                 Request Type
                                             </td>
-                                            <td>@if($request->request_state)
+                                            <td>@if(!$request->request_type)
                                                     <button class="btn btn-primary btn-fab-mini btn-round table-btn"
                                                             rel="tooltip" data-original-title="Automatic Bin Request" style="background-color:#70b723;">
                                                         <i class="fas fa-lg fa-retweet"></i>

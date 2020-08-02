@@ -98,6 +98,54 @@
                                                     style="width: 35px;">
                                                 <i class="fas fa-lg fa-times"></i>
                                             </button>
+
+{{--                                            START OF DELETE MODAL--}}
+
+                                            <div class="modal fade pt-5" id="exampleModal2" tabindex="-1" role="dialog"
+                                                 aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                                <div class=" modal-dialog" role="document">
+                                                    <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                        <div class="modal-header card-header card-header-danger">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <form action="/binOwners/{{$owner->id}}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row justify-content-center">
+                                                                        <p class="">Are you sure you want to delete Bin-Owner: <b>{{$owner->fname.' '.$owner->lname}}</b>?</p>
+
+                                                                    </div>
+                                                                    <div class="row justify-content-center">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-footer justify-content-center p-0">
+                                                                <div class="row">
+                                                                    <div class="col-md-5">
+                                                                        <a href="{{route('Owners')}}" class="btn btn-danger">
+                                                                            <i class="fas fa-times-circle"></i> No
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <button type="submit" class="btn btn-success"><i
+                                                                                class="fas fa-check-circle"></i> Yes</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+{{--                                                END OF DELETE MODAL--}}
+
                                         </td>
                                         <td>
                                             <button class="btn btn-warning btn-fab-mini btn-round table-btn"
@@ -226,48 +274,7 @@
             </div>
 {{--            @if($owner)--}}
 {{--                <!-- Modal.Delete -->--}}
-{{--                    <div class="modal fade pt-5" id="exampleModal2" tabindex="-1" role="dialog"--}}
-{{--                         aria-labelledby="exampleModalLabel2" aria-hidden="true">--}}
-{{--                        <div class=" modal-dialog" role="document">--}}
-{{--                            <div class="modal-content card" style="background-color: #f3f3f3;">--}}
-{{--                                <div class="modal-header card-header card-header-danger">--}}
-{{--                                    <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>--}}
-{{--                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                        <span aria-hidden="true">&times;</span>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-
-{{--                                <form action="/binOwners/{{$owner->id}}" method="post">--}}
-{{--                                    @csrf--}}
-{{--                                    @method('DELETE')--}}
-{{--                                    <div class="modal-body" style="margin-bottom: 0px !important;">--}}
-{{--                                        <div class="card-body">--}}
-{{--                                            <div class="row justify-content-center">--}}
-{{--                                                <p class="">Are you sure you want to delete this Bin-Owner?</p>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="row justify-content-center">--}}
-{{--                                                --}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="modal-footer justify-content-center p-0">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-md-5">--}}
-{{--                                                <a href="{{route('Owners')}}" class="btn btn-danger">--}}
-{{--                                                    <i class="fas fa-times-circle"></i> No--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-5">--}}
-{{--                                                <button type="submit" class="btn btn-success"><i--}}
-{{--                                                        class="fas fa-check-circle"></i> Yes</button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+{{--                    --}}
 {{--            @else--}}
 
 {{--                @endif--}}

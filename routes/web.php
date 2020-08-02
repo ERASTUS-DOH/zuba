@@ -95,3 +95,4 @@ Route::get('/bin_requests/pickup','Bin_requestController@showAllPickupRequest')-
 Route::get('/bin_requests/pending','Bin_requestController@showAllPending')->name('showAllPendingRequest');
 Route::get('/bin_requests/resolved','Bin_requestController@showAllResolved')->name('showAllResolvedRequest');
 Route::get('/bin_requests/{id}','Bin_requestController@showRequestDetails')->name('showRequestDetails');
+Route::delete('/bin_requests/{id}','Bin_requestController@destroy')->name('deleteRequest');

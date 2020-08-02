@@ -51,6 +51,7 @@ class BinStatusBroadcast implements ShouldBroadcastNow
         //
         return [
             'request_id' => $this->binRequest->id,
+            'request_type'=> $this->binRequest->request_type,
             'bin_id' => $this->binRequest->bin_id,
             'bin_loc_long'=> $this->binRequest->location_long,
             'bin_loc_lat' => $this->binRequest->location_lat

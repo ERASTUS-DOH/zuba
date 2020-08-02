@@ -35,6 +35,7 @@ class HomeController extends Controller
         $bins = Bins::all();
         $bin_requests = BinRequest::all();
         $test = RequestType::all();
+        $pending_requests = BinRequest::where('request_state','=','1')->get();
 
         $data = [
             'riders' => $riders,
@@ -43,8 +44,9 @@ class HomeController extends Controller
             'bins' => $bins,
             'bin_requests' => $bin_requests,
             'test' => $test,
+
         ];
-        return view('zuba.index', ['data' => $data]);
+        return view('zuba.index', ['data' => $data,'pending_requests' => $pending_requests]);
     }
 
 //    public function bins(){

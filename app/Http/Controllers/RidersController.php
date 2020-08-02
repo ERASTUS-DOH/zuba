@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RiderStoreRequest;
 use App\Riders;
+use App\TricycleRiders;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -129,6 +130,12 @@ class RidersController extends Controller
      */
     public function destroy($id)
     {
+        //check if the rider has an assigned a cycle.
+        $hasCycle = TricycleRiders::where('rider_id','=',$id)->first();
+
+        if($hasCycle){
+            return redirect(url('/riders'))->with('error','Rider has an assigned cycle');
+        }
 
         $rider = Riders::find($id)->delete();
         if($rider){

@@ -36,18 +36,20 @@ class Bin_requestController extends Controller
 
     //function responsible for all home-pickup request.
     public function showAllPickupRequest(){
-        $manual_requests = ManualPickRequest::all();
-        return view('zuba.Requests.home_pickup');
+        $manual_requests = BinRequest::where('request_type','=','1')->get();
+        return view('zuba.Requests.home_pickup',['manual_requests' => $manual_requests]);
     }
 
     //function responsible for showing all pending.
     public function showAllPending(){
-        return view('zuba.Requests.pending');
+        $pending_requests = BinRequest::where('request_state','=','1')->get();
+        return view('zuba.Requests.pending',['pending_requests' => $pending_requests]);
     }
 
     //function responsible for showing all resolved requests.
     public function showAllResolved(){
-        return view('zuba.Requests.resolved');
+        $resolved_requests = BinRequest::where('request_state','=','2')->get();
+        return view('zuba.Requests.resolved',['resolved_requests' => $resolved_requests]);
     }
 
     //function responsible for showing all bin details.
@@ -60,7 +62,15 @@ class Bin_requestController extends Controller
     }
 
 
-
+    //function responsible for deleting a particular request.
+    public function destroy($id){
+        dd($id);
+        //find the request you would want to delete.
+        $request = BinRequest::find($id)->delete();
+        if($request){
+            return redirect(route('showAllBinsRequest'))->with('success','The request deletion successful');
+        }
+    }
 
 }
 

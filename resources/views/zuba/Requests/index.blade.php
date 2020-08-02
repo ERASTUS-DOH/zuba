@@ -20,52 +20,7 @@
                 </div>
             </div>
 
-            {{--start of delete modal--}}
 
-            <div class="modal fade pt-5" id="deleteModal" tabindex="-1" role="dialog"
-                 aria-labelledby="" aria-hidden="true">
-                <div class=" modal-dialog" role="document">
-                    <div class="modal-content card" style="background-color: #f3f3f3;">
-                        <div class="modal-header card-header card-header-danger">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Request</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <form action="" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <div class="modal-body" style="margin-bottom: 0px !important;">
-                                <div class="card-body">
-                                    <div class="row justify-content-center">
-                                        <p class="">Are you sure you want to delete Request ?</p>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <h5 class="bold"></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer justify-content-center p-0">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <button type="button" class="btn btn-success" data-dismiss="modal"><i
-                                                class="fas fa-times-circle"></i> No</button>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <button type="submit" class="btn btn-danger"><i
-                                                class="fas fa-check-circle"></i> Yes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            {{--end of de-assign modal--}}
 
 
 
@@ -128,7 +83,7 @@
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header card-header-info theme">
-                        <h4 class="card-title mt-0"> List of all Most Recent Request</h4>
+                        <h4 class="card-title mt-0"> List of all Most Recent Pending Requests</h4>
 {{--                        <p class="card-category"> Last four request that have been recieved.</p>--}}
                     </div>
                     <div class="card-body">
@@ -243,10 +198,11 @@
 
                                             <button class="btn btn-danger btn-round table-btn"
                                                     rel="tooltip" data-original-title="Delete Request"
-                                                    data-toggle="modal" data-target="@if(!$pending->request_state){{'#deleteModal'}}@else{{'#noticeModal'}}@endif">
+                                                    data-toggle="modal" data-target="@if($pending->request_state == "2"){{'#deleteModal-'.$pending->id}}@else{{'#noticeModal'}}@endif">
                                                 <i class="fas fa-lg fa-times"></i>
 
                                             </button>
+
 
                                         {{--start Notice modal--}}
 
@@ -287,6 +243,54 @@
                                         </div>
 
                                         {{--end of Notice modal--}}
+
+
+                                        {{--start of delete modal--}}
+
+                                        <div class="modal fade pt-5" id="deleteModal-{{ $pending->id }}" tabindex="-1" role="dialog"
+                                             aria-labelledby="" aria-hidden="true">
+                                            <div class=" modal-dialog" role="document">
+                                                <div class="modal-content card" style="background-color: #f3f3f3;">
+                                                    <div class="modal-header card-header card-header-danger">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Delete Request</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <form action="{{route('deleteRequest',['id'=>$pending->id])}}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <div class="modal-body" style="margin-bottom: 0px !important;">
+                                                            <div class="card-body">
+                                                                <div class="row justify-content-center">
+                                                                    <p class="">Are you sure you want to delete Request ?</p>
+                                                                </div>
+                                                                <div class="row justify-content-center">
+                                                                    <h5 class="bold"></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer justify-content-center p-0">
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <button type="button" class="btn btn-success" data-dismiss="modal"><i
+                                                                            class="fas fa-times-circle"></i> No</button>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <button type="submit" class="btn btn-danger"><i
+                                                                            class="fas fa-check-circle"></i> Yes
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{--end of de-assign modal--}}
 
                                     </td>
                                 </tr>
