@@ -38,7 +38,7 @@ curl -X POST \
     "http://localhost/api/v1/user/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"fugit"}'
+    -d '{"email":"mail@mail.com","password":"iusto"}'
 
 ```
 
@@ -54,7 +54,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "fugit"
+    "password": "iusto"
 }
 
 fetch(url, {
@@ -117,7 +117,7 @@ curl -X POST \
     "http://localhost/api/v1/user/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"nesciunt"}'
+    -d '{"first_name":"Jane","last_name":"Doe","other_name":"Elinam","telephone":"0241406244","email":"mail@mail.com","password":"delectus"}'
 
 ```
 
@@ -137,7 +137,7 @@ let body = {
     "other_name": "Elinam",
     "telephone": "0241406244",
     "email": "mail@mail.com",
-    "password": "nesciunt"
+    "password": "delectus"
 }
 
 fetch(url, {
@@ -197,7 +197,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"mail@mail.com","password":"alias"}'
+    -d '{"email":"mail@mail.com","password":"nisi"}'
 
 ```
 
@@ -213,7 +213,7 @@ let headers = {
 
 let body = {
     "email": "mail@mail.com",
-    "password": "alias"
+    "password": "nisi"
 }
 
 fetch(url, {
@@ -276,7 +276,7 @@ curl -X POST \
     "http://localhost/api/v1/owner/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"exercitationem"}'
+    -d '{"title":"Mr","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0241406244","address":"Plt adjacent max-gee hotel.","email":"mail@mail.com","password":"tempora"}'
 
 ```
 
@@ -298,7 +298,7 @@ let body = {
     "telephone": "0241406244",
     "address": "Plt adjacent max-gee hotel.",
     "email": "mail@mail.com",
-    "password": "exercitationem"
+    "password": "tempora"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ curl -X POST \
     "http://localhost/api/v1/rider/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"assumenda"}'
+    -d '{"title":"Mr.","first_name":"Jane","last_name":"Doe","other_name":"Doe","telephone":"0244444444","email":"mail@mail.com","address":"plt. adjacent max-gee hotel.","password":"voluptatum"}'
 
 ```
 
@@ -463,7 +463,7 @@ let body = {
     "telephone": "0244444444",
     "email": "mail@mail.com",
     "address": "plt. adjacent max-gee hotel.",
-    "password": "assumenda"
+    "password": "voluptatum"
 }
 
 fetch(url, {
@@ -641,7 +641,7 @@ Parameter | Type | Status | Description
     
 <!-- END_40fb1ea21ca7ce67eeb95a6059e0b287 -->
 
-<!-- START_1891044952edc151ec076b57a011359b -->
+<!-- START_3178cf80d8728c8e64f0d94a56100304 -->
 ## Update a  Bin statistics
 
 Updates the states of bin.
@@ -649,8 +649,8 @@ Updates the states of bin.
 > Example request:
 
 ```bash
-curl -X POST \
-    "http://localhost/api/v1/bins/update" \
+curl -X GET \
+    -G "http://localhost/api/v1/b/u" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"id":1,"c_level":2,"c_weight":3,"s_noti":false,"loc_long":"5.1106446","loc_lat":"-5.1106446"}'
@@ -659,7 +659,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/bins/update"
+    "http://localhost/api/v1/b/u"
 );
 
 let headers = {
@@ -677,7 +677,7 @@ let body = {
 }
 
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers: headers,
     body: body
 })
@@ -693,7 +693,7 @@ null
 ```
 
 ### HTTP Request
-`POST api/v1/bins/update`
+`GET api/v1/b/u`
 
 #### Body Parameters
 Parameter | Type | Status | Description
@@ -705,7 +705,7 @@ Parameter | Type | Status | Description
         `loc_long` | string |  required  | The longitude of the location of the bin.
         `loc_lat` | string |  required  | The latitude of the location of the bin.
     
-<!-- END_1891044952edc151ec076b57a011359b -->
+<!-- END_3178cf80d8728c8e64f0d94a56100304 -->
 
 <!-- START_b84031acc4697616d24555b8c4088f56 -->
 ## create a  Bin manual pickup statistics
