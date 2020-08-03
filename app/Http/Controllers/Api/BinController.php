@@ -170,21 +170,21 @@ class BinController extends Controller
             'i' => 'required|integer',
             'cl' => 'required|numeric',
             'cw' => 'required|numeric',
-            's_noti' => 'required|boolean',
-            'loc_long' => 'required|string',
-            'loclat'  => 'required|string'
+            'sn' => 'required|boolean',
+            'lg' => 'required|string',
+            'lt'  => 'required|string'
         ]);
 
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first());
         }
 
-        $updateBin = Bins::find($request->input('id'));
-        $updateBin->current_level = $request->input('c_level');
-        $updateBin->current_weight = $request->input('c_weight');
-        $updateBin->smoke_noti = $request->input('s_noti');
-        $updateBin->location_long = $request->input('loc_long');
-        $updateBin->location_lat = $request->input('loc_lat');
+        $updateBin = Bins::find($request->input('i'));
+        $updateBin->current_level = $request->input('cl');
+        $updateBin->current_weight = $request->input('cw');
+        $updateBin->smoke_noti = $request->input('sn');
+        $updateBin->location_long = $request->input('lg');
+        $updateBin->location_lat = $request->input('lt');
 
        if($updateBin->save()){
            return  $this->sendSuccessResponse('Request received successfully');
