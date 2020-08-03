@@ -128,9 +128,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-trans">
-                        <div class="card bin-shell">
-
+                    <div class="card card-trans" >
+                        <div class="card bin-shell" id="bin">
                         </div>
                     </div>
                 </div>

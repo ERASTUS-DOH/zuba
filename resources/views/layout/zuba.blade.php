@@ -17,6 +17,8 @@
     <link href="{{ asset('assets/for_proj/css/mains.css') }}" rel="stylesheet" />
     <!-- Material Kit CSS -->
     <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet" />
+    <!-- progress loading fill -->
+    <link href="{{asset('assets/css/loading-bar.min.css')}}" rel="stylesheet">
     <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
 </head>
 
@@ -225,6 +227,9 @@
 <script src="{{asset('/assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('/assets/js/material-dashboard.js?v=2.1.2')}}" type="text/javascript"></script>
+
+<!-- Plugin for the loading-bar.min.css -->
+<script src="{{asset('/assets/js/loading-bar.min.js')}}" type="text/javascript"></script>
 </body>
 
 </html>
