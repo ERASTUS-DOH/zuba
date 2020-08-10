@@ -248,6 +248,7 @@ class BinController extends Controller
         ]);
 
         if($pickup_request){
+            broadcast(new BinStatusBroadcast($pickup_request));
             return  $this->sendSuccessResponse('Request received successfully');
         }
 
