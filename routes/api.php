@@ -66,7 +66,7 @@ Route::prefix('v1')->namespace('Api')->group(function () {
      */
     Route::get('b', 'BinController@storeBinStatistics');
     Route::get('b/u','BinController@storeBinUpdateStats');
-    Route::post('bins/statistics/manualPickup','BinController@storeManualStats');
+    Route::get('bins/statistics/manualPickup','BinController@storeManualStats');
     Route::post('bins/pickup/statistics','BinController@storePickupStatistics');
     Route::get('bins/test','BinController@storetest');
 });
